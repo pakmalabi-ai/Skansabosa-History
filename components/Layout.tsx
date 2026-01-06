@@ -35,6 +35,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
           </div>
 
+          {/* Teacher Badge (Desktop) */}
+          <div className="hidden lg:block bg-[#171717] px-4 py-1.5 rounded-full border border-history-gold/20">
+             <span className="text-xs text-history-muted uppercase tracking-widest mr-2">Guru:</span>
+             <span className="text-xs font-bold text-history-gold">Findi Lestari, S.Pd.</span>
+          </div>
+
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
              {/* Hide breadcrumb on Home page */}
@@ -93,6 +99,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         {isMenuOpen && (
           <div className="md:hidden bg-[#171717] border-t border-history-gold/10 max-h-[80vh] overflow-y-auto shadow-2xl">
             <div className="flex flex-col p-6 space-y-4">
+               {/* Mobile Teacher Badge */}
+              <div className="flex items-center space-x-2 pb-4 border-b border-white/5">
+                <span className="text-xs text-history-muted uppercase tracking-widest">Guru:</span>
+                <span className="text-sm font-bold text-history-gold">Findi Lestari, S.Pd.</span>
+              </div>
+
               <button onClick={() => handleNavigate('/')} className="text-left text-history-gold hover:text-white py-3 font-bold border-b border-white/5">
                 BERANDA
               </button>
@@ -124,11 +136,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <h3 className="font-sans font-bold text-xl tracking-widest text-history-brown uppercase">SMK Negeri 1 Bojongsari</h3>
           </div>
           <div className="w-16 h-px bg-history-gold/30 mx-auto my-6"></div>
-          <p className="text-sm text-history-muted font-light tracking-wide">
-            Portal Pembelajaran Sejarah &bull; Findi Lestari, S.Pd.
+          <p className="text-sm text-history-muted font-light tracking-wide mb-2">
+            Dikembangkan oleh Findi Lestari, S.Pd. – SMK Negeri 1 Bojongsari
           </p>
-          <div className="mt-8 text-[11px] text-history-muted/50 font-bold uppercase tracking-[0.2em]">
-             © 2026 History Dept.
+          <div className="mt-4 text-[11px] text-history-muted/50 font-bold uppercase tracking-[0.2em]">
+             © Tahun 2026
           </div>
         </div>
       </footer>
