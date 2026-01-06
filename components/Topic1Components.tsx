@@ -28,22 +28,22 @@ export const Mindfulness: React.FC = () => {
 
     const getBgColor = () => {
         switch(status) {
-            case 'IDLE': return 'bg-blue-50';
-            case 'INHALE': return 'bg-blue-200 scale-105';
-            case 'HOLD': return 'bg-blue-300 scale-105';
-            case 'EXHALE': return 'bg-blue-100';
-            case 'DONE': return 'bg-green-50';
-            default: return 'bg-blue-50';
+            case 'IDLE': return 'bg-[#171717] border-history-gold/10';
+            case 'INHALE': return 'bg-[#171717] scale-105 shadow-[0_0_40px_rgba(212,175,55,0.2)] border-history-gold/50';
+            case 'HOLD': return 'bg-[#171717] scale-105 shadow-[0_0_40px_rgba(212,175,55,0.4)] border-history-gold';
+            case 'EXHALE': return 'bg-[#171717] border-history-gold/30';
+            case 'DONE': return 'bg-[#0a0a0a] border-emerald-900/50';
+            default: return 'bg-[#171717]';
         }
     };
 
     return (
-        <div className={`p-6 rounded-md text-center transition-all duration-700 ease-in-out ${getBgColor()}`}>
-            <p className="text-lg font-bold text-blue-900 mb-4">{text}</p>
+        <div className={`p-8 rounded-xl text-center transition-all duration-1000 ease-in-out border ${getBgColor()}`}>
+            <p className="text-xl font-sans font-bold text-history-brown mb-6 tracking-wide">{text}</p>
             {status === 'IDLE' && (
                 <button 
                     onClick={startBreathing} 
-                    className="bg-history-dark text-white px-6 py-2 rounded-full hover:bg-gray-700 transition transform hover:scale-105 shadow-md"
+                    className="bg-history-gold text-[#0a0a0a] px-8 py-3 rounded-full hover:bg-[#c5a028] transition transform hover:scale-105 shadow-lg font-bold uppercase tracking-widest text-sm"
                 >
                     Mulai Teknik STOP
                 </button>
@@ -51,7 +51,7 @@ export const Mindfulness: React.FC = () => {
             {status === 'DONE' && (
                 <button 
                     onClick={() => setStatus('IDLE')} 
-                    className="text-sm text-gray-500 underline mt-2"
+                    className="text-sm text-history-muted underline mt-2 hover:text-history-gold"
                 >
                     Ulangi
                 </button>
@@ -67,22 +67,22 @@ export const InteractiveMap: React.FC = () => {
     const simData: SimulationStep[] = [
         {
             title: "Langkah 1: Target Minyak",
-            description: "11 Januari 1942. Jepang mendarat di Tarakan (Kalimantan). Mengapa? Karena kilang minyak ada di sana.",
+            description: "11 Januari 1942. Jepang mendarat di Tarakan (Kalimantan Timur). Mengapa? Karena kilang minyak ada di sana untuk bahan bakar perang.",
             activeElements: ['tarakan']
         },
         {
             title: "Langkah 2: Kuasai Sumatera",
-            description: "Februari 1942. Pasukan payung turun di Palembang. Kilang minyak Plaju dikuasai.",
+            description: "Februari 1942. Pasukan payung turun di Palembang. Kilang minyak Plaju, yang terbesar di Asia Tenggara, dikuasai.",
             activeElements: ['tarakan', 'palembang']
         },
         {
             title: "Langkah 3: Masuk ke Jawa",
-            description: "1 Maret 1942. Setelah 'bensin' aman, Jepang mengepung pusat pemerintahan Belanda di Jawa dari 3 titik.",
+            description: "1 Maret 1942. Setelah 'bensin' aman, Jepang mengepung pusat pemerintahan Belanda di Jawa dari 3 titik (Banten, Eretan, Kragan).",
             activeElements: ['tarakan', 'palembang', 'jawa']
         },
         {
             title: "Langkah 4: Belanda Menyerah",
-            description: "8 Maret 1942. Perjanjian Kalijati. Belanda menyerah tanpa syarat. Tamatlah riwayat Hindia Belanda.",
+            description: "8 Maret 1942. Perjanjian Kalijati (Subang). Belanda menyerah tanpa syarat. Tamatlah riwayat Hindia Belanda.",
             activeElements: ['tarakan', 'palembang', 'jawa', 'kalijati']
         }
     ];
@@ -98,10 +98,7 @@ export const InteractiveMap: React.FC = () => {
     };
 
     const currentData = step > 0 ? simData[step - 1] : null;
-    const isVisible = (id: string) => step > 0 && currentData && simData[step-1].activeElements.includes(id);
     
-    // Helper to check if an element should be shown based on cummulative steps
-    // Actually, logic needs to be: if current step >= step where element introduced
     const showTarakan = step >= 1;
     const showPalembang = step >= 2;
     const showJawa = step >= 3;
@@ -109,70 +106,151 @@ export const InteractiveMap: React.FC = () => {
 
     return (
         <div className="w-full">
-            <div className="relative bg-blue-200 w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl border-4 border-white mb-6">
-                {/* SVG MAP */}
-                <svg viewBox="0 0 800 400" className="absolute w-full h-full pointer-events-none opacity-80">
-                    <path d="M150,100 L200,150 L220,250 L180,280 L120,200 Z" fill="#27ae60" stroke="white" strokeWidth="2"/>
-                    <path d="M250,80 L350,80 L360,180 L300,200 L240,150 Z" fill="#27ae60" stroke="white" strokeWidth="2"/>
-                    <path d="M200,300 L450,300 L440,340 L210,340 Z" fill="#27ae60" stroke="white" strokeWidth="2"/>
-                    <path d="M400,100 L450,100 L430,200 L390,150 Z" fill="#27ae60" stroke="white" strokeWidth="2"/>
+            <div className="relative bg-[#0a0a0a] w-full aspect-[16/9] md:h-[600px] rounded-xl overflow-hidden shadow-2xl border border-history-gold/20 mb-8 select-none group">
+                
+                {/* Background Map SVG */}
+                <svg 
+                    id="indo-map" 
+                    viewBox="0 0 800 300" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="absolute w-full h-full opacity-60"
+                    preserveAspectRatio="none"
+                >
+                    <style>{`
+                        .island { fill: #171717; stroke: #57534e; stroke-width: 0.5; transition: all 0.5s ease; }
+                        .island:hover { fill: #262626; stroke: #d4af37; cursor: pointer; }
+                    `}</style>
+                    
+                    {/* Sumatra */}
+                    <path id="Sumatera" className="island" d="M120,40 L160,50 L180,90 L170,120 L150,150 L120,130 L100,90 L90,60 Z M100,60 L110,50" data-name="Sumatera"></path>
+                    <path className="island" data-name="Sumatera" d="M40,55 C50,45 70,55 80,65 L130,120 C140,130 145,150 135,160 L120,170 C110,175 100,160 95,150 L50,90 C40,75 35,60 40,55 Z"></path>
+    
+                    {/* Kalimantan */}
+                    <path className="island" data-name="Kalimantan" d="M160,90 L230,80 L260,85 L270,110 L260,150 L240,160 L180,155 L165,130 L160,90 Z M230,80 C235,70 250,70 255,80"></path>
+    
+                    {/* Jawa */}
+                    <path className="island" data-name="Jawa" d="M140,175 L150,170 L260,175 L280,185 L275,195 L150,190 L140,175 Z"></path>
+                    
+                    {/* Sulawesi */}
+                    <path className="island" data-name="Sulawesi" d="M300,100 L320,100 L310,120 L330,120 L340,110 L350,120 L340,130 L350,140 L330,150 L310,140 L300,130 L290,110 Z M310,120 L300,130"></path>
+    
+                    {/* Bali & Nusa Tenggara */}
+                    <g className="island-group">
+                        <circle className="island" data-name="Bali" cx="295" cy="190" r="4"></circle>
+                        <path className="island" data-name="Nusa Tenggara Barat" d="M305,190 L325,190 L325,200 L305,200 Z"></path>
+                        <path className="island" data-name="Nusa Tenggara Timur" d="M330,195 L360,190 L370,200 L360,210 L335,205 Z"></path>
+                    </g>
+    
+                    {/* Maluku Islands (Simplified) */}
+                    <path className="island" data-name="Maluku Utara" d="M380,100 L395,100 L390,120 L375,115 Z"></path>
+                    <path className="island" data-name="Maluku" d="M380,140 L400,135 L405,150 L390,155 Z"></path>
+    
+                    {/* Papua */}
+                    <path className="island" data-name="Papua" d="M430,120 L450,110 L500,115 L560,130 L560,190 L500,190 L480,170 L460,160 L440,150 L430,140 Z M430,120 C420,125 420,135 430,140"></path>
                 </svg>
 
-                {/* Elements positioned with percentage to be responsive */}
+                {/* SVG Overlay for Arrows & Animations - Adjusted ViewBox to match Map */}
+                <svg viewBox="0 0 800 300" className="absolute w-full h-full pointer-events-none z-10" preserveAspectRatio="none">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto">
+                            <polygon points="0 0, 4 2, 0 4" fill="#d4af37" />
+                        </marker>
+                    </defs>
+
+                    {/* Strategy Arrows based on Historical Movement */}
+                    {showTarakan && (
+                        // From Philippines (North-East) to Tarakan (East Kalimantan ~260,100)
+                        <path d="M 350,20 Q 320,50 260,100" fill="none" stroke="#d4af37" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arrowhead)" className="animate-dash" />
+                    )}
+                    {showPalembang && (
+                        // From Malaya (West) to Palembang (South Sumatra ~130,140)
+                        <path d="M 50,50 Q 80,100 130,140" fill="none" stroke="#d4af37" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arrowhead)" className="animate-dash" />
+                    )}
+                     {showJawa && (
+                        <>
+                           {/* To Banten (West Java ~150,180) from Sumatra side */}
+                           <path d="M 130,140 Q 135,160 150,180" fill="none" stroke="#d4af37" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arrowhead)" />
+                           {/* To Eretan (Central Java ~200,180) from Java Sea */}
+                           <path d="M 220,100 L 200,180" fill="none" stroke="#d4af37" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arrowhead)" />
+                           {/* To Kragan (East Java ~250,180) from Makassar Strait */}
+                           <path d="M 280,100 Q 270,140 250,180" fill="none" stroke="#d4af37" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arrowhead)" />
+                        </>
+                    )}
+                </svg>
+
+                {/* LABELS & MARKERS (Positioned by %) */}
+                
+                {/* 1. Tarakan */}
                 {showTarakan && (
-                    <>
-                        <div className="absolute top-[25%] left-[40%] w-8 h-8 bg-history-red rounded-full flex items-center justify-center text-white font-bold shadow-lg z-10 animate-bounce">1</div>
-                        <div className="absolute top-[18%] left-[40%] bg-white px-2 py-1 text-xs rounded shadow font-bold text-gray-800">Tarakan</div>
-                    </>
+                    <div className="absolute top-[33%] left-[32%] animate-bounce z-20">
+                        <div className="w-8 h-8 bg-history-red text-white rounded-full flex items-center justify-center font-bold shadow-lg border border-history-gold text-sm">1</div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-black/80 px-2 py-1 text-[9px] text-history-gold border border-history-gold/30 rounded whitespace-nowrap tracking-wider uppercase">
+                            Tarakan
+                        </div>
+                    </div>
                 )}
 
+                {/* 2. Palembang */}
                 {showPalembang && (
-                    <>
-                        <div className="absolute top-[50%] left-[22%] w-8 h-8 bg-history-red rounded-full flex items-center justify-center text-white font-bold shadow-lg z-10 animate-bounce">2</div>
-                        <div className="absolute top-[42%] left-[22%] bg-white px-2 py-1 text-xs rounded shadow font-bold text-gray-800">Palembang</div>
-                    </>
+                    <div className="absolute top-[46%] left-[16%] animate-bounce z-20">
+                        <div className="w-8 h-8 bg-history-red text-white rounded-full flex items-center justify-center font-bold shadow-lg border border-history-gold text-sm">2</div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-black/80 px-2 py-1 text-[9px] text-history-gold border border-history-gold/30 rounded whitespace-nowrap tracking-wider uppercase">
+                            Palembang
+                        </div>
+                    </div>
                 )}
 
+                {/* 3. Jawa Landing Spots */}
                 {showJawa && (
                     <>
-                        <div className="absolute top-[78%] left-[29%] w-6 h-6 bg-history-red rounded-full z-10 animate-pulse"></div>
-                        <div className="absolute top-[78%] left-[35%] w-6 h-6 bg-history-red rounded-full z-10 animate-pulse"></div>
-                        <div className="absolute top-[78%] left-[44%] w-6 h-6 bg-history-red rounded-full z-10 animate-pulse"></div>
-                        <div className="absolute top-[85%] left-[35%] bg-white px-2 py-1 text-xs rounded shadow font-bold text-gray-800">Jawa (Pusat)</div>
+                        <div className="absolute top-[60%] left-[18%] w-4 h-4 bg-history-red rounded-full z-10 animate-ping border border-history-gold/50"></div>
+                        <div className="absolute top-[60%] left-[25%] w-4 h-4 bg-history-red rounded-full z-10 animate-ping border border-history-gold/50"></div>
+                        <div className="absolute top-[60%] left-[31%] w-4 h-4 bg-history-red rounded-full z-10 animate-ping border border-history-gold/50"></div>
+                        
+                        <div className="absolute top-[68%] left-[25%] -translate-x-1/2 bg-[#171717] text-history-gold px-3 py-1 text-xs border border-history-gold/30 uppercase tracking-widest whitespace-nowrap">
+                            Pengepungan Jawa
+                        </div>
                     </>
                 )}
 
+                {/* 4. Kalijati */}
                 {showKalijati && (
-                    <div className="absolute top-[75%] left-[33%] w-12 h-12 bg-white border-2 border-history-gold rounded-full flex items-center justify-center text-2xl shadow-xl z-20 animate-spin-slow">
-                        🤝
+                    <div className="absolute top-[61%] left-[20%] z-30 cursor-pointer group-hover:scale-110 transition duration-300">
+                        <div className="w-12 h-12 bg-[#0a0a0a] border border-history-gold rounded-full flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(212,175,55,0.3)] animate-spin-slow text-history-gold">
+                            🤝
+                        </div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-history-gold text-[#0a0a0a] px-2 py-1 text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">
+                            Perjanjian Kalijati
+                        </div>
                     </div>
                 )}
 
                 {/* Info Overlay */}
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 p-4 rounded-lg shadow-lg backdrop-blur-sm border-l-4 border-history-red">
-                    <h4 className="font-bold text-lg text-history-dark">
+                <div className="absolute bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-80 bg-[#0a0a0a]/90 p-6 rounded-lg shadow-2xl backdrop-blur-md border border-history-gold/20 transition-all duration-300 z-40">
+                    <h4 className="font-sans font-bold text-sm text-history-gold flex items-center mb-2 uppercase tracking-widest">
+                        <span className="bg-history-gold text-[#0a0a0a] text-[9px] px-2 py-0.5 rounded-sm mr-3 font-bold">Step {step}/4</span>
                         {step === 0 ? "Mulai Simulasi" : currentData?.title}
                     </h4>
-                    <p className="text-sm text-gray-700">
-                        {step === 0 ? "Tekan tombol 'Langkah Berikutnya' untuk melihat strategi 'Gurita' Jepang." : currentData?.description}
+                    <p className="text-history-brown leading-relaxed text-xs font-light">
+                        {step === 0 ? "Tekan tombol 'Langkah Berikutnya' untuk melihat bagaimana Jepang menggunakan strategi 'Gurita'." : currentData?.description}
                     </p>
                 </div>
             </div>
 
-            <div className="flex justify-center space-x-4">
+            <div className="flex justify-center space-x-6">
                 <button 
                     onClick={handleReset} 
-                    className="px-6 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
+                    className="px-6 py-3 bg-[#171717] text-history-muted rounded border border-history-muted/20 hover:border-history-gold hover:text-history-gold transition shadow-lg text-xs font-bold uppercase tracking-widest"
                     disabled={step === 0}
                 >
-                    Reset
+                    <i className="fas fa-undo mr-2"></i> Reset
                 </button>
                 <button 
                     onClick={handleNext} 
-                    className={`px-6 py-2 text-white rounded font-bold transition shadow-lg flex items-center ${step >= 4 ? 'bg-gray-400 cursor-not-allowed' : 'bg-history-red hover:bg-red-800'}`}
+                    className={`px-8 py-3 rounded text-xs font-bold transition shadow-xl flex items-center transform hover:scale-105 tracking-widest uppercase ${step >= 4 ? 'bg-gray-800 cursor-not-allowed text-gray-500' : 'bg-history-gold text-[#0a0a0a] hover:bg-[#c5a028]'}`}
                     disabled={step >= 4}
                 >
-                   {step >= 4 ? 'Selesai' : 'Langkah Berikutnya'} <i className="fas fa-chevron-right ml-2"></i>
+                   {step >= 4 ? 'Selesai' : 'Langkah Berikutnya'} <i className="fas fa-arrow-right ml-3"></i>
                 </button>
             </div>
         </div>
@@ -219,9 +297,9 @@ export const Quiz: React.FC = () => {
 
         if (idx === questions[currentQ].answerIndex) {
             setScore(score + 25);
-            setFeedback("Benar! 👍");
+            setFeedback("Benar");
         } else {
-            setFeedback(`Salah. Jawaban yang benar: ${questions[currentQ].options[questions[currentQ].answerIndex]}`);
+            setFeedback(`Salah. Jawaban: ${questions[currentQ].options[questions[currentQ].answerIndex]}`);
         }
     };
 
@@ -247,27 +325,24 @@ export const Quiz: React.FC = () => {
 
     if (showResult) {
         return (
-            <div className="bg-white p-8 rounded-lg shadow-xl border-t-4 border-history-gold text-center">
-                <div className="text-6xl mb-4 text-history-gold">🏆</div>
-                <h3 className="text-2xl font-bold mb-2">Kuis Selesai!</h3>
-                <p className="text-lg mb-6">Skor Anda: <span className="font-bold text-history-red">{score}</span> / 100</p>
-                <p className="text-gray-600 italic mb-6">
-                    {score === 100 ? "Luar Biasa! Kamu sejarawan sejati." : score >= 50 ? "Bagus, tapi perlu membaca lagi." : "Ayo baca lagi modulnya ya!"}
-                </p>
-                <button onClick={restartQuiz} className="px-6 py-2 bg-history-dark text-white rounded hover:bg-gray-700">Ulangi Kuis</button>
+            <div className="glass-card p-10 rounded-2xl border border-history-gold/30 text-center">
+                <div className="text-6xl mb-4 text-history-gold opacity-80">🏆</div>
+                <h3 className="text-2xl font-sans font-bold mb-3 text-history-brown uppercase tracking-widest">Kuis Selesai</h3>
+                <p className="text-lg mb-8 text-history-muted font-light">Skor Anda: <span className="font-bold text-history-gold text-2xl ml-2">{score}</span> / 100</p>
+                <button onClick={restartQuiz} className="px-8 py-3 bg-history-gold text-[#0a0a0a] rounded hover:bg-[#c5a028] transition font-bold uppercase tracking-widest text-sm">Ulangi Kuis</button>
             </div>
         );
     }
 
     return (
-        <div className="bg-white p-8 rounded-lg shadow-xl border-t-4 border-history-gold">
+        <div className="glass-card p-10 rounded-2xl border border-history-gold/10">
             {/* Progress Bar */}
-            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-6">
-                <div className="bg-history-dark h-2.5 rounded-full transition-all duration-300" style={{ width: `${((currentQ) / questions.length) * 100}%` }}></div>
+            <div className="w-full bg-[#171717] h-1 mb-8">
+                <div className="bg-history-gold h-1 transition-all duration-500" style={{ width: `${((currentQ) / questions.length) * 100}%` }}></div>
             </div>
 
-            <h3 className="text-xl font-bold mb-6 text-gray-800">
-                {currentQ + 1}. {questions[currentQ].question}
+            <h3 className="text-xl font-sans font-bold mb-8 text-history-brown leading-relaxed">
+                <span className="text-history-gold mr-3">{currentQ + 1}.</span> {questions[currentQ].question}
             </h3>
 
             <div className="space-y-3">
@@ -276,25 +351,24 @@ export const Quiz: React.FC = () => {
                         key={idx}
                         onClick={() => handleAnswer(idx)}
                         disabled={isAnswered}
-                        className={`w-full text-left p-3 border rounded transition flex justify-between items-center
+                        className={`w-full text-left p-4 border rounded transition flex justify-between items-center group
                             ${selectedOption === idx 
-                                ? (idx === questions[currentQ].answerIndex ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500')
-                                : 'hover:bg-gray-50'
+                                ? (idx === questions[currentQ].answerIndex ? 'bg-emerald-900/30 border-emerald-500 text-emerald-100' : 'bg-rose-900/30 border-rose-500 text-rose-100')
+                                : 'bg-[#171717] border-history-gold/10 hover:border-history-gold/40 text-history-muted hover:text-history-brown'
                             }
-                            ${isAnswered && idx === questions[currentQ].answerIndex ? 'bg-green-100 border-green-500' : ''}
                         `}
                     >
-                        <span>{opt}</span>
-                        {isAnswered && idx === questions[currentQ].answerIndex && <i className="fas fa-check text-green-600"></i>}
-                        {selectedOption === idx && idx !== questions[currentQ].answerIndex && <i className="fas fa-times text-red-600"></i>}
+                        <span className="font-light tracking-wide">{opt}</span>
+                        {isAnswered && idx === questions[currentQ].answerIndex && <i className="fas fa-check text-emerald-500"></i>}
+                        {selectedOption === idx && idx !== questions[currentQ].answerIndex && <i className="fas fa-times text-rose-500"></i>}
                     </button>
                 ))}
             </div>
 
             {isAnswered && (
-                <div className="mt-6 pt-4 border-t flex justify-between items-center animate-fade-in">
-                    <span className={`font-bold ${feedback.includes("Benar") ? "text-green-600" : "text-red-600"}`}>{feedback}</span>
-                    <button onClick={nextQuestion} className="bg-history-dark text-white px-4 py-2 rounded hover:bg-gray-800">
+                <div className="mt-8 pt-6 border-t border-history-gold/10 flex justify-between items-center animate-fade-in">
+                    <span className={`font-bold text-sm uppercase tracking-widest ${feedback.includes("Benar") ? "text-emerald-500" : "text-rose-500"}`}>{feedback}</span>
+                    <button onClick={nextQuestion} className="bg-history-gold text-[#0a0a0a] px-8 py-3 rounded hover:bg-[#c5a028] transition font-bold uppercase tracking-widest text-xs">
                         {currentQ === questions.length - 1 ? "Lihat Hasil" : "Lanjut"}
                     </button>
                 </div>

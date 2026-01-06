@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sejarah Indonesia - SMK Negeri 1 Bojongsari</title>
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (CDN is kept for the custom config below to work without complex CSS setup) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -18,18 +18,55 @@
             theme: {
                 extend: {
                     colors: {
-                        'history-dark': '#2c3e50',
-                        'history-gold': '#d4af37',
-                        'history-paper': '#fdfbf7',
-                        'history-red': '#c0392b',
-                        'history-brown': '#8e44ad',
+                        // Elegant Professional Palette
+                        'history-dark': '#0a0a0a',   // Onyx (Main BG)
+                        'history-paper': '#171717',  // Neutral 900 (Card BG)
+                        'history-gold': '#d4af37',   // Metallic Gold (Primary Accent)
+                        'history-red': '#be123c',    // Rose 700 (Secondary Accent)
+                        'history-brown': '#fafaf9',  // Stone 50 (Main Text - High Contrast)
+                        'history-muted': '#a8a29e',  // Stone 400 (Secondary Text)
                     },
                     fontFamily: {
-                        serif: ['Merriweather', 'serif'],
+                        serif: ['Lato', 'sans-serif'], 
                         sans: ['Lato', 'sans-serif'],
                     },
+                    // Global Font Size Adjusted (-0.5pt / -0.67px from previous)
+                    fontSize: {
+                        'xs': ['0.83rem', { lineHeight: '1.2rem' }],     // ~13.3px
+                        'sm': ['0.96rem', { lineHeight: '1.45rem' }],    // ~15.3px
+                        'base': ['1.08rem', { lineHeight: '1.7rem' }],   // ~17.3px
+                        'lg': ['1.21rem', { lineHeight: '1.7rem' }],     // ~19.3px
+                        'xl': ['1.33rem', { lineHeight: '1.7rem' }],     // ~21.3px
+                        '2xl': ['1.58rem', { lineHeight: '1.95rem' }],   // ~25.3px
+                        '3xl': ['1.96rem', { lineHeight: '2.2rem' }],    // ~31.3px
+                        '4xl': ['2.33rem', { lineHeight: '2.45rem' }],   // ~37.3px
+                        '5xl': ['3.08rem', { lineHeight: '1' }],         // ~49.3px
+                        '6xl': ['3.83rem', { lineHeight: '1' }],         // ~61.3px
+                        '7xl': ['4.58rem', { lineHeight: '1' }],         // ~73.3px
+                    },
                     backgroundImage: {
-                        'paper-pattern': "radial-gradient(#d4af37 0.5px, transparent 0.5px)"
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'elegant-pattern': "linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px)"
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 3s linear infinite',
+                        'slide-up': 'slideUp 1s ease-out forwards',
+                        'fade-in-delayed': 'fadeIn 1s ease-out 0.5s forwards',
+                    },
+                    keyframes: {
+                        shimmer: {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
                     }
                 }
             }
@@ -37,35 +74,63 @@
     </script>
     <style>
         body {
-            background-color: #fdfbf7;
-            /* Using inline style for pattern to ensure it loads immediately */
-            background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
-            background-size: 20px 20px;
+            background-color: #0a0a0a;
+            color: #fafaf9;
+            font-family: 'Lato', sans-serif;
+            background-image: radial-gradient(circle at top, #1c1917 0%, #0a0a0a 100%);
+            background-attachment: fixed;
         }
-        /* Custom Scrollbar */
+        
+        /* Custom Scrollbar - Elegant Gold */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
+            background: #0a0a0a; 
         }
         ::-webkit-scrollbar-thumb {
-            background: #d4af37; 
+            background: #57534e; 
             border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+        
+        .glass-card {
+            background: rgba(23, 23, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15); /* Subtle Gold Border */
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.8);
+        }
+        
+        .text-glow {
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .gold-gradient-text {
+            /* Complex gradient for shimmer effect */
+            background: linear-gradient(to right, #a16207, #fcd34d, #ffffff, #fcd34d, #a16207);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
     </style>
 <script type="importmap">
 {
   "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
 <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>

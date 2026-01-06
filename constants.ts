@@ -3,7 +3,7 @@ import { PageRoute } from './types';
 export const PAGES: PageRoute[] = [
   { id: 1, path: "/", title: "Beranda", isAvailable: true },
   { id: 2, path: "/matahari-terbit", title: "Matahari Terbit di Tanah Hindia", isAvailable: true },
-  { id: 3, path: "/tirani-matahari", title: "Tirani Matahari Terbit", isAvailable: false },
+  { id: 3, path: "/tirani-matahari", title: "Tirani Matahari Terbit", isAvailable: true },
   { id: 4, path: "/gerbang-kemerdekaan", title: "Menuju Gerbang Kemerdekaan", isAvailable: false },
   { id: 5, path: "/detik-proklamasi", title: "Detik-Detik Proklamasi", isAvailable: false },
   { id: 6, path: "/perjuangan-fisik", title: "Perjuangan Mempertahankan Kemerdekaan", isAvailable: false },
