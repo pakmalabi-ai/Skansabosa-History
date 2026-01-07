@@ -34,7 +34,7 @@ const Home: React.FC = () => {
                     {/* Double Border Frame Effect */}
                     <div className="absolute -inset-1 border border-history-gold/30 rounded-[2rem] transform translate-x-2 translate-y-2"></div>
                     <img 
-                        src="https://github.com/pakmalabi-ai/Skansabosa-History/blob/main/public/findi.jpg?raw=true" 
+                        src="https://github.com/pakmalabi-ai/public/blob/main/findi.jpg?raw=true" 
                         alt="Findi Lestari, S.Pd." 
                         className="relative w-full h-[550px] object-cover rounded-[2rem] border border-history-gold/20 shadow-2xl grayscale-[20%] group-hover:grayscale-0 transition duration-700"
                     />
