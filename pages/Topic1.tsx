@@ -193,7 +193,7 @@ const Topic1: React.FC = () => {
                                      <p className="text-history-brown text-sm italic font-light">"Bekerja sama untuk menyelamatkan rakyat."</p>
                                  </div>
                                  <div className="bg-[#171717] p-8 rounded-2xl border border-history-gold/20 hover:border-history-gold transition duration-300 text-center">
-                                     <img src="https://github.com/pakmalabi-ai/Skansabosa-History/blob/main/public/sutan-syahrir.jpeg?raw=true" className="w-24 h-24 rounded-full object-cover border-2 border-history-red mx-auto mb-6 shadow-lg" alt="Sjahrir"/>
+                                     <img src="https://cdn.rri.co.id/berita/1/images/1668066142-images%20%282%29.jpeg" className="w-24 h-24 rounded-full object-cover border-2 border-history-red mx-auto mb-6 shadow-lg" alt="Sjahrir"/>
                                      <h4 className="font-sans font-bold text-xl text-history-red uppercase tracking-wide mb-1">Bawah Tanah</h4>
                                      <span className="text-xs text-history-muted uppercase tracking-widest block mb-4">Sutan Sjahrir</span>
                                      <p className="text-history-brown text-sm italic font-light">"Menolak kompromi, menyusun revolusi."</p>
