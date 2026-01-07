@@ -212,6 +212,303 @@ export const BattleStrategySim: React.FC = () => {
     );
 };
 
+// --- LKPD TOPIC 5 ---
+export const LKPDTopic5: React.FC = () => {
+    const [kelompok, setKelompok] = useState('');
+    const [kelas, setKelas] = useState('');
+    const [anggota, setAnggota] = useState<string[]>(Array(7).fill(''));
+
+    // Activity 1: Analisis Masalah (PBL)
+    const [act1Background, setAct1Background] = useState('');
+    const [act1Figures, setAct1Figures] = useState('');
+    const [act1Strategy, setAct1Strategy] = useState('');
+    const [act1Impact, setAct1Impact] = useState('');
+    const [act1Meaning, setAct1Meaning] = useState('');
+
+    const handleMemberChange = (index: number, value: string) => {
+        const newAnggota = [...anggota];
+        newAnggota[index] = value;
+        setAnggota(newAnggota);
+    };
+
+    const handlePrint = () => {
+        const memberList = anggota.map((m, i) => m ? `<li>${m}</li>` : '').join('');
+
+        const printContent = `
+            <html>
+            <head>
+                <title>LKPD - ${kelompok || 'Kelompok'}</title>
+                <style>
+                    body { font-family: 'Times New Roman', serif; padding: 40px; color: #000; background: #fff; }
+                    h1 { text-align: center; font-size: 18px; margin-bottom: 5px; font-weight: bold; }
+                    .sub-header { text-align: center; margin-bottom: 20px; font-size: 14px; }
+                    .header-info { margin-bottom: 20px; font-size: 14px; border-bottom: 2px solid #000; padding-bottom: 10px; }
+                    .section { margin-bottom: 25px; }
+                    h3 { font-size: 16px; font-weight: bold; margin-bottom: 10px; background: #f0f0f0; padding: 5px; border-left: 4px solid #000; }
+                    p.instruction { font-style: italic; font-size: 13px; margin-bottom: 10px; }
+                    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+                    th, td { border: 1px solid #000; padding: 8px; text-align: left; vertical-align: top; }
+                    th { background-color: #e0e0e0; }
+                    .answer-box { border: 1px solid #ccc; padding: 10px; min-height: 80px; background: #f9f9f9; font-family: sans-serif; font-size: 14px; }
+                    .members-list ol { padding-left: 20px; margin: 0; }
+                    .footer { margin-top: 50px; text-align: right; font-size: 12px; border-top: 1px solid #ccc; padding-top: 10px; }
+                </style>
+            </head>
+            <body>
+                <h1>LEMBAR KERJA PESERTA DIDIK (LKPD)</h1>
+                <div class="sub-header">Topik: Investigasi Sejarah Perjuangan Bersenjata</div>
+                
+                <div class="header-info">
+                    <table style="border: none;">
+                        <tr style="border: none;"><td style="border: none; width: 100px;"><strong>Kelompok</strong></td><td style="border: none;">: ${kelompok}</td></tr>
+                        <tr style="border: none;"><td style="border: none;"><strong>Kelas</strong></td><td style="border: none;">: ${kelas}</td></tr>
+                    </table>
+                    <div class="members-list">
+                        <strong>Anggota:</strong>
+                        <ol>
+                            ${memberList || '<li>.......................................</li><li>.......................................</li><li>.......................................</li>'}
+                        </ol>
+                    </div>
+                </div>
+
+                 <div class="section">
+                    <h3>Petunjuk Kerja:</h3>
+                    <ol style="font-size: 14px;">
+                        <li>Bacalah materi sesuai pembagian kelompok kalian.</li>
+                        <li>Diskusikan dan jawablah pertanyaan di bawah ini (Gunakan prinsip 5W + 1H).</li>
+                        <li>Carilah relevansi peristiwa tersebut dengan kondisi saat ini.</li>
+                    </ol>
+                </div>
+
+                <div class="section">
+                    <h3>Tabel Analisis Masalah (PBL)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="5%">No</th>
+                                <th width="40%">Pertanyaan Investigasi</th>
+                                <th width="55%">Jawaban Hasil Diskusi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><strong>Apa</strong> latar belakang utama pemicu pertempuran/peristiwa tersebut?</td>
+                                <td>${act1Background}</td>
+                            </tr>
+                             <tr>
+                                <td>2</td>
+                                <td><strong>Siapa</strong> tokoh kunci yang terlibat dan apa perannya?</td>
+                                <td>${act1Figures}</td>
+                            </tr>
+                             <tr>
+                                <td>3</td>
+                                <td><strong>Bagaimana</strong> strategi yang digunakan oleh pejuang Indonesia? (Jelaskan taktiknya)</td>
+                                <td>${act1Strategy}</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><strong>Analisis (HOTS):</strong> Apa dampak terbesar peristiwa ini bagi posisi Indonesia di mata dunia atau Belanda saat itu?</td>
+                                <td>${act1Impact}</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><strong>Meaningfull Learning:</strong> Jika semangat pertempuran ini diterapkan oleh pelajar SMK masa kini, perilaku apa yang harus ditunjukkan?</td>
+                                <td>${act1Meaning}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3>Produk Akhir:</h3>
+                    <p>Buatlah kesimpulan dalam bentuk Mind Map atau Poster Digital (Canva) lalu presentasikan di depan kelas!</p>
+                </div>
+
+                <div class="footer">
+                    SMK Negeri 1 Bojongsari - Sejarah Indonesia
+                </div>
+            </body>
+            </html>
+        `;
+        
+        const printWindow = window.open('', '_blank');
+        if (printWindow) {
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            printWindow.print();
+        }
+    };
+
+    const handleSendToGuru = () => {
+        window.open('https://forms.gle/9iiSS4RrkTyHHRZR9', '_blank');
+    };
+
+    return (
+        <div className="glass-card p-8 rounded-2xl border border-history-gold/10 text-left">
+             <div className="flex items-center justify-between mb-8 pb-4 border-b border-history-gold/20">
+                <h3 className="font-sans text-2xl font-bold text-history-brown uppercase tracking-widest">
+                    Lembar Kerja Peserta Didik (LKPD)
+                </h3>
+                <div className="flex gap-3">
+                    <button onClick={handlePrint} className="bg-history-brown text-[#0a0a0a] px-4 py-2 rounded hover:bg-white transition text-xs font-bold uppercase tracking-widest flex items-center">
+                        <i className="fas fa-print mr-2"></i> Simpan PDF
+                    </button>
+                    <button onClick={handleSendToGuru} className="bg-history-red text-white px-4 py-2 rounded hover:bg-rose-700 transition text-xs font-bold uppercase tracking-widest flex items-center">
+                        <i className="fas fa-paper-plane mr-2"></i> Kirim ke Guru
+                    </button>
+                </div>
+            </div>
+
+            {/* Identitas */}
+            <div className="grid md:grid-cols-2 gap-6 mb-8 bg-[#0a0a0a] p-6 rounded-xl border border-history-gold/5">
+                <div className="space-y-4">
+                    <div>
+                        <label className="block text-history-gold text-xs font-bold uppercase tracking-wide mb-2">Kelompok</label>
+                        <input 
+                            type="text" 
+                            value={kelompok} 
+                            onChange={(e) => setKelompok(e.target.value)} 
+                            className="w-full bg-[#171717] border border-history-muted/20 rounded p-3 text-history-brown focus:border-history-gold outline-none" 
+                            placeholder="Nama Kelompok..."
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-history-gold text-xs font-bold uppercase tracking-wide mb-2">Kelas</label>
+                        <input 
+                            type="text" 
+                            value={kelas} 
+                            onChange={(e) => setKelas(e.target.value)} 
+                            className="w-full bg-[#171717] border border-history-muted/20 rounded p-3 text-history-brown focus:border-history-gold outline-none" 
+                            placeholder="Kelas..."
+                        />
+                    </div>
+                </div>
+                <div>
+                    <label className="block text-history-gold text-xs font-bold uppercase tracking-wide mb-2">Anggota (Maks 7)</label>
+                    <div className="grid grid-cols-1 gap-2">
+                        {anggota.map((member, idx) => (
+                            <input 
+                                key={idx}
+                                type="text" 
+                                value={member} 
+                                onChange={(e) => handleMemberChange(idx, e.target.value)} 
+                                className="w-full bg-[#171717] border border-history-muted/20 rounded p-2 text-sm text-history-brown focus:border-history-gold outline-none" 
+                                placeholder={`Anggota ${idx + 1}...`}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Petunjuk */}
+            <div className="bg-[#171717] p-6 rounded-xl border-l-4 border-history-gold mb-10">
+                <h4 className="font-bold text-history-gold mb-3 text-sm uppercase tracking-wide">Petunjuk Kerja:</h4>
+                <ol className="list-decimal pl-5 text-sm text-history-muted space-y-2">
+                    <li>Bacalah materi sesuai pembagian kelompok kalian.</li>
+                    <li>Diskusikan dan jawablah pertanyaan di bawah ini (Gunakan prinsip 5W + 1H).</li>
+                    <li>Carilah relevansi peristiwa tersebut dengan kondisi saat ini.</li>
+                </ol>
+            </div>
+
+            {/* Tabel Investigasi */}
+            <div className="mb-10 animate-fade-in">
+                <h4 className="text-lg font-bold text-history-gold mb-2 pl-3 border-l-4 border-history-red">Tabel Analisis Masalah (PBL)</h4>
+                
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse border border-history-gold/20">
+                        <thead>
+                            <tr className="bg-[#0a0a0a] text-history-brown text-sm">
+                                <th className="p-4 border border-history-gold/20 w-12 text-center">No</th>
+                                <th className="p-4 border border-history-gold/20 w-1/3">Pertanyaan Investigasi</th>
+                                <th className="p-4 border border-history-gold/20">Jawaban Hasil Diskusi</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-sm text-history-muted">
+                            <tr className="bg-[#171717]">
+                                <td className="p-4 border border-history-gold/20 text-center font-bold text-history-gold">1</td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                    <strong>Apa</strong> latar belakang utama pemicu pertempuran/peristiwa tersebut?
+                                </td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                     <textarea 
+                                        value={act1Background} 
+                                        onChange={e => setAct1Background(e.target.value)} 
+                                        className="w-full h-24 bg-[#0a0a0a] border border-history-muted/20 rounded p-2 text-history-brown focus:border-history-gold outline-none resize-none" 
+                                        placeholder="Jawaban..."
+                                    ></textarea>
+                                </td>
+                            </tr>
+                             <tr className="bg-[#0a0a0a]">
+                                <td className="p-4 border border-history-gold/20 text-center font-bold text-history-gold">2</td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                    <strong>Siapa</strong> tokoh kunci yang terlibat dan apa perannya?
+                                </td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                     <textarea 
+                                        value={act1Figures} 
+                                        onChange={e => setAct1Figures(e.target.value)} 
+                                        className="w-full h-24 bg-[#171717] border border-history-muted/20 rounded p-2 text-history-brown focus:border-history-gold outline-none resize-none" 
+                                        placeholder="Jawaban..."
+                                    ></textarea>
+                                </td>
+                            </tr>
+                             <tr className="bg-[#171717]">
+                                <td className="p-4 border border-history-gold/20 text-center font-bold text-history-gold">3</td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                    <strong>Bagaimana</strong> strategi yang digunakan oleh pejuang Indonesia? (Jelaskan taktiknya)
+                                </td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                     <textarea 
+                                        value={act1Strategy} 
+                                        onChange={e => setAct1Strategy(e.target.value)} 
+                                        className="w-full h-24 bg-[#0a0a0a] border border-history-muted/20 rounded p-2 text-history-brown focus:border-history-gold outline-none resize-none" 
+                                        placeholder="Jawaban..."
+                                    ></textarea>
+                                </td>
+                            </tr>
+                            <tr className="bg-[#0a0a0a]">
+                                <td className="p-4 border border-history-gold/20 text-center font-bold text-history-gold">4</td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                    <strong>Analisis (HOTS):</strong> Apa dampak terbesar peristiwa ini bagi posisi Indonesia di mata dunia atau Belanda saat itu?
+                                </td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                     <textarea 
+                                        value={act1Impact} 
+                                        onChange={e => setAct1Impact(e.target.value)} 
+                                        className="w-full h-24 bg-[#171717] border border-history-muted/20 rounded p-2 text-history-brown focus:border-history-gold outline-none resize-none" 
+                                        placeholder="Jawaban..."
+                                    ></textarea>
+                                </td>
+                            </tr>
+                            <tr className="bg-[#171717]">
+                                <td className="p-4 border border-history-gold/20 text-center font-bold text-history-gold">5</td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                    <strong>Meaningfull Learning:</strong> Jika semangat pertempuran ini diterapkan oleh pelajar SMK masa kini, perilaku apa yang harus ditunjukkan?
+                                </td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                     <textarea 
+                                        value={act1Meaning} 
+                                        onChange={e => setAct1Meaning(e.target.value)} 
+                                        className="w-full h-24 bg-[#0a0a0a] border border-history-muted/20 rounded p-2 text-history-brown focus:border-history-gold outline-none resize-none" 
+                                        placeholder="Jawaban..."
+                                    ></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div className="bg-[#171717] p-6 rounded-xl border border-history-gold/10 text-center">
+                <h4 className="font-bold text-white mb-2 uppercase tracking-wide">Produk Akhir</h4>
+                <p className="text-history-muted text-sm">Buatlah kesimpulan dalam bentuk <strong>Mind Map</strong> atau <strong>Poster Digital (Canva)</strong> lalu presentasikan di depan kelas!</p>
+            </div>
+
+        </div>
+    );
+};
+
 // --- QUIZ TOPIC 5 ---
 export const QuizPerjuanganFisik: React.FC = () => {
     const questions: QuizQuestion[] = [
