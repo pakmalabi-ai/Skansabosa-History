@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { MindfulnessTirani, VillageSimulation, QuizTirani } from '../components/Topic2Components';
+import { MindfulnessTirani, VillageSimulation, QuizTirani, LKPDTopic2 } from '../components/Topic2Components';
 
 const Topic2: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'kuis'>('materi');
+    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'kuis'>('materi');
 
     return (
         <div className="fade-in pb-12">
@@ -36,6 +36,12 @@ const Topic2: React.FC = () => {
                     <i className="fas fa-gamepad mr-2 text-xs"></i> Simulasi RPG
                 </button>
                 <button 
+                    onClick={() => setActiveTab('lkpd')}
+                    className={`px-8 py-3 font-bold transition text-sm uppercase tracking-widest ${activeTab === 'lkpd' ? 'text-history-gold border-b-2 border-history-gold' : 'text-history-muted hover:text-history-brown'}`}
+                >
+                    <i className="fas fa-file-alt mr-2 text-xs"></i> LKPD
+                </button>
+                <button 
                     onClick={() => setActiveTab('kuis')}
                     className={`px-8 py-3 font-bold transition text-sm uppercase tracking-widest ${activeTab === 'kuis' ? 'text-history-gold border-b-2 border-history-gold' : 'text-history-muted hover:text-history-brown'}`}
                 >
@@ -46,7 +52,21 @@ const Topic2: React.FC = () => {
             {/* CONTENT AREA */}
             <div className="max-w-6xl mx-auto">
                 {activeTab === 'materi' && (
-                    <div className="space-y-16 animate-fade-in">
+                    <div className="space-y-8 animate-fade-in">
+                        {/* Download Button */}
+                        <div className="bg-[#171717] p-6 rounded-2xl border border-history-red/20 flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg">
+                            <div>
+                                <h4 className="text-history-red font-bold uppercase tracking-widest text-sm mb-1"><i className="fas fa-file-pdf mr-2"></i>Bahan Ajar Digital</h4>
+                                <p className="text-history-muted text-xs">Unduh materi lengkap dalam format PDF untuk dipelajari secara offline.</p>
+                            </div>
+                            <button 
+                                onClick={() => window.open('https://drive.google.com/file/d/1DZlagVTOCIBwPI70HVLHtx22YPv0QyIF/view?usp=sharing', '_blank')}
+                                className="px-6 py-3 bg-history-red text-white rounded hover:bg-red-700 transition font-bold uppercase tracking-widest text-xs flex items-center shadow-md whitespace-nowrap"
+                            >
+                                <i className="fas fa-download mr-2"></i> Download PDF
+                            </button>
+                        </div>
+
                         {/* Section 1: Eksploitasi Ekonomi */}
                         <div className="glass-card p-10 rounded-2xl border border-history-gold/10">
                             <h3 className="text-2xl font-sans font-bold text-history-brown mb-8 pb-4 border-b border-history-gold/20 uppercase tracking-wide">1. Ekonomi Perang & Penderitaan Rakyat</h3>
@@ -125,6 +145,12 @@ const Topic2: React.FC = () => {
                 {activeTab === 'simulasi' && (
                     <div className="animate-fade-in max-w-4xl mx-auto">
                         <VillageSimulation />
+                    </div>
+                )}
+
+                {activeTab === 'lkpd' && (
+                    <div className="animate-fade-in max-w-4xl mx-auto">
+                        <LKPDTopic2 />
                     </div>
                 )}
 

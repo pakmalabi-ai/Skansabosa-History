@@ -218,6 +218,281 @@ export const VillageSimulation: React.FC = () => {
     );
 };
 
+// --- LKPD TOPIC 2 ---
+export const LKPDTopic2: React.FC = () => {
+    const [kelompok, setKelompok] = useState('');
+    const [kelas, setKelas] = useState('');
+    const [anggota, setAnggota] = useState<string[]>(Array(7).fill(''));
+    
+    // Activity 1
+    const [act1Temuan, setAct1Temuan] = useState('');
+    const [act1Analisis, setAct1Analisis] = useState('');
+    const [act1Relevansi, setAct1Relevansi] = useState('');
+
+    // Activity 2
+    const [act2Q1, setAct2Q1] = useState('');
+    const [act2Q2, setAct2Q2] = useState('');
+
+    const handleMemberChange = (index: number, value: string) => {
+        const newAnggota = [...anggota];
+        newAnggota[index] = value;
+        setAnggota(newAnggota);
+    };
+
+    const handlePrint = () => {
+        const memberList = anggota.map((m, i) => m ? `<li>${m}</li>` : '').join('');
+
+        const printContent = `
+            <html>
+            <head>
+                <title>LKPD - ${kelompok || 'Kelompok'}</title>
+                <style>
+                    body { font-family: 'Times New Roman', serif; padding: 40px; color: #000; background: #fff; }
+                    h1 { text-align: center; font-size: 18px; margin-bottom: 5px; font-weight: bold; }
+                    .sub-header { text-align: center; margin-bottom: 20px; font-size: 14px; }
+                    .header-info { margin-bottom: 20px; font-size: 14px; border-bottom: 2px solid #000; padding-bottom: 10px; }
+                    .section { margin-bottom: 25px; }
+                    h3 { font-size: 16px; font-weight: bold; margin-bottom: 10px; background: #f0f0f0; padding: 5px; border-left: 4px solid #000; }
+                    p.instruction { font-style: italic; font-size: 13px; margin-bottom: 10px; }
+                    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+                    th, td { border: 1px solid #000; padding: 8px; text-align: left; vertical-align: top; }
+                    th { background-color: #e0e0e0; }
+                    .answer-box { border: 1px solid #ccc; padding: 10px; min-height: 80px; background: #f9f9f9; font-family: sans-serif; font-size: 14px; }
+                    .members-list ol { padding-left: 20px; margin: 0; }
+                    .footer { margin-top: 50px; text-align: right; font-size: 12px; border-top: 1px solid #ccc; padding-top: 10px; }
+                </style>
+            </head>
+            <body>
+                <h1>LEMBAR KERJA PESERTA DIDIK (LKPD)</h1>
+                <div class="sub-header">Topik: Analisis Strategi Perjuangan Masa Pendudukan Jepang</div>
+                
+                <div class="header-info">
+                    <table style="border: none;">
+                        <tr style="border: none;"><td style="border: none; width: 100px;"><strong>Kelompok</strong></td><td style="border: none;">: ${kelompok}</td></tr>
+                        <tr style="border: none;"><td style="border: none;"><strong>Kelas</strong></td><td style="border: none;">: ${kelas}</td></tr>
+                    </table>
+                    <div class="members-list">
+                        <strong>Anggota:</strong>
+                        <ol>
+                            ${memberList || '<li>.......................................</li><li>.......................................</li><li>.......................................</li>'}
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>PETUNJUK KERJA (Deep Learning):</h3>
+                    <ol style="font-size: 14px;">
+                        <li><strong>Mindfull:</strong> Baca materi/artikel dengan tenang dan teliti.</li>
+                        <li><strong>Meaningfull:</strong> Diskusikan jawaban dengan menghubungkan fakta sejarah dengan logika kalian.</li>
+                        <li><strong>Joyfull:</strong> Tuliskan hasil diskusi dengan bahasa yang mudah dipahami.</li>
+                    </ol>
+                </div>
+
+                <div class="section">
+                    <h3>AKTIVITAS 1: Analisis Dampak (Critical Thinking)</h3>
+                    <p class="instruction">Perhatikan gambar/berita tentang Romusha dan kelaparan masa Jepang.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="20%">Aspek</th>
+                                <th width="25%">Temuan Fakta Sejarah</th>
+                                <th width="25%">Analisis: Mengapa Jepang melakukan hal tersebut?</th>
+                                <th width="30%">Relevansi: Adakah bentuk "penjajahan ekonomi" serupa di masa kini? Jelaskan!</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Sosial-Ekonomi</strong><br/>(Misal: Petani wajib setor padi)</td>
+                                <td>${act1Temuan}</td>
+                                <td>(Misal: Untuk logistik perang Pasifik)<br/><br/>${act1Analisis}</td>
+                                <td>${act1Relevansi}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3>AKTIVITAS 2: Debat Strategi (HOTS)</h3>
+                    <p class="instruction">Kasus: Soekarno dan Hatta mau bekerjasama dengan Jepang menjadi pemimpin PUTERA, sedangkan Sjahrir menolak dan memilih gerakan bawah tanah.</p>
+                    
+                    <p><strong>1. Jika kamu hidup di masa itu, strategi mana yang akan kamu pilih? Kooperatif atau Bawah Tanah? Jelaskan alasan logismu!</strong></p>
+                    <div class="answer-box">${act2Q1}</div>
+                    
+                    <p style="margin-top:15px;"><strong>2. Apakah tokoh Kooperatif bisa disebut pengkhianat bangsa? Berikan argumenmu (Setuju/Tidak Setuju) beserta buktinya!</strong></p>
+                    <div class="answer-box">${act2Q2}</div>
+                </div>
+
+                <div class="footer">
+                    SMK Negeri 1 Bojongsari - Sejarah Indonesia
+                </div>
+            </body>
+            </html>
+        `;
+        
+        const printWindow = window.open('', '_blank');
+        if (printWindow) {
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            printWindow.print();
+        }
+    };
+
+    const handleSendToGuru = () => {
+        window.open('https://forms.gle/HuP3ToPM8RKTJ88q7', '_blank');
+    };
+
+    return (
+        <div className="glass-card p-8 rounded-2xl border border-history-gold/10 text-left">
+             <div className="flex items-center justify-between mb-8 pb-4 border-b border-history-gold/20">
+                <h3 className="font-sans text-2xl font-bold text-history-brown uppercase tracking-widest">
+                    Lembar Kerja Peserta Didik (LKPD)
+                </h3>
+                <div className="flex gap-3">
+                    <button onClick={handlePrint} className="bg-history-brown text-[#0a0a0a] px-4 py-2 rounded hover:bg-white transition text-xs font-bold uppercase tracking-widest flex items-center">
+                        <i className="fas fa-print mr-2"></i> Simpan PDF
+                    </button>
+                    <button onClick={handleSendToGuru} className="bg-history-red text-white px-4 py-2 rounded hover:bg-rose-700 transition text-xs font-bold uppercase tracking-widest flex items-center">
+                        <i className="fas fa-paper-plane mr-2"></i> Kirim ke Guru
+                    </button>
+                </div>
+            </div>
+
+            {/* Identitas */}
+            <div className="grid md:grid-cols-2 gap-6 mb-8 bg-[#0a0a0a] p-6 rounded-xl border border-history-gold/5">
+                <div className="space-y-4">
+                    <div>
+                        <label className="block text-history-gold text-xs font-bold uppercase tracking-wide mb-2">Kelompok</label>
+                        <input 
+                            type="text" 
+                            value={kelompok} 
+                            onChange={(e) => setKelompok(e.target.value)} 
+                            className="w-full bg-[#171717] border border-history-muted/20 rounded p-3 text-history-brown focus:border-history-gold outline-none" 
+                            placeholder="Nama Kelompok..."
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-history-gold text-xs font-bold uppercase tracking-wide mb-2">Kelas</label>
+                        <input 
+                            type="text" 
+                            value={kelas} 
+                            onChange={(e) => setKelas(e.target.value)} 
+                            className="w-full bg-[#171717] border border-history-muted/20 rounded p-3 text-history-brown focus:border-history-gold outline-none" 
+                            placeholder="Kelas..."
+                        />
+                    </div>
+                </div>
+                <div>
+                    <label className="block text-history-gold text-xs font-bold uppercase tracking-wide mb-2">Anggota (Maks 7)</label>
+                    <div className="grid grid-cols-1 gap-2">
+                        {anggota.map((member, idx) => (
+                            <input 
+                                key={idx}
+                                type="text" 
+                                value={member} 
+                                onChange={(e) => handleMemberChange(idx, e.target.value)} 
+                                className="w-full bg-[#171717] border border-history-muted/20 rounded p-2 text-sm text-history-brown focus:border-history-gold outline-none" 
+                                placeholder={`Anggota ${idx + 1}...`}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Petunjuk Kerja */}
+            <div className="bg-[#171717] p-6 rounded-xl border-l-4 border-history-gold mb-10">
+                <h4 className="font-bold text-history-gold mb-3 text-sm uppercase tracking-wide">Petunjuk Kerja (Deep Learning):</h4>
+                <ul className="list-decimal pl-5 text-sm text-history-muted space-y-2">
+                    <li><strong className="text-white">Mindfull:</strong> Baca materi/artikel dengan tenang dan teliti.</li>
+                    <li><strong className="text-white">Meaningfull:</strong> Diskusikan jawaban dengan menghubungkan fakta sejarah dengan logika kalian.</li>
+                    <li><strong className="text-white">Joyfull:</strong> Tuliskan hasil diskusi dengan bahasa yang mudah dipahami.</li>
+                </ul>
+            </div>
+
+            {/* Aktivitas 1 */}
+            <div className="mb-10 animate-fade-in">
+                <h4 className="text-lg font-bold text-history-gold mb-2 pl-3 border-l-4 border-history-red">AKTIVITAS 1: Analisis Dampak (Critical Thinking)</h4>
+                <p className="text-history-muted text-sm mb-4 italic">Perhatikan gambar/berita tentang Romusha dan kelaparan masa Jepang.</p>
+                
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse border border-history-gold/20">
+                        <thead>
+                            <tr className="bg-[#0a0a0a] text-history-brown text-sm">
+                                <th className="p-4 border border-history-gold/20 w-1/4">Aspek</th>
+                                <th className="p-4 border border-history-gold/20 w-1/4">Temuan Fakta Sejarah</th>
+                                <th className="p-4 border border-history-gold/20 w-1/4">Analisis: Mengapa Jepang melakukan hal tersebut?</th>
+                                <th className="p-4 border border-history-gold/20 w-1/4">Relevansi: Adakah bentuk "penjajahan ekonomi" serupa di masa kini? Jelaskan!</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-sm text-history-muted">
+                            <tr className="bg-[#171717]">
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                    <strong>Sosial-Ekonomi</strong>
+                                    <br/><span className="text-xs italic opacity-60">(Misal: Petani wajib setor padi)</span>
+                                </td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                    <textarea 
+                                        value={act1Temuan} 
+                                        onChange={e => setAct1Temuan(e.target.value)} 
+                                        className="w-full h-32 bg-[#0a0a0a] border border-history-muted/20 rounded p-2 text-history-brown focus:border-history-gold outline-none resize-none" 
+                                        placeholder="Tuliskan temuan fakta..."
+                                    ></textarea>
+                                </td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                    <p className="text-xs italic opacity-60 mb-2">(Misal: Untuk logistik perang Pasifik)</p>
+                                    <textarea 
+                                        value={act1Analisis} 
+                                        onChange={e => setAct1Analisis(e.target.value)} 
+                                        className="w-full h-24 bg-[#0a0a0a] border border-history-muted/20 rounded p-2 text-history-brown focus:border-history-gold outline-none resize-none" 
+                                        placeholder="Analisis..."
+                                    ></textarea>
+                                </td>
+                                <td className="p-4 border border-history-gold/20 align-top">
+                                    <textarea 
+                                        value={act1Relevansi} 
+                                        onChange={e => setAct1Relevansi(e.target.value)} 
+                                        className="w-full h-32 bg-[#0a0a0a] border border-history-muted/20 rounded p-2 text-history-brown focus:border-history-gold outline-none resize-none" 
+                                        placeholder="Relevansi masa kini..."
+                                    ></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {/* Aktivitas 2 */}
+            <div className="mb-10 animate-fade-in">
+                <h4 className="text-lg font-bold text-history-gold mb-2 pl-3 border-l-4 border-history-red">AKTIVITAS 2: Debat Strategi (HOTS)</h4>
+                <div className="bg-[#0a0a0a] p-4 rounded mb-6 text-sm text-history-muted italic border border-history-gold/10">
+                    <strong>Kasus:</strong> Soekarno dan Hatta mau bekerjasama dengan Jepang menjadi pemimpin PUTERA, sedangkan Sjahrir menolak dan memilih gerakan bawah tanah.
+                </div>
+                
+                <div className="space-y-6">
+                    <div>
+                        <p className="text-history-brown text-sm mb-2 font-bold">1. Jika kamu hidup di masa itu, strategi mana yang akan kamu pilih? Kooperatif atau Bawah Tanah? Jelaskan alasan logismu!</p>
+                        <textarea 
+                            value={act2Q1} 
+                            onChange={e => setAct2Q1(e.target.value)} 
+                            className="w-full h-24 bg-[#0a0a0a] border border-history-muted/20 rounded p-3 text-history-brown focus:border-history-gold outline-none"
+                            placeholder="Jawabanmu..."
+                        ></textarea>
+                    </div>
+                    <div>
+                        <p className="text-history-brown text-sm mb-2 font-bold">2. Apakah tokoh Kooperatif bisa disebut pengkhianat bangsa? Berikan argumenmu (Setuju/Tidak Setuju) beserta buktinya!</p>
+                        <textarea 
+                            value={act2Q2} 
+                            onChange={e => setAct2Q2(e.target.value)} 
+                            className="w-full h-24 bg-[#0a0a0a] border border-history-muted/20 rounded p-3 text-history-brown focus:border-history-gold outline-none"
+                            placeholder="Jawabanmu..."
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    );
+};
+
 // --- QUIZ TOPIC 2 ---
 export const QuizTirani: React.FC = () => {
     const questions: QuizQuestion[] = [

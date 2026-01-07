@@ -113,12 +113,12 @@ export const InteractiveMap: React.FC = () => {
                     id="indo-map" 
                     viewBox="0 0 800 300" 
                     xmlns="http://www.w3.org/2000/svg" 
-                    className="absolute w-full h-full opacity-60"
+                    className="absolute w-full h-full"
                     preserveAspectRatio="none"
                 >
                     <style>{`
-                        .island { fill: #171717; stroke: #57534e; stroke-width: 0.5; transition: all 0.5s ease; }
-                        .island:hover { fill: #262626; stroke: #d4af37; cursor: pointer; }
+                        .island { fill: #0d9488; stroke: #ccfbf1; stroke-width: 0.8; transition: all 0.5s ease; }
+                        .island:hover { fill: #14b8a6; stroke: #d4af37; cursor: pointer; }
                     `}</style>
                     
                     {/* Sumatra */}
