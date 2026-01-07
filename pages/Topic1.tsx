@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Mindfulness, InteractiveMap, Quiz } from '../components/Topic1Components';
+import { Mindfulness, InteractiveMap, Quiz, LKPDTopic1 } from '../components/Topic1Components';
 
 const Topic1: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'kuis' | 'refleksi'>('materi');
+    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'kuis' | 'refleksi'>('materi');
     const [activeChapter, setActiveChapter] = useState('chap1');
 
     return (
@@ -30,18 +30,18 @@ const Topic1: React.FC = () => {
             </div>
 
             {/* Navigation Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 mb-16 border-b border-history-gold/10 pb-1 max-w-4xl mx-auto">
-                {['materi', 'simulasi', 'kuis', 'refleksi'].map((tab) => (
+            <div className="flex flex-wrap justify-center gap-2 mb-16 border-b border-history-gold/10 pb-1 max-w-5xl mx-auto">
+                {['materi', 'simulasi', 'lkpd', 'kuis', 'refleksi'].map((tab) => (
                     <button 
                         key={tab}
                         onClick={() => setActiveTab(tab as any)}
-                        className={`px-8 py-4 font-bold transition-all duration-300 text-sm tracking-widest uppercase border-b-2 ${
+                        className={`px-6 py-4 font-bold transition-all duration-300 text-sm tracking-widest uppercase border-b-2 ${
                             activeTab === tab 
                             ? 'border-history-gold text-history-gold bg-history-gold/5' 
                             : 'border-transparent text-history-muted hover:text-history-brown hover:bg-[#171717]'
                         }`}
                     >
-                        <i className={`fas fa-${tab === 'materi' ? 'book-open' : tab === 'simulasi' ? 'map-marked-alt' : tab === 'kuis' ? 'clipboard-check' : 'pen-fancy'} mr-2 text-xs`}></i> 
+                        <i className={`fas fa-${tab === 'materi' ? 'book-open' : tab === 'simulasi' ? 'map-marked-alt' : tab === 'lkpd' ? 'file-alt' : tab === 'kuis' ? 'clipboard-check' : 'pen-fancy'} mr-2 text-xs`}></i> 
                         {tab}
                     </button>
                 ))}
@@ -70,6 +70,17 @@ const Topic1: React.FC = () => {
                                 {chap.label}
                             </button>
                         ))}
+                        
+                        {/* Download Button */}
+                        <div className="pt-6">
+                            <button 
+                                onClick={() => window.open('https://drive.google.com/file/d/1R03OO6HNyDlEq90w0QNBElU_MtltoiK2/view?usp=sharing', '_blank')}
+                                className="w-full py-4 px-4 bg-[#171717] border border-history-red text-history-red rounded-lg hover:bg-history-red hover:text-white transition-all duration-300 font-bold uppercase tracking-widest text-xs flex items-center justify-center shadow-lg group"
+                            >
+                                <i className="fas fa-file-pdf mr-3 text-lg group-hover:scale-110 transition-transform"></i> 
+                                Download Bahan Ajar
+                            </button>
+                        </div>
                     </div>
 
                     {/* Content */}
@@ -199,6 +210,13 @@ const Topic1: React.FC = () => {
                 <div className="max-w-6xl mx-auto animate-fade-in glass-card p-8 rounded-2xl border border-history-gold/10">
                     <h3 className="font-sans text-2xl font-bold text-history-gold text-center mb-8 uppercase tracking-widest">Simulasi Strategi "Gurita"</h3>
                     <InteractiveMap />
+                </div>
+            )}
+
+            {/* LKPD TAB */}
+            {activeTab === 'lkpd' && (
+                <div className="max-w-4xl mx-auto animate-fade-in">
+                    <LKPDTopic1 />
                 </div>
             )}
 

@@ -257,6 +257,252 @@ export const InteractiveMap: React.FC = () => {
     );
 };
 
+// --- LKPD COMPONENT ---
+export const LKPDTopic1: React.FC = () => {
+    const [nama, setNama] = useState('');
+    const [kelas, setKelas] = useState('');
+    
+    // Activity 1 State
+    const [act1Row2Date, setAct1Row2Date] = useState('');
+    const [act1Row2Reason, setAct1Row2Reason] = useState('');
+    const [act1Row3Loc, setAct1Row3Loc] = useState('');
+
+    // Activity 2 State
+    const [act2Q1, setAct2Q1] = useState('');
+    const [act2Q2, setAct2Q2] = useState('');
+
+    // Activity 3 State
+    const [act3Ref, setAct3Ref] = useState('');
+
+    const handlePrint = () => {
+        const printContent = `
+            <html>
+            <head>
+                <title>LKPD - ${nama || 'Siswa'}</title>
+                <style>
+                    body { font-family: 'Times New Roman', serif; padding: 40px; color: #000; background: #fff; }
+                    h1 { text-align: center; font-size: 18px; margin-bottom: 5px; }
+                    .header-info { margin-bottom: 20px; font-size: 14px; border-bottom: 2px solid #000; padding-bottom: 10px; }
+                    .section { margin-bottom: 25px; }
+                    h3 { font-size: 16px; border-left: 5px solid #000; padding-left: 10px; margin-bottom: 10px; background: #f0f0f0; padding-top:5px; padding-bottom:5px;}
+                    p.instruction { font-style: italic; font-size: 13px; margin-bottom: 10px; }
+                    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+                    th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+                    th { background-color: #e0e0e0; }
+                    .answer-box { border: 1px solid #ccc; padding: 10px; min-height: 50px; background: #f9f9f9; font-family: sans-serif; }
+                    .footer { margin-top: 50px; text-align: right; font-size: 12px; }
+                </style>
+            </head>
+            <body>
+                <h1>LEMBAR KERJA PESERTA DIDIK (LKPD)</h1>
+                <div style="text-align:center; margin-bottom: 20px;">Topik: Analisis Kedatangan & Strategi Tokoh Masa Jepang</div>
+                
+                <div class="header-info">
+                    <strong>Nama:</strong> ${nama} <br/>
+                    <strong>Kelas/Kelompok:</strong> ${kelas}
+                </div>
+
+                <div class="section">
+                    <h3>A. Aktivitas 1: Detektif Peta (Mapping)</h3>
+                    <p class="instruction">Instruksi: Berdasarkan sumber bacaan/internet, urutkan jalur kedatangan Jepang dengan mengisi tabel berikut!</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="5%">No</th>
+                                <th width="20%">Tanggal</th>
+                                <th width="25%">Lokasi Pendaratan</th>
+                                <th>Alasan Jepang Memilih Lokasi Ini (Analisis SDA)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>11 Jan 1942</td>
+                                <td>Tarakan</td>
+                                <td>Contoh: Terdapat kilang minyak bumi yang besar.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>${act1Row2Date}</td>
+                                <td>Palembang</td>
+                                <td>${act1Row2Reason}</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>1 Maret 1942</td>
+                                <td>${act1Row3Loc}</td>
+                                <td>Pusat pemerintahan Hindia Belanda (Batavia/Bandung).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3>B. Aktivitas 2: Bedah Kasus (Critical Thinking)</h3>
+                    <p class="instruction">Kasus: Bung Karno dan Bung Hatta memilih bekerja sama dengan Jepang melalui organisasi Pusat Tenaga Rakyat (PUTERA), sementara Sjahrir menolak dan bergerak di bawah tanah.</p>
+                    
+                    <p><strong>1. Menurut kelompokmu, apakah langkah Soekarno-Hatta itu bentuk pengkhianatan atau taktik cerdas? Jelaskan alasannya!</strong></p>
+                    <div class="answer-box">${act2Q1}</div>
+                    
+                    <p style="margin-top:15px;"><strong>2. Jika kalian hidup di masa itu sebagai pemuda terpelajar, jalur mana yang akan kalian pilih (Kooperatif atau Bawah Tanah)? Mengapa?</strong></p>
+                    <div class="answer-box">${act2Q2}</div>
+                </div>
+
+                <div class="section">
+                    <h3>C. Refleksi Makna (Meaningfull Learning)</h3>
+                    <p class="instruction">Jepang datang dengan janji manis (Propaganda). Di masa sekarang (Abad 21), hal ini mirip dengan "Hoaks" atau "Penipuan Online".</p>
+                    
+                    <p><strong>Tuliskan satu pelajaran penting dari peristiwa kedatangan Jepang agar kita tidak mudah tertipu oleh janji manis di masa kini!</strong></p>
+                    <div class="answer-box">${act3Ref}</div>
+                </div>
+
+                <div class="footer">
+                    SMK Negeri 1 Bojongsari - Sejarah Indonesia
+                </div>
+            </body>
+            </html>
+        `;
+        
+        const printWindow = window.open('', '_blank');
+        if (printWindow) {
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            printWindow.print();
+        }
+    };
+
+    const handleSendToGuru = () => {
+        window.open('https://forms.gle/NFrxBf82DmshCfhH8', '_blank');
+    };
+
+    return (
+        <div className="glass-card p-8 rounded-2xl border border-history-gold/10 text-left">
+             <div className="flex items-center justify-between mb-8 pb-4 border-b border-history-gold/20">
+                <h3 className="font-sans text-2xl font-bold text-history-brown uppercase tracking-widest">
+                    Lembar Kerja Peserta Didik (LKPD)
+                </h3>
+                <div className="flex gap-3">
+                    <button onClick={handlePrint} className="bg-history-brown text-[#0a0a0a] px-4 py-2 rounded hover:bg-white transition text-xs font-bold uppercase tracking-widest flex items-center">
+                        <i className="fas fa-print mr-2"></i> Simpan PDF
+                    </button>
+                    <button onClick={handleSendToGuru} className="bg-history-red text-white px-4 py-2 rounded hover:bg-rose-700 transition text-xs font-bold uppercase tracking-widest flex items-center">
+                        <i className="fas fa-paper-plane mr-2"></i> Kirim ke Guru
+                    </button>
+                </div>
+            </div>
+
+            {/* Identitas */}
+            <div className="grid md:grid-cols-2 gap-6 mb-8 bg-[#0a0a0a] p-6 rounded-xl border border-history-gold/5">
+                <div>
+                    <label className="block text-history-gold text-xs font-bold uppercase tracking-wide mb-2">Nama Lengkap</label>
+                    <input 
+                        type="text" 
+                        value={nama} 
+                        onChange={(e) => setNama(e.target.value)} 
+                        className="w-full bg-[#171717] border border-history-muted/20 rounded p-3 text-history-brown focus:border-history-gold outline-none" 
+                        placeholder="Nama Siswa..."
+                    />
+                </div>
+                <div>
+                    <label className="block text-history-gold text-xs font-bold uppercase tracking-wide mb-2">Kelas / Kelompok</label>
+                    <input 
+                        type="text" 
+                        value={kelas} 
+                        onChange={(e) => setKelas(e.target.value)} 
+                        className="w-full bg-[#171717] border border-history-muted/20 rounded p-3 text-history-brown focus:border-history-gold outline-none" 
+                        placeholder="X TKJ 1 / Kelompok 3..."
+                    />
+                </div>
+            </div>
+
+            {/* Aktivitas 1 */}
+            <div className="mb-10 animate-fade-in">
+                <h4 className="text-lg font-bold text-history-gold mb-2 border-l-4 border-history-gold pl-3">A. Aktivitas 1: Detektif Peta (Mapping)</h4>
+                <p className="text-history-muted text-sm mb-4 italic">Instruksi: Berdasarkan sumber bacaan/internet, urutkan jalur kedatangan Jepang dengan mengisi tabel berikut!</p>
+                
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="bg-[#171717] text-history-brown text-sm border-b border-history-gold/20">
+                                <th className="p-3">No</th>
+                                <th className="p-3">Tanggal</th>
+                                <th className="p-3">Lokasi Pendaratan</th>
+                                <th className="p-3">Alasan Jepang Memilih Lokasi Ini (Analisis SDA)</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-sm text-history-muted">
+                            <tr className="border-b border-history-muted/10">
+                                <td className="p-3">1</td>
+                                <td className="p-3">11 Jan 1942</td>
+                                <td className="p-3">Tarakan</td>
+                                <td className="p-3 italic">Contoh: Terdapat kilang minyak bumi yang besar.</td>
+                            </tr>
+                            <tr className="border-b border-history-muted/10 bg-[#0a0a0a]/50">
+                                <td className="p-3">2</td>
+                                <td className="p-3"><input type="text" value={act1Row2Date} onChange={e => setAct1Row2Date(e.target.value)} className="bg-[#171717] border border-history-muted/20 p-2 rounded w-full text-history-brown" placeholder="Tanggal..."/></td>
+                                <td className="p-3">Palembang</td>
+                                <td className="p-3"><input type="text" value={act1Row2Reason} onChange={e => setAct1Row2Reason(e.target.value)} className="bg-[#171717] border border-history-muted/20 p-2 rounded w-full text-history-brown" placeholder="Alasan..."/></td>
+                            </tr>
+                            <tr>
+                                <td className="p-3">3</td>
+                                <td className="p-3">1 Maret 1942</td>
+                                <td className="p-3"><input type="text" value={act1Row3Loc} onChange={e => setAct1Row3Loc(e.target.value)} className="bg-[#171717] border border-history-muted/20 p-2 rounded w-full text-history-brown" placeholder="Lokasi..."/></td>
+                                <td className="p-3">Pusat pemerintahan Hindia Belanda (Batavia/Bandung).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {/* Aktivitas 2 */}
+            <div className="mb-10 animate-fade-in">
+                <h4 className="text-lg font-bold text-history-gold mb-2 border-l-4 border-history-gold pl-3">B. Aktivitas 2: Bedah Kasus (Critical Thinking)</h4>
+                <div className="bg-[#171717] p-4 rounded mb-4 text-sm text-history-muted italic border border-history-gold/10">
+                    <strong>Kasus:</strong> Bung Karno dan Bung Hatta memilih bekerja sama dengan Jepang melalui organisasi Pusat Tenaga Rakyat (PUTERA), sementara Sjahrir menolak dan bergerak di bawah tanah.
+                </div>
+                
+                <div className="space-y-6">
+                    <div>
+                        <p className="text-history-brown text-sm mb-2 font-bold">1. Menurut kelompokmu, apakah langkah Soekarno-Hatta itu bentuk pengkhianatan atau taktik cerdas? Jelaskan alasannya!</p>
+                        <textarea 
+                            value={act2Q1} 
+                            onChange={e => setAct2Q1(e.target.value)} 
+                            className="w-full h-24 bg-[#0a0a0a] border border-history-muted/20 rounded p-3 text-history-brown focus:border-history-gold outline-none"
+                            placeholder="Jawabanmu..."
+                        ></textarea>
+                    </div>
+                    <div>
+                        <p className="text-history-brown text-sm mb-2 font-bold">2. Jika kalian hidup di masa itu sebagai pemuda terpelajar, jalur mana yang akan kalian pilih (Kooperatif atau Bawah Tanah)? Mengapa?</p>
+                        <textarea 
+                            value={act2Q2} 
+                            onChange={e => setAct2Q2(e.target.value)} 
+                            className="w-full h-24 bg-[#0a0a0a] border border-history-muted/20 rounded p-3 text-history-brown focus:border-history-gold outline-none"
+                            placeholder="Jawabanmu..."
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+
+            {/* Aktivitas 3 */}
+            <div className="animate-fade-in">
+                <h4 className="text-lg font-bold text-history-gold mb-2 border-l-4 border-history-gold pl-3">C. Refleksi Makna (Meaningfull Learning)</h4>
+                <p className="text-history-muted text-sm mb-4">Jepang datang dengan janji manis (Propaganda). Di masa sekarang (Abad 21), hal ini mirip dengan "Hoaks" atau "Penipuan Online".</p>
+                
+                <div>
+                    <p className="text-history-brown text-sm mb-2 font-bold">Tuliskan satu pelajaran penting dari peristiwa kedatangan Jepang agar kita tidak mudah tertipu oleh janji manis di masa kini!</p>
+                    <textarea 
+                        value={act3Ref} 
+                        onChange={e => setAct3Ref(e.target.value)} 
+                        className="w-full h-24 bg-[#0a0a0a] border border-history-muted/20 rounded p-3 text-history-brown focus:border-history-gold outline-none"
+                        placeholder="Refleksimu..."
+                    ></textarea>
+                </div>
+            </div>
+
+        </div>
+    );
+};
+
 // --- QUIZ COMPONENT ---
 export const Quiz: React.FC = () => {
     const questions: QuizQuestion[] = [
