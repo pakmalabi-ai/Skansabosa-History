@@ -49,7 +49,7 @@ const Home: React.FC = () => {
             {/* Content Section */}
             <div className="w-full md:w-7/12 flex flex-col justify-center h-full pt-4">
                 <h3 className="font-sans text-3xl md:text-4xl font-bold mb-8 text-history-brown leading-snug">
-                  Halo, Siswa-Siswi <br/><span className="text-history-gold italic font-light">Kelas X Skansabosa</span>
+                  Halo, Siswa-Siswi <br/><span className="text-history-gold italic font-light">Kelas XI Skansabosa</span>
                 </h3>
                 <div className="text-lg text-history-muted leading-relaxed space-y-6 font-light">
                   <p>
