@@ -202,7 +202,7 @@ export const LKPDTopic8: React.FC = () => {
                     <div class="answer-box">${act2Kausalitas}</div>
 
                     <p style="margin-top: 15px;"><strong>3. Studi Kasus</strong></p>
-                    <p class="instruction">Jika kalian hidup di tahun 1945, sistem mana yang akan kalian pilih untuk negara yang baru merdeka: Presidensial (Kuat tapi berisiko Otokrasi) atau Parlementer (Demokratis tapi berisiko tidak stabil)? Berikan alasannya!</p>
+                    <p class="instruction">Jika kalian hidup di tahun 1945, sistem mana yang akan kalian pilih untuk negara yang baru merdeka: Presidensial (Kuat tapi berisiko Otokrasi) atau Parlementer (Demokratis tapi berisiko tidak stabil)? Berikan alasan!</p>
                     <div class="answer-box">${act3StudiKasus}</div>
                 </div>
 
@@ -293,99 +293,577 @@ export const LKPDTopic8: React.FC = () => {
     );
 };
 
-// --- QUIZ TOPIC 8 ---
+// --- QUIZ TOPIC 8 (FULL EVALUATION SYSTEM) ---
 export const QuizDemokrasi: React.FC = () => {
-    const questions: QuizQuestion[] = [
+    // 20 Questions Data from PDF
+    const questions = [
         {
-            question: "Apa arti kata 'Demos' dalam konsep Demokrasi?",
-            options: ["Pemerintahan", "Rakyat", "Negara", "Hukum"],
-            answerIndex: 1
+            id: 1,
+            question: "Secara etimologis, kata \"Demokrasi\" berasal dari bahasa Yunani, yaitu demos dan kratos/cratein. Arti dari kata demos adalah...",
+            options: [
+                "A. Kekuasaan",
+                "B. Negara",
+                "C. Pemerintah",
+                "D. Rakyat",
+                "E. Hukum"
+            ],
+            correct: 3 // D
         },
         {
-            question: "Siapa Perdana Menteri pertama Indonesia pada masa Demokrasi Parlementer 1945?",
-            options: ["Ir. Soekarno", "Moh. Hatta", "Sutan Sjahrir", "Amir Syarifuddin"],
-            answerIndex: 2
+            id: 2,
+            question: "\"Pemerintahan dari rakyat, oleh rakyat, dan untuk rakyat\" adalah definisi demokrasi yang dikemukakan oleh tokoh dunia, yaitu...",
+            options: [
+                "A. John Locke",
+                "B. Montesquieu",
+                "C. Abraham Lincoln",
+                "D. Winston Churchill",
+                "E. Franklin D. Roosevelt"
+            ],
+            correct: 2 // C
         },
         {
-            question: "Apa ciri utama sistem Parlementer?",
-            options: ["Kepala Pemerintahan adalah Presiden", "Menteri bertanggung jawab pada Presiden", "Tidak ada Partai Politik", "Kepala Pemerintahan adalah Perdana Menteri"],
-            answerIndex: 3
+            id: 3,
+            question: "Salah satu ciri utama dari pelaksanaan Demokrasi Liberal adalah adanya kebebasan individu yang sangat luas. Dalam konteks pemerintahan, sistem ini sering disebut juga sebagai...",
+            options: [
+                "A. Demokrasi Terpimpin",
+                "B. Demokrasi Pancasila",
+                "C. Sistem Parlementer",
+                "D. Sistem Presidensial",
+                "E. Sistem Monarki Konstitusional"
+            ],
+            correct: 2 // C based on key
         },
         {
-            question: "Mengapa Indonesia mengubah sistem Presidensial ke Parlementer pada Nov 1945?",
-            options: ["Agar Soekarno bisa istirahat", "Strategi diplomasi mendapat pengakuan Sekutu", "Mengikuti perintah Jepang", "Karena rakyat membenci Presiden"],
-            answerIndex: 1
+            id: 4,
+            question: "Dalam sistem pemerintahan Parlementer, kepala pemerintahan dipegang oleh...",
+            options: [
+                "A. Presiden",
+                "B. Raja",
+                "C. Sultan",
+                "D. Perdana Menteri",
+                "E. Ketua Parlemen"
+            ],
+            correct: 3 // D
         },
         {
-            question: "Apa kelemahan utama dari sistem Demokrasi Liberal / Parlementer pada masa itu?",
-            options: ["Pemerintahan Otokrasi", "Kabinet sering jatuh bangun (tidak stabil)", "Presiden terlalu kuat", "Tidak ada kebebasan berpendapat"],
-            answerIndex: 1
+            id: 5,
+            question: "Perbedaan mendasar antara kepala negara dan kepala pemerintahan dalam sistem Parlementer adalah...",
+            options: [
+                "A. Kepala negara menjalankan pemerintahan, kepala pemerintahan adalah simbol",
+                "B. Kepala negara adalah simbol, kepala pemerintahan menjalankan kabinet",
+                "C. Keduanya memiliki kekuasaan mutlak yang sama",
+                "D. Kepala negara dipilih rakyat, kepala pemerintahan ditunjuk raja",
+                "E. Tidak ada perbedaan tugas antara keduanya"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 6,
+            question: "Berdasarkan UUD 1945 (naskah asli), sistem pemerintahan Indonesia yang sebenarnya dirancang oleh para pendiri bangsa adalah...",
+            options: [
+                "A. Parlementer",
+                "B. Presidensial",
+                "C. Liberal",
+                "D. Terpimpin",
+                "E. Monarki"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 7,
+            question: "Pada awal kemerdekaan, terjadi perubahan fungsi KNIP (Komite Nasional Indonesia Pusat) melalui Maklumat Wakil Presiden No. X tanggal 16 Oktober 1945. Perubahan fungsi tersebut adalah...",
+            options: [
+                "A. KNIP dibubarkan dan diganti DPR",
+                "B. KNIP hanya menjadi pembantu presiden",
+                "C. KNIP diserahi kekuasaan legislatif untuk membuat Undang-Undang",
+                "D. KNIP menjadi lembaga eksekutif tertinggi",
+                "E. KNIP menjadi lembaga yudikatif pengawas hakim"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 8,
+            question: "Perubahan sistem pemerintahan Indonesia dari Presidensial menjadi Parlementer pada awal kemerdekaan ditandai dengan keluarnya...",
+            options: [
+                "A. Dekrit Presiden 5 Juli 1959",
+                "B. Maklumat Pemerintah 14 November 1945",
+                "C. Maklumat Wakil Presiden No. X",
+                "D. Supersemar",
+                "E. UUD RIS 1949"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 9,
+            question: "Siapakah tokoh yang diangkat menjadi Perdana Menteri pertama Republik Indonesia setelah perubahan sistem pemerintahan pada November 1945?",
+            options: [
+                "A. Moh. Hatta",
+                "B. Amir Syarifuddin",
+                "C. Tan Malaka",
+                "D. Sutan Sjahrir",
+                "E. Ali Sastroamidjojo"
+            ],
+            correct: 3 // D
+        },
+        {
+            id: 10,
+            question: "Alasan politis utama pemerintah Indonesia mengubah sistem Presidensial menjadi Parlementer pada tahun 1945 adalah...",
+            options: [
+                "A. Ketidakmampuan Presiden Soekarno dalam memimpin kabinet",
+                "B. Desakan dari partai-partai politik oposisi",
+                "C. Strategi diplomasi agar Indonesia diakui Sekutu sebagai negara demokratis",
+                "D. Keinginan rakyat yang melakukan demonstrasi besar-besaran",
+                "E. Mengikuti saran dari pemerintah Jepang"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 11,
+            question: "Dalam sistem Parlementer, kabinet atau para menteri bertanggung jawab kepada...",
+            options: [
+                "A. Presiden",
+                "B. Rakyat langsung",
+                "C. Mahkamah Agung",
+                "D. Parlemen (DPR/KNIP)",
+                "E. Wakil Presiden"
+            ],
+            correct: 3 // D
+        },
+        {
+            id: 12,
+            question: "Salah satu kelemahan utama pelaksanaan sistem Parlementer di Indonesia pada masa awal kemerdekaan adalah...",
+            options: [
+                "A. Presiden menjadi otoriter",
+                "B. Sering terjadi pergantian kabinet akibat mosi tidak percaya",
+                "C. Tidak adanya partai politik yang berdiri",
+                "D. Rakyat tidak boleh memilih dalam pemilu",
+                "E. Kekuasaan militer sangat dominan"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 13,
+            question: "Istilah \"Mosi Tidak Percaya\" dalam sistem demokrasi parlementer berarti...",
+            options: [
+                "A. Rakyat tidak percaya lagi kepada Presiden",
+                "B. Parlemen menyatakan ketidakpercayaan terhadap kebijakan kabinet sehingga kabinet harus bubar",
+                "C. Menteri mengundurkan diri karena sakit",
+                "D. Presiden membubarkan parlemen karena dianggap mengganggu",
+                "E. Dunia internasional tidak mengakui kedaulatan negara tersebut"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 14,
+            question: "Propaganda Belanda kepada dunia internasional pada tahun 1945 menyebutkan bahwa Republik Indonesia adalah negara boneka buatan Jepang yang bersifat...",
+            options: [
+                "A. Demokratis",
+                "B. Komunis",
+                "C. Liberal",
+                "D. Fasis",
+                "E. Sosialis"
+            ],
+            correct: 3 // D
+        },
+        {
+            id: 15,
+            question: "Pada masa Demokrasi Parlementer (1945-1950), posisi Presiden Soekarno berkedudukan sebagai...",
+            options: [
+                "A. Kepala Pemerintahan",
+                "B. Kepala Negara (Simbol)",
+                "C. Panglima Tertinggi Perang saja",
+                "D. Ketua Partai Politik",
+                "E. Perdana Menteri"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 16,
+            question: "Kabinet Sjahrir I, II, dan III sering jatuh bangun dikarenakan...",
+            options: [
+                "A. Presiden Soekarno sering memecat menteri",
+                "B. Adanya tekanan oposisi dari kelompok Persatuan Perjuangan dan parlemen",
+                "C. Belanda berhasil menangkap semua menteri",
+                "D. Kasus korupsi yang merajalela di kalangan menteri",
+                "E. Sutan Sjahrir mengundurkan diri karena sakit"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 17,
+            question: "Jika dibandingkan dengan sistem pemerintahan saat ini (pasca Amandemen UUD 1945), menteri-menteri negara saat ini bertanggung jawab kepada...",
+            options: [
+                "A. DPR",
+                "B. MPR",
+                "C. Presiden",
+                "D. Mahkamah Konstitusi",
+                "E. Partai Pengusung"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 18,
+            question: "Syarat utama berjalannya Demokrasi Liberal adalah adanya sistem multipartai. Tujuan adanya banyak partai politik adalah...",
+            options: [
+                "A. Agar negara terlihat ramai",
+                "B. Sebagai sarana penyalur aspirasi rakyat yang beragam",
+                "C. Untuk memecah belah persatuan bangsa",
+                "D. Agar mudah mendapatkan bantuan asing",
+                "E. Untuk memperkuat kekuasaan presiden"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 19,
+            question: "Peristiwa perubahan sistem pemerintahan pada 14 November 1945 sering dianggap sebagai \"penyimpangan\" terhadap UUD 1945 karena...",
+            options: [
+                "A. Dilakukan tanpa persetujuan rakyat",
+                "B. UUD 1945 mengamanatkan sistem Presidensial, bukan Parlementer",
+                "C. UUD 1945 melarang adanya Perdana Menteri",
+                "D. Dilakukan oleh pihak asing (Belanda)",
+                "E. Mengubah bentuk negara dari Kesatuan menjadi Serikat"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 20,
+            question: "Nilai positif yang dapat diambil dari dinamika politik masa awal kemerdekaan (1945-1950) bagi generasi sekarang adalah...",
+            options: [
+                "A. Pentingnya mempertahankan kekuasaan dengan segala cara",
+                "B. Kemampuan beradaptasi dan strategi diplomasi demi mempertahankan kedaulatan bangsa",
+                "C. Bahwa sistem pemerintahan boleh diganti semau pemimpin",
+                "D. Partai politik adalah sumber perpecahan",
+                "E. Kita tidak perlu mengikuti konstitusi"
+            ],
+            correct: 1 // B
         }
     ];
 
-    const [currentQ, setCurrentQ] = useState(0);
+    const [appState, setAppState] = useState<'login' | 'quiz' | 'result'>('login');
+    const [userData, setUserData] = useState({ name: '', userClass: '' });
+    const [answers, setAnswers] = useState<{[key: number]: number}>({});
     const [score, setScore] = useState(0);
-    const [showResult, setShowResult] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<number | null>(null);
-    const [isAnswered, setIsAnswered] = useState(false);
+    const [grade, setGrade] = useState('');
+    const [showFeedbackModal, setShowFeedbackModal] = useState(false);
 
-    const handleAnswer = (idx: number) => {
-        if (isAnswered) return;
-        setSelectedOption(idx);
-        setIsAnswered(true);
-        if (idx === questions[currentQ].answerIndex) {
-            setScore(score + 20);
-        }
+    // Handle Login Input
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setUserData(prev => ({ ...prev, [name]: value }));
     };
 
-    const nextQuestion = () => {
-        if (currentQ < questions.length - 1) {
-            setCurrentQ(currentQ + 1);
-            setIsAnswered(false);
-            setSelectedOption(null);
+    // Start Quiz
+    const startQuiz = () => {
+        if (userData.name && userData.userClass) {
+            setAppState('quiz');
+            window.scrollTo(0, 0);
         } else {
-            setShowResult(true);
+            alert("Mohon isi Nama Lengkap dan Kelas terlebih dahulu.");
         }
     };
 
-    const restart = () => {
-        setCurrentQ(0);
-        setScore(0);
-        setShowResult(false);
-        setIsAnswered(false);
-        setSelectedOption(null);
+    // Handle Answer Selection
+    const handleOptionSelect = (qId: number, optionIndex: number) => {
+        setAnswers({ ...answers, [qId]: optionIndex });
     };
 
-    if (showResult) {
-        return (
-            <div className="bg-[#171717] p-8 rounded-lg shadow-lg border border-history-gold/30 text-center animate-fade-in">
-                <h3 className="text-2xl font-bold mb-4 font-sans text-history-brown uppercase tracking-widest">Hasil Evaluasi</h3>
-                <div className="text-6xl font-black text-history-gold mb-2">{score}</div>
-                <p className="mb-6 text-history-muted italic font-light">{score >= 80 ? "Luar Biasa! Anda memahami konsep demokrasi." : "Pelajari lagi perbedaan sistem pemerintahan."}</p>
-                <button onClick={restart} className="bg-history-gold text-[#0a0a0a] px-8 py-3 rounded hover:bg-[#c5a028] transition font-bold uppercase tracking-widest text-xs">Ulangi Kuis</button>
-            </div>
-        );
-    }
+    // Submit Answers
+    const submitAnswers = () => {
+        if (Object.keys(answers).length < questions.length) {
+            if (!window.confirm("Masih ada soal yang belum diisi. Yakin ingin mengirim jawaban?")) return;
+        }
+
+        let calculatedScore = 0;
+        questions.forEach(q => {
+            if (answers[q.id] === q.correct) {
+                calculatedScore += 5; // 5 pts x 20 questions = 100
+            }
+        });
+
+        setScore(calculatedScore);
+        
+        let calculatedGrade = '';
+        if (calculatedScore <= 69) calculatedGrade = 'Kurang';
+        else if (calculatedScore <= 80) calculatedGrade = 'Cukup Baik';
+        else if (calculatedScore <= 90) calculatedGrade = 'Baik';
+        else calculatedGrade = 'Sangat Baik';
+        
+        setGrade(calculatedGrade);
+        setShowFeedbackModal(true);
+    };
+
+    // Generate Report View (Open in new window for printing)
+    const handleDownloadPDF = () => {
+        const printContent = `
+            <html>
+            <head>
+                <title>Laporan Evaluasi - ${userData.name}</title>
+                <style>
+                    body { font-family: 'Times New Roman', serif; padding: 40px; color: #000; background: #fff; }
+                    .header { text-align: center; border-bottom: 3px solid #000; padding-bottom: 20px; margin-bottom: 30px; }
+                    .header h1 { font-size: 24px; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+                    .header h2 { font-size: 18px; margin: 5px 0 0; font-weight: normal; }
+                    .info-table { width: 100%; margin-bottom: 30px; border: 1px solid #000; }
+                    .info-table td { padding: 10px; border: 1px solid #000; }
+                    .score-box { text-align: center; margin: 20px 0; padding: 20px; border: 2px solid #000; background: #f0f0f0; }
+                    .score-num { font-size: 48px; font-weight: bold; display: block; }
+                    .score-grade { font-size: 18px; font-weight: bold; text-transform: uppercase; }
+                    .question-item { margin-bottom: 15px; page-break-inside: avoid; border-bottom: 1px dashed #ccc; padding-bottom: 10px; }
+                    .question-text { font-weight: bold; margin-bottom: 5px; }
+                    .options { margin-left: 20px; font-size: 14px; }
+                    .option { padding: 2px 0; }
+                    .selected { font-weight: bold; color: blue; }
+                    .correct { font-weight: bold; color: green; }
+                    .incorrect { color: red; text-decoration: line-through; }
+                    .key-badge { background: #eee; padding: 2px 5px; font-size: 10px; border-radius: 3px; margin-left: 5px; border: 1px solid #999; }
+                    .footer { margin-top: 50px; text-align: right; }
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <h1>Laporan Hasil Evaluasi</h1>
+                    <h2>Topik: Sejarah Demokrasi Indonesia</h2>
+                </div>
+
+                <table class="info-table" cellspacing="0">
+                    <tr>
+                        <td width="30%"><strong>Nama Siswa</strong></td>
+                        <td>${userData.name}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kelas</strong></td>
+                        <td>${userData.userClass}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tanggal</strong></td>
+                        <td>${new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</td>
+                    </tr>
+                </table>
+
+                <div class="score-box">
+                    <span class="score-grade">Nilai Akhir</span>
+                    <span class="score-num">${score}</span>
+                    <span class="score-grade">${grade}</span>
+                </div>
+
+                <h3>Rincian Jawaban:</h3>
+                ${questions.map((q, idx) => {
+                    const userAns = answers[q.id];
+                    
+                    return `
+                        <div class="question-item">
+                            <div class="question-text">${idx + 1}. ${q.question}</div>
+                            <div class="options">
+                                ${q.options.map((opt, oIdx) => {
+                                    let style = "option";
+                                    let badge = "";
+                                    
+                                    if (oIdx === q.correct) {
+                                        style += " correct";
+                                        badge = `<span class="key-badge">KUNCI</span>`;
+                                    } 
+                                    
+                                    if (userAns === oIdx) {
+                                        if (userAns !== q.correct) {
+                                            style += " incorrect";
+                                            badge = `<span class="key-badge" style="color:red; border-color:red;">JAWABAN ANDA</span>`;
+                                        } else {
+                                            badge = `<span class="key-badge" style="background:green; color:white; border-color:green;">BENAR</span>`;
+                                        }
+                                    }
+
+                                    return `<div class="${style}">${opt} ${badge}</div>`;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+
+                <div class="footer">
+                    <p>Guru Mata Pelajaran</p>
+                    <br/><br/><br/>
+                    <p><strong>Findi Lestari, S.Pd.</strong></p>
+                </div>
+                
+                <script>window.print();</script>
+            </body>
+            </html>
+        `;
+        
+        const printWindow = window.open('', '_blank');
+        if (printWindow) {
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+        }
+    };
+
+    const resetEvaluasi = () => {
+        setAppState('login');
+        setUserData({ name: '', userClass: '' });
+        setAnswers({});
+        setScore(0);
+        setGrade('');
+        setShowFeedbackModal(false);
+        window.scrollTo(0, 0);
+    };
 
     return (
-        <div className="bg-[#171717] p-8 rounded-lg shadow-lg border border-history-gold/10">
-            <div className="mb-6 flex justify-between text-xs font-bold text-history-muted uppercase tracking-widest">
-                <span>Soal {currentQ + 1}/{questions.length}</span>
-                <span className="text-history-gold">Skor: {score}</span>
-            </div>
-            <h3 className="font-bold text-lg mb-8 text-history-brown">{questions[currentQ].question}</h3>
-            <div className="space-y-3">
-                {questions[currentQ].options.map((opt, idx) => (
-                    <button key={idx} onClick={() => handleAnswer(idx)} disabled={isAnswered} className={`w-full text-left p-4 border rounded transition-all group ${selectedOption === idx ? (idx === questions[currentQ].answerIndex ? 'bg-emerald-900/30 border-emerald-500' : 'bg-rose-900/30 border-rose-500') : 'bg-[#0a0a0a] border-history-gold/10 hover:bg-[#1c1c1c]'}`}>
-                        <span className="font-light">{opt}</span>
-                        {isAnswered && idx === questions[currentQ].answerIndex && <i className="fas fa-check-circle text-emerald-500 float-right"></i>}
-                        {isAnswered && selectedOption === idx && idx !== questions[currentQ].answerIndex && <i className="fas fa-times-circle text-rose-500 float-right"></i>}
-                    </button>
-                ))}
-            </div>
-            {isAnswered && (
-                <div className="mt-8 text-right">
-                    <button onClick={nextQuestion} className="bg-history-gold text-[#0a0a0a] px-8 py-3 rounded hover:bg-[#c5a028] transition font-bold uppercase tracking-widest text-xs">Lanjut</button>
+        <div className="relative min-h-[600px]">
+            {appState === 'login' && (
+                <div className="bg-[#171717] p-8 md:p-12 rounded-2xl shadow-2xl max-w-xl mx-auto border border-history-gold/20 text-center animate-fade-in">
+                    <div className="flex justify-center mb-6">
+                        <div className="bg-[#0a0a0a] p-5 rounded-full border border-history-gold shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+                            <i className="fas fa-school text-4xl text-history-gold"></i>
+                        </div>
+                    </div>
+                    <h2 className="text-2xl font-bold text-history-brown mb-2 uppercase tracking-widest">Identitas Peserta</h2>
+                    <p className="text-history-muted text-sm mb-8">Evaluasi: Sejarah Perkembangan Demokrasi (20 Soal)</p>
+                    
+                    <form className="space-y-6 text-left" onSubmit={(e) => e.preventDefault()}>
+                        <div>
+                            <label htmlFor="input-name" className="block text-xs font-bold text-history-gold mb-2 uppercase tracking-wide">Nama Siswa</label>
+                            <input 
+                                id="input-name"
+                                type="text" 
+                                name="name"
+                                value={userData.name}
+                                onChange={handleInputChange}
+                                className="w-full p-4 bg-[#0a0a0a] border border-history-muted/20 rounded-lg focus:border-history-gold outline-none transition text-history-brown placeholder-history-muted/30"
+                                placeholder="Isi nama lengkap..."
+                                autoComplete="name"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="input-class" className="block text-xs font-bold text-history-gold mb-2 uppercase tracking-wide">Kelas</label>
+                            <input 
+                                id="input-class"
+                                type="text" 
+                                name="userClass" 
+                                value={userData.userClass}
+                                onChange={handleInputChange}
+                                className="w-full p-4 bg-[#0a0a0a] border border-history-muted/20 rounded-lg focus:border-history-gold outline-none transition text-history-brown placeholder-history-muted/30"
+                                placeholder="Isi kelas..."
+                                autoComplete="off"
+                            />
+                        </div>
+                        <button 
+                            type="button"
+                            onClick={startQuiz}
+                            className="w-full bg-history-gold hover:bg-[#c5a028] text-[#0a0a0a] font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-105 mt-6 flex items-center justify-center gap-2 uppercase tracking-widest text-sm"
+                        >
+                            Mulai Mengerjakan <i className="fas fa-chevron-right ml-1"></i>
+                        </button>
+                    </form>
+                </div>
+            )}
+
+            {appState === 'quiz' && (
+                <div className="flex flex-col min-h-screen">
+                    <div className="bg-[#171717] shadow-lg border-b border-history-gold/20 sticky top-0 z-20 print:hidden">
+                        <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center text-sm">
+                            <div className="flex items-center gap-3 font-bold text-history-brown">
+                                <i className="fas fa-user text-history-gold"></i> {userData.name} <span className="text-history-muted mx-1">|</span> {userData.userClass}
+                            </div>
+                            <div className="flex items-center gap-2 text-history-muted">
+                                <i className="fas fa-clock text-history-gold"></i> 20 Soal
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex-1 max-w-4xl mx-auto w-full p-6 space-y-8 pb-24 animate-fade-in">
+                        <div className="text-center mb-8">
+                            <h2 className="text-2xl font-bold text-history-gold uppercase tracking-widest">Soal Evaluasi</h2>
+                            <p className="text-history-muted text-sm mt-2">Topik Materi: Perkembangan Demokrasi Indonesia</p>
+                        </div>
+
+                        {questions.map((q, index) => (
+                            <div key={q.id} className="bg-[#171717] p-6 md:p-8 rounded-xl shadow-lg border border-history-gold/10 hover:border-history-gold/30 transition duration-300">
+                                <div className="flex gap-5">
+                                    <div className="bg-[#0a0a0a] text-history-gold w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg font-bold text-lg border border-history-gold/20 shadow-inner">
+                                        {index + 1}
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="text-lg font-medium text-history-brown mb-6 leading-relaxed font-serif">{q.question}</h3>
+                                        <div className="space-y-3">
+                                            {q.options.map((opt, optIdx) => (
+                                                <label 
+                                                    key={optIdx} 
+                                                    className={`flex items-start gap-4 p-4 rounded-lg border cursor-pointer transition-all group ${
+                                                        answers[q.id] === optIdx 
+                                                        ? 'bg-history-gold/10 border-history-gold ring-1 ring-history-gold/50' 
+                                                        : 'bg-[#0a0a0a] border-history-muted/10 hover:bg-[#262626] hover:border-history-muted/30'
+                                                    }`}
+                                                >
+                                                    <div className="mt-1 relative flex items-center justify-center">
+                                                        <input 
+                                                            type="radio" 
+                                                            name={`q-${q.id}`} 
+                                                            className="appearance-none w-5 h-5 rounded-full border-2 border-history-muted/50 checked:border-history-gold checked:bg-history-gold transition-all"
+                                                            checked={answers[q.id] === optIdx}
+                                                            onChange={() => handleOptionSelect(q.id, optIdx)}
+                                                        />
+                                                    </div>
+                                                    <span className={`text-sm md:text-base ${answers[q.id] === optIdx ? 'text-history-gold font-bold' : 'text-history-muted group-hover:text-history-brown'}`}>
+                                                        {opt}
+                                                    </span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+
+                        <div className="flex justify-end pt-6">
+                            <button 
+                                onClick={submitAnswers}
+                                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-10 rounded-full shadow-xl flex items-center gap-3 transition transform hover:scale-105 uppercase tracking-widest text-sm"
+                            >
+                                <i className="fas fa-paper-plane"></i> Kirim Jawaban
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {showFeedbackModal && (
+                <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+                    <div className="bg-[#171717] rounded-2xl max-w-md w-full p-8 text-center shadow-[0_0_50px_rgba(212,175,55,0.2)] border-2 border-history-gold scale-100 transform transition-all relative">
+                        <div className="w-24 h-24 bg-[#0a0a0a] rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-history-gold shadow-lg">
+                            <i className="fas fa-trophy text-history-gold text-4xl animate-bounce"></i>
+                        </div>
+                        <h2 className="text-3xl font-sans font-bold text-history-brown mb-2 uppercase tracking-wide">Hasil Evaluasi</h2>
+                        <p className="text-history-muted mb-4">Terima kasih telah mengerjakan, <span className="text-history-gold font-bold">{userData.name}</span>!</p>
+                        
+                        <div className="bg-[#0a0a0a] p-6 rounded-xl border border-history-gold/20 mb-6">
+                            <div className="text-xs text-history-muted uppercase tracking-[0.2em] mb-2 font-bold">Nilai Akhir Kamu</div>
+                            <div className={`text-7xl font-black ${score >= 75 ? 'text-emerald-500' : 'text-history-gold'}`}>{score}</div>
+                            <div className="mt-2 text-sm font-bold uppercase tracking-widest text-history-brown border-t border-history-gold/10 pt-2 inline-block px-4">
+                                {grade}
+                            </div>
+                        </div>
+
+                        <p className="text-history-brown/80 text-sm mb-8 bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 leading-relaxed">
+                            “Silakan Unduh dan Simpan Hasil Evaluasi kalian, sebagai bahan belajar kalian di rumah”
+                        </p>
+
+                        <div className="flex flex-col gap-3">
+                            {/* Tombol Simpan ke PDF sesuai permintaan */}
+                            <button 
+                                onClick={handleDownloadPDF}
+                                className="bg-history-brown text-[#0a0a0a] px-4 py-3 rounded hover:bg-white transition text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg"
+                            >
+                                <i className="fas fa-print mr-2"></i> Simpan ke PDF
+                            </button>
+                            
+                            <button 
+                                onClick={resetEvaluasi}
+                                className="w-full bg-[#262626] text-history-muted font-bold py-3.5 rounded-lg hover:bg-[#404040] hover:text-white transition flex items-center justify-center gap-2 shadow-lg uppercase tracking-widest text-xs border border-white/5"
+                            >
+                                <i className="fas fa-redo"></i> Ulangi Evaluasi
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

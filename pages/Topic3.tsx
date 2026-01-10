@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MindfulnessGate, IndependenceSimulation, QuizGate, LKPDTopic3 } from '../components/Topic3Components';
 
 const Topic3: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'kuis'>('materi');
+    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'evaluasi'>('materi');
     const [subMateri, setSubMateri] = useState<'jepang' | 'bpupki' | 'ppki'>('jepang');
 
     return (
@@ -43,8 +43,8 @@ const Topic3: React.FC = () => {
                     <i className="fas fa-file-alt mr-2 text-xs"></i> LKPD
                 </button>
                 <button 
-                    onClick={() => setActiveTab('kuis')}
-                    className={`px-8 py-3 font-bold transition text-sm uppercase tracking-widest ${activeTab === 'kuis' ? 'text-history-gold border-b-2 border-history-gold' : 'text-history-muted hover:text-history-brown'}`}
+                    onClick={() => setActiveTab('evaluasi')}
+                    className={`px-8 py-3 font-bold transition text-sm uppercase tracking-widest ${activeTab === 'evaluasi' ? 'text-history-gold border-b-2 border-history-gold' : 'text-history-muted hover:text-history-brown'}`}
                 >
                     <i className="fas fa-tasks mr-2 text-xs"></i> Evaluasi
                 </button>
@@ -224,7 +224,7 @@ const Topic3: React.FC = () => {
                     </div>
                 )}
 
-                {activeTab === 'kuis' && (
+                {activeTab === 'evaluasi' && (
                     <div className="animate-fade-in max-w-4xl mx-auto">
                         <div className="text-center mb-10">
                             <h3 className="font-sans text-2xl font-bold text-history-gold uppercase tracking-widest">Uji Pemahaman</h3>

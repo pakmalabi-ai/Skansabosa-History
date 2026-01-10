@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Mindfulness, InteractiveMap, Quiz, LKPDTopic1 } from '../components/Topic1Components';
 
 const Topic1: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'kuis' | 'refleksi'>('materi');
+    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'evaluasi' | 'refleksi'>('materi');
     const [activeChapter, setActiveChapter] = useState('chap1');
 
     return (
@@ -31,7 +31,7 @@ const Topic1: React.FC = () => {
 
             {/* Navigation Tabs */}
             <div className="flex flex-wrap justify-center gap-2 mb-16 border-b border-history-gold/10 pb-1 max-w-5xl mx-auto">
-                {['materi', 'simulasi', 'lkpd', 'kuis', 'refleksi'].map((tab) => (
+                {['materi', 'simulasi', 'lkpd', 'evaluasi', 'refleksi'].map((tab) => (
                     <button 
                         key={tab}
                         onClick={() => setActiveTab(tab as any)}
@@ -41,8 +41,8 @@ const Topic1: React.FC = () => {
                             : 'border-transparent text-history-muted hover:text-history-brown hover:bg-[#171717]'
                         }`}
                     >
-                        <i className={`fas fa-${tab === 'materi' ? 'book-open' : tab === 'simulasi' ? 'map-marked-alt' : tab === 'lkpd' ? 'file-alt' : tab === 'kuis' ? 'clipboard-check' : 'pen-fancy'} mr-2 text-xs`}></i> 
-                        {tab}
+                        <i className={`fas fa-${tab === 'materi' ? 'book-open' : tab === 'simulasi' ? 'map-marked-alt' : tab === 'lkpd' ? 'file-alt' : tab === 'evaluasi' ? 'clipboard-check' : 'pen-fancy'} mr-2 text-xs`}></i> 
+                        {tab.charAt(0).toUpperCase() + tab.slice(1)}
                     </button>
                 ))}
             </div>
@@ -220,10 +220,10 @@ const Topic1: React.FC = () => {
                 </div>
             )}
 
-            {/* KUIS TAB */}
-            {activeTab === 'kuis' && (
+            {/* EVALUASI TAB */}
+            {activeTab === 'evaluasi' && (
                 <div className="max-w-4xl mx-auto animate-fade-in">
-                    <h3 className="font-sans text-2xl font-bold text-history-gold text-center mb-8 uppercase tracking-widest">Uji Pemahaman</h3>
+                    <h3 className="font-sans text-2xl font-bold text-history-gold text-center mb-8 uppercase tracking-widest">Evaluasi Pemahaman</h3>
                     <Quiz />
                 </div>
             )}

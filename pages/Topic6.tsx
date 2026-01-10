@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MindfulnessDiplomasi, DiplomatSimulation, QuizDiplomasi, LKPDTopic6 } from '../components/Topic6Components';
 
 const Topic6: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'kuis'>('materi');
+    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'evaluasi'>('materi');
     const [subMateri, setSubMateri] = useState<'linggarjati' | 'renville' | 'roemroyen' | 'kmb'>('linggarjati');
 
     return (
@@ -28,7 +28,7 @@ const Topic6: React.FC = () => {
                     { id: 'materi', icon: 'book-open', label: 'Materi' },
                     { id: 'simulasi', icon: 'chess-king', label: 'Simulasi Diplomat' },
                     { id: 'lkpd', icon: 'file-alt', label: 'LKPD' },
-                    { id: 'kuis', icon: 'clipboard-list', label: 'Evaluasi' }
+                    { id: 'evaluasi', icon: 'clipboard-list', label: 'Evaluasi' }
                 ].map((tab) => (
                     <button 
                         key={tab.id}
@@ -101,7 +101,7 @@ const Topic6: React.FC = () => {
                                             </div>
                                             
                                             <img 
-                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sutan_Sjahrir_menulis.jpg/220px-Sutan_Sjahrir_menulis.jpg" 
+                                                src="https://ghost-blog-assets.zenius.net/wordpress/2016/03/9-Biografi-Sutan-Syahrir.png" 
                                                 alt="Sutan Sjahrir" 
                                                 className="w-full h-[350px] object-cover rounded-xl border border-history-gold/10 grayscale-[30%]"
                                             />
@@ -131,9 +131,11 @@ const Topic6: React.FC = () => {
                                             </div>
 
                                             <div className="w-full bg-[#0a0a0a] p-4 rounded-xl border border-history-gold/20">
-                                                <div className="h-64 flex items-center justify-center bg-[#171717] rounded mb-4">
-                                                    <i className="fas fa-ship text-6xl text-history-muted opacity-50"></i>
-                                                </div>
+                                                <img 
+                                                    src="https://akcdn.detik.net.id/community/media/visual/2021/06/09/ilustrasi-perjanjian-renville.jpeg?w=700&q=90" 
+                                                    alt="Perjanjian Renville" 
+                                                    className="w-full h-64 object-cover rounded mb-4 border border-history-gold/10"
+                                                />
                                                 <p className="text-center text-sm text-history-gold uppercase tracking-widest font-bold">Kapal USS Renville (Netral)</p>
                                             </div>
 
@@ -220,7 +222,7 @@ const Topic6: React.FC = () => {
                     </div>
                 )}
 
-                {activeTab === 'kuis' && (
+                {activeTab === 'evaluasi' && (
                     <div className="animate-fade-in max-w-4xl mx-auto">
                         <div className="text-center mb-10">
                             <h3 className="font-sans text-3xl font-bold text-history-brown uppercase tracking-widest">Evaluasi Pemahaman</h3>

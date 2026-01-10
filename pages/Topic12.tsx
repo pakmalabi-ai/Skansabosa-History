@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MindfulnessOrba, Activist66Simulation, LKPDTopic12, QuizOrba } from '../components/Topic12Components';
 
 const Topic12: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'kuis'>('materi');
+    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'evaluasi'>('materi');
     const [subMateri, setSubMateri] = useState<'latar' | 'tritura' | 'supersemar' | 'dualisme'>('latar');
 
     return (
@@ -24,7 +24,7 @@ const Topic12: React.FC = () => {
 
             {/* Navigation */}
             <div className="flex flex-wrap justify-center gap-4 mb-12 border-b border-history-gold/10 pb-4 max-w-4xl mx-auto">
-                {['materi', 'simulasi', 'lkpd', 'kuis'].map(tab => (
+                {['materi', 'simulasi', 'lkpd', 'evaluasi'].map(tab => (
                     <button 
                         key={tab}
                         onClick={() => setActiveTab(tab as any)}
@@ -34,7 +34,8 @@ const Topic12: React.FC = () => {
                             : 'bg-[#171717] text-history-muted hover:text-history-brown hover:bg-[#262626]'
                         }`}
                     >
-                        <i className={`fas fa-${tab === 'materi' ? 'book-open' : tab === 'simulasi' ? 'gamepad' : tab === 'lkpd' ? 'file-alt' : 'clipboard-list'} mr-2 text-xs`}></i> {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                        <i className={`fas fa-${tab === 'materi' ? 'book-open' : tab === 'simulasi' ? 'gamepad' : tab === 'lkpd' ? 'file-alt' : 'clipboard-list'} mr-2 text-xs`}></i> 
+                        {tab === 'evaluasi' ? 'Evaluasi' : tab.charAt(0).toUpperCase() + tab.slice(1)}
                     </button>
                 ))}
             </div>
@@ -198,7 +199,7 @@ const Topic12: React.FC = () => {
                     </div>
                 )}
 
-                {activeTab === 'kuis' && (
+                {activeTab === 'evaluasi' && (
                     <div className="animate-fade-in max-w-4xl mx-auto">
                         <div className="text-center mb-10">
                             <h3 className="font-sans text-3xl font-bold text-history-brown uppercase tracking-widest">Evaluasi Pemahaman</h3>

@@ -509,123 +509,577 @@ export const LKPDTopic5: React.FC = () => {
     );
 };
 
-// --- QUIZ TOPIC 5 ---
+// --- QUIZ TOPIC 5 (FULL EVALUATION SYSTEM) ---
 export const QuizPerjuanganFisik: React.FC = () => {
-    const questions: QuizQuestion[] = [
+    // 20 Questions Data from PDF
+    const questions = [
         {
-            question: "Peristiwa perobekan bendera Belanda (Merah-Putih-Biru) menjadi Merah-Putih terjadi di...",
-            options: ["Hotel Yamato, Surabaya", "Gedung Sate, Bandung", "Lawang Sewu, Semarang", "Istana Maimun, Medan"],
-            answerIndex: 0
+            id: 1,
+            question: "Analisis Kausalitas: Peristiwa pertempuran 10 November 1945 di Surabaya dipicu oleh serangkaian insiden. Puncak ketegangan yang membuat rakyat Surabaya marah besar dan menolak kompromi adalah...",
+            options: [
+                "A. Penurunan bendera Merah Putih di Hotel Yamato",
+                "B. Mendaratnya pasukan NICA di Tanjung Perak",
+                "C. Tewasnya Brigadir Jenderal A.W.S. Mallaby",
+                "D. Dikeluarkannya ultimatum oleh Mayor Jenderal Mansergh agar rakyat menyerahkan senjata",
+                "E. Pelarangan rapat umum oleh tentara Jepang"
+            ],
+            correct: 3 // D
         },
         {
-            question: "Siapakah tokoh yang terkenal dengan pidato berapi-api membakar semangat arek-arek Suroboyo?",
-            options: ["Jenderal Sudirman", "Bung Tomo", "Gubernur Suryo", "I Gusti Ngurah Rai"],
-            answerIndex: 1
+            id: 2,
+            question: "Pemahaman Tokoh: Perhatikan kutipan pidato berikut: \"Selama banteng-banteng Indonesia masih mempunyai darah merah yang dapat membikin secarik kain putih merah dan putih, maka selama itu tidak akan kita mau menyerah kepada siapapun juga!\" Tokoh yang membakar semangat pemuda Surabaya dengan kalimat tersebut melalui siaran radio adalah...",
+            options: [
+                "A. Gubernur Suryo",
+                "B. Bung Tomo",
+                "C. Sungkono",
+                "D. Moestopo",
+                "E. Mayjen Mansergh"
+            ],
+            correct: 1 // B
         },
         {
-            question: "Pertempuran Ambarawa berakhir dengan kemenangan TKR berkat strategi...",
-            options: ["Perang Gerilya", "Supit Urang", "Bumi Hangus", "Puputan"],
-            answerIndex: 1
+            id: 3,
+            question: "Strategi Militer: Dalam Pertempuran Ambarawa, Kolonel Sudirman menerapkan strategi Supit Urang. Alasan utama penggunaan strategi ini adalah...",
+            options: [
+                "A. Untuk memancing musuh keluar dari benteng pertahanan",
+                "B. Memutus suplai logistik dan komunikasi musuh dengan mengepung dari dua sisi",
+                "C. Menunggu bantuan tentara sekutu datang membantu Indonesia",
+                "D. Melakukan serangan udara secara mendadak ke markas musuh",
+                "E. Mengajak musuh berunding di meja perundingan"
+            ],
+            correct: 1 // B
         },
         {
-            question: "Mengapa tanggal 10 November diperingati sebagai Hari Pahlawan?",
-            options: ["Karena Soekarno berpidato", "Karena Belanda menyerah", "Untuk mengenang pertempuran dahsyat di Surabaya", "Karena PBB mengakui Indonesia"],
-            answerIndex: 2
+            id: 4,
+            question: "Identifikasi Peristiwa: Pertempuran Medan Area bermula dari insiden yang melukai harga diri bangsa Indonesia, yaitu...",
+            options: [
+                "A. Sekutu membebaskan tawanan perang Belanda tanpa izin",
+                "B. Seorang penghuni hotel merampas dan menginjak-injak lencana Merah Putih",
+                "C. Belanda memasang bendera Merah Putih Biru di kantor pemerintahan",
+                "D. Tentara NICA menembak mati seorang pemuda di jalan raya",
+                "E. Sekutu melarang penggunaan mata uang Republik Indonesia"
+            ],
+            correct: 1 // B
         },
         {
-            question: "Peristiwa Bandung Lautan Api bertujuan untuk...",
-            options: ["Merayakan kemenangan", "Menyambut kedatangan Sekutu", "Mencegah Sekutu menggunakan fasilitas kota sebagai markas", "Mengusir penduduk asli"],
-            answerIndex: 2
+            id: 5,
+            question: "Dampak Kewilayahan: Pemasangan papan bertuliskan \"Fixed Boundaries Medan Area\" di berbagai sudut pinggiran kota Medan oleh Sekutu bertujuan untuk...",
+            options: [
+                "A. Menandai wilayah yang aman bagi pengungsi",
+                "B. Menetapkan batas wilayah kekuasaan Sekutu secara sepihak",
+                "C. Memberikan peringatan adanya ladang ranjau",
+                "D. Membagi wilayah logistik antara Indonesia dan Sekutu",
+                "E. Menghormati kedaulatan wilayah Republik Indonesia"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 6,
+            question: "Analisis Strategi: Peristiwa Bandung Lautan Api pada 23 Maret 1946 merupakan keputusan strategis yang sangat berat namun harus diambil. Tujuan utama pembumihangusan kota Bandung Selatan adalah...",
+            options: [
+                "A. Mencegah Sekutu dan NICA memanfaatkan kota Bandung sebagai markas militer strategis",
+                "B. Memancing pasukan Sekutu agar masuk ke perangkap di tengah kota",
+                "C. Menunjukkan kekecewaan rakyat terhadap pemerintah pusat di Jakarta",
+                "D. Mengusir penduduk sipil agar tidak menjadi korban perang",
+                "E. Memusnahkan aset-aset peninggalan Jepang agar tidak diambil Belanda"
+            ],
+            correct: 0 // A
+        },
+        {
+            id: 7,
+            question: "Tokoh Pahlawan: Dalam peristiwa Bandung Lautan Api, terdapat tokoh yang gugur saat meledakkan gudang mesiu milik Sekutu di Dayeuhkolot. Tokoh tersebut adalah...",
+            options: [
+                "A. A.H. Nasution",
+                "B. Mohamad Toha",
+                "C. T.B. Simatupang",
+                "D. Otto Iskandardinata",
+                "E. Djuanda Kartawidjaja"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 8,
+            question: "Motivasi Agresi: Belanda melancarkan Agresi Militer I pada 21 Juli 1947 dengan fokus menyerang wilayah Jawa Barat, Jawa Timur, Sumatera Timur, dan Palembang. Motif ekonomi di balik serangan ini adalah...",
+            options: [
+                "A. Menguasai jalur perdagangan laut internasional",
+                "B. Merebut kembali daerah perkebunan, pertambangan, dan ladang minyak untuk memulihkan ekonomi Belanda",
+                "C. Menangkap para pemimpin Republik Indonesia yang bersembunyi di pedalaman",
+                "D. Membuka jalur logistik untuk bantuan kemanusiaan PBB",
+                "E. Menghancurkan basis militer TNI yang semakin kuat"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 9,
+            question: "Istilah Sejarah: Dalam Agresi Militer I, Belanda tidak menyebut tindakannya sebagai \"Perang\", melainkan \"Aksi Polisionil\". Tujuannya adalah...",
+            options: [
+                "A. Menunjukkan kekuatan militer Belanda yang superior",
+                "B. Menghindari campur tangan Dewan Keamanan PBB karena dianggap masalah dalam negeri",
+                "C. Agar rakyat Indonesia tidak melakukan perlawanan bersenjata",
+                "D. Karena Belanda hanya menggunakan kepolisian, bukan tentara",
+                "E. Untuk menarik simpati negara-negara Asia Afrika"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 10,
+            question: "Analisis Konflik Internal: Pemberontakan PKI Madiun pada September 1948 dianggap sebagai \"tikaman dari belakang\" bagi bangsa Indonesia karena...",
+            options: [
+                "A. Dilakukan oleh tentara asing yang menyusup",
+                "B. Terjadi saat bangsa Indonesia sedang memusatkan kekuatan menghadapi ancaman Belanda",
+                "C. Menggunakan senjata bantuan dari negara Barat",
+                "D. Dipimpin oleh tokoh yang tidak dikenal oleh rakyat",
+                "E. Terjadi di daerah yang jauh dari ibu kota negara"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 11,
+            question: "Tokoh Pemberontakan: Tokoh utama yang memproklamasikan berdirinya \"Republik Soviet Indonesia\" di Madiun pada tahun 1948 adalah...",
+            options: [
+                "A. D.N. Aidit dan Untung",
+                "B. Musso dan Amir Sjarifuddin",
+                "C. Kartosuwiryo dan Kahar Muzakkar",
+                "D. Tan Malaka dan Sutan Sjahrir",
+                "E. Westerling dan Soumokil"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 12,
+            question: "Kronologi Agresi II: Sasaran utama Agresi Militer Belanda II pada 19 Desember 1948 adalah...",
+            options: [
+                "A. Menguasai pelabuhan-pelabuhan utama di Jawa",
+                "B. Menghancurkan seluruh pasukan TNI di Jawa Tengah",
+                "C. Menduduki ibu kota Yogyakarta dan menangkap pemimpin negara (Soekarno-Hatta)",
+                "D. Merebut kembali wilayah perkebunan di Sumatera Utara",
+                "E. Membubarkan pemerintahan daerah di Jawa Barat"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 13,
+            question: "Resiliensi Pemerintahan: Sesaat sebelum ditangkap Belanda saat Agresi Militer II, Presiden Soekarno mengirimkan kawat (mandat) kepada Sjafruddin Prawiranegara. Isi mandat tersebut adalah...",
+            options: [
+                "A. Perintah untuk menyerah kepada Belanda agar tidak ada korban jiwa",
+                "B. Perintah untuk membentuk Pemerintahan Darurat Republik Indonesia (PDRI) di Bukittinggi",
+                "C. Perintah untuk memindahkan ibu kota ke luar negeri",
+                "D. Perintah kepada TNI untuk melakukan gencatan senjata",
+                "E. Perintah untuk meminta bantuan militer kepada PBB"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 14,
+            question: "Peran Militer: Meskipun dalam keadaan sakit parah (paru-paru), Jenderal Sudirman tetap memimpin perlawanan melawan Agresi Militer Belanda II dengan cara...",
+            options: [
+                "A. Diplomasi di meja perundingan PBB",
+                "B. Perang Gerilya (masuk hutan keluar hutan) untuk memecah konsentrasi musuh",
+                "C. Bertahan total di dalam keraton Yogyakarta",
+                "D. Melakukan serangan udara menggunakan pesawat sisa Jepang",
+                "E. Meminta perlindungan politik ke negara tetangga"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 15,
+            question: "Dampak Serangan Umum: Serangan Umum 1 Maret 1949 di Yogyakarta yang diprakarsai oleh Sultan Hamengkubuwono IX dan dipimpin Letkol Soeharto memiliki dampak politis yang besar, yaitu...",
+            options: [
+                "A. Belanda langsung menyerahkan kedaulatan kepada Indonesia hari itu juga",
+                "B. Pasukan Belanda berhasil diusir seluruhnya dari pulau Jawa",
+                "C. Membuktikan kepada dunia internasional (PBB) bahwa TNI dan RI masih ada dan kuat",
+                "D. Menewaskan seluruh pimpinan militer Belanda di Yogyakarta",
+                "E. Membatalkan hasil Perjanjian Renville secara sepihak"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 16,
+            question: "Perbandingan Perjuangan: Perbedaan mendasar antara perjuangan diplomasi dan perjuangan bersenjata (fisik) adalah...",
+            options: [
+                "A. Diplomasi dilakukan oleh tentara, bersenjata dilakukan oleh rakyat",
+                "B. Diplomasi mengandalkan perundingan, bersenjata mengandalkan pertempuran fisik",
+                "C. Diplomasi selalu gagal, bersenjata selalu berhasil",
+                "D. Diplomasi dilakukan di dalam negeri, bersenjata dilakukan di luar negeri",
+                "E. Tidak ada perbedaan, keduanya sama-sama menggunakan kekerasan"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 17,
+            question: "Refleksi Nilai (Deep Learning): Nilai moral utama yang dapat dipetik dari peristiwa \"Puputan\" Margarana di Bali yang dipimpin oleh I Gusti Ngurah Rai adalah...",
+            options: [
+                "A. Semangat menyerang wilayah musuh demi harta rampasan",
+                "B. Semangat pantang menyerah dan rela berkorban demi mempertahankan kehormatan bangsa (Perang Habis-habisan)",
+                "C. Pentingnya memiliki senjata modern dalam berperang",
+                "D. Kecerdikan dalam menipu musuh di medan perang",
+                "E. Ketaatan buta terhadap perintah atasan tanpa pertimbangan"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 18,
+            question: "Evaluasi Dampak: Salah satu dampak negatif dari hasil Perjanjian Renville (akibat kekalahan di Agresi Militer I) bagi wilayah Indonesia adalah...",
+            options: [
+                "A. Wilayah Indonesia bertambah luas mencakup seluruh Hindia Belanda",
+                "B. Munculnya Garis Van Mook yang membuat wilayah RI semakin sempit dan terisolasi",
+                "C. Belanda mengakui kedaulatan RI secara de jure atas Jawa dan Sumatera",
+                "D. TNI diperbolehkan memiliki senjata berat",
+                "E. Ekonomi Indonesia membaik karena bantuan Belanda"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 19,
+            question: "Fakta Sejarah: Tanggal 15 Desember diperingati sebagai Hari Juang Kartika (Hari Infanteri) untuk mengenang kemenangan TKR dalam peristiwa...",
+            options: [
+                "A. Pertempuran Surabaya",
+                "B. Pertempuran Medan Area",
+                "C. Pertempuran Ambarawa",
+                "D. Pertempuran Lima Hari di Semarang",
+                "E. Bandung Lautan Api"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 20,
+            question: "Kesimpulan: Secara keseluruhan, keberhasilan Indonesia mempertahankan kemerdekaan dari tahun 1945-1949 ditentukan oleh...",
+            options: [
+                "A. Kekuatan senjata TNI yang lebih canggih dari Belanda",
+                "B. Bantuan militer penuh dari negara-negara Blok Timur",
+                "C. Kombinasi antara perjuangan bersenjata (TNI/Rakyat) dan perjuangan diplomasi",
+                "D. Kebaikan hati Ratu Belanda yang memberikan kemerdekaan",
+                "E. Perpecahan di dalam tubuh militer Belanda sendiri"
+            ],
+            correct: 2 // C
         }
     ];
 
-    const [currentQ, setCurrentQ] = useState(0);
+    const [appState, setAppState] = useState<'login' | 'quiz' | 'result'>('login');
+    const [userData, setUserData] = useState({ name: '', userClass: '' });
+    const [answers, setAnswers] = useState<{[key: number]: number}>({});
     const [score, setScore] = useState(0);
-    const [showResult, setShowResult] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<number | null>(null);
-    const [isAnswered, setIsAnswered] = useState(false);
+    const [grade, setGrade] = useState('');
+    const [showFeedbackModal, setShowFeedbackModal] = useState(false);
 
-    const handleAnswer = (idx: number) => {
-        if (isAnswered) return;
-        setSelectedOption(idx);
-        setIsAnswered(true);
-        if (idx === questions[currentQ].answerIndex) {
-            setScore(score + 20);
-        }
+    // Handle Login Input
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setUserData(prev => ({ ...prev, [name]: value }));
     };
 
-    const nextQuestion = () => {
-        if (currentQ < questions.length - 1) {
-            setCurrentQ(currentQ + 1);
-            setIsAnswered(false);
-            setSelectedOption(null);
+    // Start Quiz
+    const startQuiz = () => {
+        if (userData.name && userData.userClass) {
+            setAppState('quiz');
+            window.scrollTo(0, 0);
         } else {
-            setShowResult(true);
+            alert("Mohon isi Nama Lengkap dan Kelas terlebih dahulu.");
         }
     };
 
-    const restart = () => {
-        setCurrentQ(0);
-        setScore(0);
-        setShowResult(false);
-        setIsAnswered(false);
-        setSelectedOption(null);
+    // Handle Answer Selection
+    const handleOptionSelect = (qId: number, optionIndex: number) => {
+        setAnswers({ ...answers, [qId]: optionIndex });
     };
 
-    if (showResult) {
-        return (
-            <div className="bg-[#171717] p-10 rounded-xl shadow-2xl border border-history-gold/20 text-center animate-fade-in relative">
-                <div className="text-6xl mb-4 text-history-gold">📝</div>
-                <h3 className="text-2xl font-bold mb-4 font-sans text-history-brown uppercase tracking-widest">Hasil Evaluasi</h3>
-                <div className="text-5xl font-black text-white mb-6">{score}</div>
-                <p className="mb-8 text-history-muted italic font-light">
-                    {score >= 80 
-                        ? "Hebat! Semangat kepahlawanan mengalir dalam dirimu." 
-                        : "Jangan patah semangat. Perjuangan butuh pengulangan."}
-                </p>
-                <button onClick={restart} className="bg-history-gold text-[#0a0a0a] px-8 py-3 rounded hover:bg-white transition font-bold uppercase tracking-widest text-xs">
-                    Ulangi Kuis
-                </button>
-            </div>
-        );
-    }
+    // Submit Answers
+    const submitAnswers = () => {
+        if (Object.keys(answers).length < questions.length) {
+            if (!window.confirm("Masih ada soal yang belum diisi. Yakin ingin mengirim jawaban?")) return;
+        }
+
+        let calculatedScore = 0;
+        questions.forEach(q => {
+            if (answers[q.id] === q.correct) {
+                calculatedScore += 5; // 5 pts x 20 questions = 100
+            }
+        });
+
+        setScore(calculatedScore);
+        
+        let calculatedGrade = '';
+        if (calculatedScore <= 69) calculatedGrade = 'Kurang';
+        else if (calculatedScore <= 80) calculatedGrade = 'Cukup Baik';
+        else if (calculatedScore <= 90) calculatedGrade = 'Baik';
+        else calculatedGrade = 'Sangat Baik';
+        
+        setGrade(calculatedGrade);
+        setShowFeedbackModal(true);
+    };
+
+    // Generate Report View (Open in new window for printing)
+    const handleDownloadPDF = () => {
+        const printContent = `
+            <html>
+            <head>
+                <title>Laporan Evaluasi - ${userData.name}</title>
+                <style>
+                    body { font-family: 'Times New Roman', serif; padding: 40px; color: #000; background: #fff; }
+                    .header { text-align: center; border-bottom: 3px solid #000; padding-bottom: 20px; margin-bottom: 30px; }
+                    .header h1 { font-size: 24px; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+                    .header h2 { font-size: 18px; margin: 5px 0 0; font-weight: normal; }
+                    .info-table { width: 100%; margin-bottom: 30px; border: 1px solid #000; }
+                    .info-table td { padding: 10px; border: 1px solid #000; }
+                    .score-box { text-align: center; margin: 20px 0; padding: 20px; border: 2px solid #000; background: #f0f0f0; }
+                    .score-num { font-size: 48px; font-weight: bold; display: block; }
+                    .score-grade { font-size: 18px; font-weight: bold; text-transform: uppercase; }
+                    .question-item { margin-bottom: 15px; page-break-inside: avoid; border-bottom: 1px dashed #ccc; padding-bottom: 10px; }
+                    .question-text { font-weight: bold; margin-bottom: 5px; }
+                    .options { margin-left: 20px; font-size: 14px; }
+                    .option { padding: 2px 0; }
+                    .selected { font-weight: bold; color: blue; }
+                    .correct { font-weight: bold; color: green; }
+                    .incorrect { color: red; text-decoration: line-through; }
+                    .key-badge { background: #eee; padding: 2px 5px; font-size: 10px; border-radius: 3px; margin-left: 5px; border: 1px solid #999; }
+                    .footer { margin-top: 50px; text-align: right; }
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <h1>Laporan Hasil Evaluasi</h1>
+                    <h2>Topik: Perjuangan Mempertahankan Kemerdekaan</h2>
+                </div>
+
+                <table class="info-table" cellspacing="0">
+                    <tr>
+                        <td width="30%"><strong>Nama Siswa</strong></td>
+                        <td>${userData.name}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kelas</strong></td>
+                        <td>${userData.userClass}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tanggal</strong></td>
+                        <td>${new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</td>
+                    </tr>
+                </table>
+
+                <div class="score-box">
+                    <span class="score-grade">Nilai Akhir</span>
+                    <span class="score-num">${score}</span>
+                    <span class="score-grade">${grade}</span>
+                </div>
+
+                <h3>Rincian Jawaban:</h3>
+                ${questions.map((q, idx) => {
+                    const userAns = answers[q.id];
+                    
+                    return `
+                        <div class="question-item">
+                            <div class="question-text">${idx + 1}. ${q.question}</div>
+                            <div class="options">
+                                ${q.options.map((opt, oIdx) => {
+                                    let style = "option";
+                                    let badge = "";
+                                    
+                                    if (oIdx === q.correct) {
+                                        style += " correct";
+                                        badge = `<span class="key-badge">KUNCI</span>`;
+                                    } 
+                                    
+                                    if (userAns === oIdx) {
+                                        if (userAns !== q.correct) {
+                                            style += " incorrect";
+                                            badge = `<span class="key-badge" style="color:red; border-color:red;">JAWABAN ANDA</span>`;
+                                        } else {
+                                            badge = `<span class="key-badge" style="background:green; color:white; border-color:green;">BENAR</span>`;
+                                        }
+                                    }
+
+                                    return `<div class="${style}">${opt} ${badge}</div>`;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+
+                <div class="footer">
+                    <p>Guru Mata Pelajaran</p>
+                    <br/><br/><br/>
+                    <p><strong>Findi Lestari, S.Pd.</strong></p>
+                </div>
+                
+                <script>window.print();</script>
+            </body>
+            </html>
+        `;
+        
+        const printWindow = window.open('', '_blank');
+        if (printWindow) {
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+        }
+    };
+
+    const resetEvaluasi = () => {
+        setAppState('login');
+        setUserData({ name: '', userClass: '' });
+        setAnswers({});
+        setScore(0);
+        setGrade('');
+        setShowFeedbackModal(false);
+        window.scrollTo(0, 0);
+    };
 
     return (
-        <div className="bg-[#171717] p-8 md:p-10 rounded-xl shadow-lg border border-history-gold/10">
-            <div className="mb-8 flex justify-between items-center border-b border-white/5 pb-4">
-                <span className="text-xs font-bold text-history-muted uppercase tracking-widest">Soal {currentQ + 1}/{questions.length}</span>
-                <span className="text-history-gold font-bold">Skor: {score}</span>
-            </div>
-            
-            <h3 className="font-serif text-xl md:text-2xl mb-10 text-history-brown leading-relaxed">
-                {questions[currentQ].question}
-            </h3>
-            
-            <div className="space-y-4">
-                {questions[currentQ].options.map((opt, idx) => (
-                    <button
-                        key={idx}
-                        onClick={() => handleAnswer(idx)}
-                        disabled={isAnswered}
-                        className={`w-full text-left p-5 border rounded-lg transition-all duration-300 flex justify-between items-center group
-                            ${selectedOption === idx 
-                                ? (idx === questions[currentQ].answerIndex ? 'bg-emerald-900/20 border-emerald-500 text-emerald-100' : 'bg-rose-900/20 border-rose-500 text-rose-100')
-                                : 'bg-[#0a0a0a] border-history-gold/10 hover:border-history-gold hover:bg-[#1c1c1c] text-history-muted hover:text-history-brown'
-                            }
-                        `}
-                    >
-                        <span className="font-light text-lg">{opt}</span>
-                        {isAnswered && idx === questions[currentQ].answerIndex && <i className="fas fa-check-circle text-emerald-500 text-xl"></i>}
-                        {isAnswered && selectedOption === idx && idx !== questions[currentQ].answerIndex && <i className="fas fa-times-circle text-rose-500 text-xl"></i>}
-                    </button>
-                ))}
-            </div>
-            
-            {isAnswered && (
-                <div className="mt-10 text-right animate-fade-in">
-                    <button onClick={nextQuestion} className="bg-history-gold text-[#0a0a0a] px-8 py-3 rounded hover:bg-white transition font-bold uppercase tracking-widest text-xs shadow-lg">
-                        {currentQ === questions.length - 1 ? "Lihat Hasil" : "Lanjut"} <i className="fas fa-arrow-right ml-2"></i>
-                    </button>
+        <div className="relative min-h-[600px]">
+            {appState === 'login' && (
+                <div className="bg-[#171717] p-8 md:p-12 rounded-2xl shadow-2xl max-w-xl mx-auto border border-history-gold/20 text-center animate-fade-in">
+                    <div className="flex justify-center mb-6">
+                        <div className="bg-[#0a0a0a] p-5 rounded-full border border-history-gold shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+                            <i className="fas fa-school text-4xl text-history-gold"></i>
+                        </div>
+                    </div>
+                    <h2 className="text-2xl font-bold text-history-brown mb-2 uppercase tracking-widest">Identitas Peserta</h2>
+                    <p className="text-history-muted text-sm mb-8">Evaluasi: Perjuangan Mempertahankan Kemerdekaan (20 Soal)</p>
+                    
+                    <form className="space-y-6 text-left" onSubmit={(e) => e.preventDefault()}>
+                        <div>
+                            <label htmlFor="input-name" className="block text-xs font-bold text-history-gold mb-2 uppercase tracking-wide">Nama Siswa</label>
+                            <input 
+                                id="input-name"
+                                type="text" 
+                                name="name"
+                                value={userData.name}
+                                onChange={handleInputChange}
+                                className="w-full p-4 bg-[#0a0a0a] border border-history-muted/20 rounded-lg focus:border-history-gold outline-none transition text-history-brown placeholder-history-muted/30"
+                                placeholder="Isi nama lengkap..."
+                                autoComplete="name"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="input-class" className="block text-xs font-bold text-history-gold mb-2 uppercase tracking-wide">Kelas</label>
+                            <input 
+                                id="input-class"
+                                type="text" 
+                                name="userClass" 
+                                value={userData.userClass}
+                                onChange={handleInputChange}
+                                className="w-full p-4 bg-[#0a0a0a] border border-history-muted/20 rounded-lg focus:border-history-gold outline-none transition text-history-brown placeholder-history-muted/30"
+                                placeholder="Isi kelas..."
+                                autoComplete="off"
+                            />
+                        </div>
+                        <button 
+                            type="button"
+                            onClick={startQuiz}
+                            className="w-full bg-history-gold hover:bg-[#c5a028] text-[#0a0a0a] font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-105 mt-6 flex items-center justify-center gap-2 uppercase tracking-widest text-sm"
+                        >
+                            Mulai Mengerjakan <i className="fas fa-chevron-right ml-1"></i>
+                        </button>
+                    </form>
+                </div>
+            )}
+
+            {appState === 'quiz' && (
+                <div className="flex flex-col min-h-screen">
+                    <div className="bg-[#171717] shadow-lg border-b border-history-gold/20 sticky top-0 z-20 print:hidden">
+                        <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center text-sm">
+                            <div className="flex items-center gap-3 font-bold text-history-brown">
+                                <i className="fas fa-user text-history-gold"></i> {userData.name} <span className="text-history-muted mx-1">|</span> {userData.userClass}
+                            </div>
+                            <div className="flex items-center gap-2 text-history-muted">
+                                <i className="fas fa-clock text-history-gold"></i> 20 Soal
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex-1 max-w-4xl mx-auto w-full p-6 space-y-8 pb-24 animate-fade-in">
+                        <div className="text-center mb-8">
+                            <h2 className="text-2xl font-bold text-history-gold uppercase tracking-widest">Soal Evaluasi</h2>
+                            <p className="text-history-muted text-sm mt-2">Topik Materi: Perjuangan Mempertahankan Kemerdekaan</p>
+                        </div>
+
+                        {questions.map((q, index) => (
+                            <div key={q.id} className="bg-[#171717] p-6 md:p-8 rounded-xl shadow-lg border border-history-gold/10 hover:border-history-gold/30 transition duration-300">
+                                <div className="flex gap-5">
+                                    <div className="bg-[#0a0a0a] text-history-gold w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg font-bold text-lg border border-history-gold/20 shadow-inner">
+                                        {index + 1}
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="text-lg font-medium text-history-brown mb-6 leading-relaxed font-serif">{q.question}</h3>
+                                        <div className="space-y-3">
+                                            {q.options.map((opt, optIdx) => (
+                                                <label 
+                                                    key={optIdx} 
+                                                    className={`flex items-start gap-4 p-4 rounded-lg border cursor-pointer transition-all group ${
+                                                        answers[q.id] === optIdx 
+                                                        ? 'bg-history-gold/10 border-history-gold ring-1 ring-history-gold/50' 
+                                                        : 'bg-[#0a0a0a] border-history-muted/10 hover:bg-[#262626] hover:border-history-muted/30'
+                                                    }`}
+                                                >
+                                                    <div className="mt-1 relative flex items-center justify-center">
+                                                        <input 
+                                                            type="radio" 
+                                                            name={`q-${q.id}`} 
+                                                            className="appearance-none w-5 h-5 rounded-full border-2 border-history-muted/50 checked:border-history-gold checked:bg-history-gold transition-all"
+                                                            checked={answers[q.id] === optIdx}
+                                                            onChange={() => handleOptionSelect(q.id, optIdx)}
+                                                        />
+                                                    </div>
+                                                    <span className={`text-sm md:text-base ${answers[q.id] === optIdx ? 'text-history-gold font-bold' : 'text-history-muted group-hover:text-history-brown'}`}>
+                                                        {opt}
+                                                    </span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+
+                        <div className="flex justify-end pt-6">
+                            <button 
+                                onClick={submitAnswers}
+                                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-10 rounded-full shadow-xl flex items-center gap-3 transition transform hover:scale-105 uppercase tracking-widest text-sm"
+                            >
+                                <i className="fas fa-paper-plane"></i> Kirim Jawaban
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {showFeedbackModal && (
+                <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+                    <div className="bg-[#171717] rounded-2xl max-w-md w-full p-8 text-center shadow-[0_0_50px_rgba(212,175,55,0.2)] border-2 border-history-gold scale-100 transform transition-all relative">
+                        <div className="w-24 h-24 bg-[#0a0a0a] rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-history-gold shadow-lg">
+                            <i className="fas fa-trophy text-history-gold text-4xl animate-bounce"></i>
+                        </div>
+                        <h2 className="text-3xl font-sans font-bold text-history-brown mb-2 uppercase tracking-wide">Hasil Evaluasi</h2>
+                        <p className="text-history-muted mb-4">Terima kasih telah mengerjakan, <span className="text-history-gold font-bold">{userData.name}</span>!</p>
+                        
+                        <div className="bg-[#0a0a0a] p-6 rounded-xl border border-history-gold/20 mb-6">
+                            <div className="text-xs text-history-muted uppercase tracking-[0.2em] mb-2 font-bold">Nilai Akhir Kamu</div>
+                            <div className={`text-7xl font-black ${score >= 75 ? 'text-emerald-500' : 'text-history-gold'}`}>{score}</div>
+                            <div className="mt-2 text-sm font-bold uppercase tracking-widest text-history-brown border-t border-history-gold/10 pt-2 inline-block px-4">
+                                {grade}
+                            </div>
+                        </div>
+
+                        <p className="text-history-brown/80 text-sm mb-8 bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 leading-relaxed">
+                            “Silakan Unduh dan Simpan Hasil Evaluasi kalian, sebagai bahan belajar kalian di rumah”
+                        </p>
+
+                        <div className="flex flex-col gap-3">
+                            {/* Tombol Simpan ke PDF sesuai permintaan */}
+                            <button 
+                                onClick={handleDownloadPDF}
+                                className="bg-history-brown text-[#0a0a0a] px-4 py-3 rounded hover:bg-white transition text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg"
+                            >
+                                <i className="fas fa-print mr-2"></i> Simpan ke PDF
+                            </button>
+                            
+                            <button 
+                                onClick={resetEvaluasi}
+                                className="w-full bg-[#262626] text-history-muted font-bold py-3.5 rounded-lg hover:bg-[#404040] hover:text-white transition flex items-center justify-center gap-2 shadow-lg uppercase tracking-widest text-xs border border-white/5"
+                            >
+                                <i className="fas fa-redo"></i> Ulangi Evaluasi
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

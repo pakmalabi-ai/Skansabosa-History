@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MindfulnessTirani, VillageSimulation, QuizTirani, LKPDTopic2 } from '../components/Topic2Components';
 
 const Topic2: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'kuis'>('materi');
+    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'evaluasi'>('materi');
 
     return (
         <div className="fade-in pb-12">
@@ -42,8 +42,8 @@ const Topic2: React.FC = () => {
                     <i className="fas fa-file-alt mr-2 text-xs"></i> LKPD
                 </button>
                 <button 
-                    onClick={() => setActiveTab('kuis')}
-                    className={`px-8 py-3 font-bold transition text-sm uppercase tracking-widest ${activeTab === 'kuis' ? 'text-history-gold border-b-2 border-history-gold' : 'text-history-muted hover:text-history-brown'}`}
+                    onClick={() => setActiveTab('evaluasi')}
+                    className={`px-8 py-3 font-bold transition text-sm uppercase tracking-widest ${activeTab === 'evaluasi' ? 'text-history-gold border-b-2 border-history-gold' : 'text-history-muted hover:text-history-brown'}`}
                 >
                     <i className="fas fa-pencil-alt mr-2 text-xs"></i> Evaluasi
                 </button>
@@ -154,7 +154,7 @@ const Topic2: React.FC = () => {
                     </div>
                 )}
 
-                {activeTab === 'kuis' && (
+                {activeTab === 'evaluasi' && (
                     <div className="animate-fade-in max-w-3xl mx-auto">
                         <QuizTirani />
                     </div>

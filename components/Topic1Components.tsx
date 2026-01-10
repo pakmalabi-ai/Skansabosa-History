@@ -505,118 +505,576 @@ export const LKPDTopic1: React.FC = () => {
 
 // --- QUIZ COMPONENT ---
 export const Quiz: React.FC = () => {
-    const questions: QuizQuestion[] = [
+    // 20 Questions Data from PDF
+    const questions = [
         {
-            question: "Mengapa Jepang mendarat pertama kali di Tarakan, bukan di Jakarta?",
-            options: ["Mencari sumber makanan", "Menguasai kilang minyak", "Ingin berwisata", "Takut dengan tentara di Jawa"],
-            answerIndex: 1
+            id: 1,
+            question: "Apa alasan utama Jepang menyerang pangkalan Angkatan Laut Amerika Serikat di Pearl Harbor pada 7 Desember 1941?",
+            options: [
+                "A. Ingin menunjukkan kekuatan militer Jepang kepada dunia",
+                "B. Membalas dendam atas serangan Amerika Serikat sebelumnya",
+                "C. Melumpuhkan kekuatan Amerika Serikat yang menghalangi ekspansi Jepang ke Asia Selatan",
+                "D. Menguji coba senjata dan pesawat tempur baru buatan Jepang",
+                "E. Membantu Jerman memenangkan perang di front Eropa"
+            ],
+            correct: 2 // C
         },
         {
-            question: "Apa nama strategi pendaratan Jepang yang menyerupai hewan laut?",
-            options: ["Strategi Hiu", "Strategi Gurita", "Strategi Elang", "Strategi Naga"],
-            answerIndex: 1
+            id: 2,
+            question: "Pendaratan pertama tentara Jepang di wilayah Indonesia terjadi pada tanggal 11 Januari 1942 di...",
+            options: [
+                "A. Palembang",
+                "B. Tarakan",
+                "C. Balikpapan",
+                "D. Batavia",
+                "E. Pontianak"
+            ],
+            correct: 1 // B
         },
         {
-            question: "Propaganda Jepang menyebut diri mereka sebagai...",
-            options: ["Cahaya, Pelindung, Pemimpin Asia", "Raja, Ratu, Pangeran Asia", "Teman, Sahabat, Saudara Asia", "Kuat, Hebat, Dahsyat Asia"],
-            answerIndex: 0
+            id: 3,
+            question: "Tujuan strategis Jepang menguasai wilayah Tarakan dan Balikpapan terlebih dahulu sebelum masuk ke Pulau Jawa adalah...",
+            options: [
+                "A. Menguasai pusat pemerintahan kolonial Belanda",
+                "B. Menguasai sumber daya manusia untuk tenaga kerja",
+                "C. Menguasai kilang minyak bumi untuk bahan bakar perang",
+                "D. Membangun pangkalan militer angkatan darat",
+                "E. Mencari dukungan politik dari suku-suku lokal"
+            ],
+            correct: 2 // C
         },
         {
-            question: "Tokoh yang memilih taktik Kooperatif (bekerja sama) adalah...",
-            options: ["Sutan Sjahrir", "Amir Syarifuddin", "Ir. Soekarno", "Sudirman"],
-            answerIndex: 2
+            id: 4,
+            question: "Belanda menyerah tanpa syarat kepada Jepang pada tanggal 8 Maret 1942. Peristiwa penyerahan kekuasaan ini tertuang dalam...",
+            options: [
+                "A. Perjanjian Linggarjati",
+                "B. Perjanjian Renville",
+                "C. Perjanjian Bongaya",
+                "D. Kapitulasi Kalijati",
+                "E. Perjanjian Roem-Royen"
+            ],
+            correct: 3 // D
+        },
+        {
+            id: 5,
+            question: "Salah satu bentuk propaganda Jepang untuk menarik simpati rakyat Indonesia dikenal dengan \"Gerakan 3A\". Siapakah tokoh Indonesia yang ditunjuk Jepang untuk memimpin gerakan ini?",
+            options: [
+                "A. Ir. Soekarno",
+                "B. Mr. Syamsudin",
+                "C. Ki Hajar Dewantara",
+                "D. K.H. Mas Mansyur",
+                "E. Moh. Hatta"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 6,
+            question: "Organisasi PUTERA (Pusat Tenaga Rakyat) dipimpin oleh tokoh nasionalis yang dikenal dengan sebutan \"Empat Serangkai\". Tokoh-tokoh tersebut adalah...",
+            options: [
+                "A. Soekarno, Hatta, Sjahrir, Amir Syarifuddin",
+                "B. Soekarno, Hatta, Ki Hajar Dewantara, K.H. Mas Mansyur",
+                "C. Soekarno, Hatta, Yamin, Soepomo",
+                "D. Soekarno, Hatta, Ahmad Soebardjo, Sayuti Melik",
+                "E. Soekarno, Hatta, Cipto Mangunkusumo, Douwes Dekker"
+            ],
+            correct: 1 // B based on key in PDF
+        },
+        {
+            id: 7,
+            question: "Bagi para pemimpin nasionalis, tujuan memanfatkan organisasi PUTERA sebenarnya adalah...",
+            options: [
+                "A. Mempersiapkan kemerdekaan Indonesia secara bertahap",
+                "B. Mengembangkan kebudayaan Jawa di seluruh Indonesia",
+                "C. Membujuk kaum intelektual untuk membantu Jepang berperang",
+                "D. Melatih pemuda Indonesia menjadi tentara Jepang",
+                "E. Memberikan pendidikan gratis bagi rakyat miskin"
+            ],
+            correct: 0 // A
+        },
+        {
+            id: 8,
+            question: "Organisasi bentukan Jepang yang merupakan himpunan kebaktian rakyat dan terstruktur sangat rapi hingga tingkat RT/RW (Tonarigumi) adalah...",
+            options: [
+                "A. PUTERA",
+                "B. Jawa Hokokai",
+                "C. Masyumi",
+                "D. MIAI",
+                "E. Seinendan"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 9,
+            question: "Pengerahan tenaga kerja paksa pada masa pendudukan Jepang yang menyebabkan penderitaan hebat, kelaparan, dan kematian bagi rakyat Indonesia disebut...",
+            options: [
+                "A. Kerja Rodi",
+                "B. Cultuurstelsel",
+                "C. Romusha",
+                "D. Seikerei",
+                "E. Kinrohosi"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 10,
+            question: "Barisan pemuda pembantu prajurit Jepang yang dikirim ke medan perang di Pasifik, Morotai, dan Burma adalah...",
+            options: [
+                "A. Keibodan",
+                "B. Seinendan",
+                "C. Heiho",
+                "D. PETA",
+                "E. Fujinkai"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 11,
+            question: "Perbedaan mendasar antara PETA (Pembela Tanah Air) dengan Heiho adalah...",
+            options: [
+                "A. PETA adalah bagian resmi dari tentara Jepang, Heiho bukan",
+                "B. PETA dipimpin oleh perwira bangsa Indonesia, Heiho dipimpin perwira Jepang",
+                "C. PETA hanya berisi wanita, Heiho berisi laki-laki",
+                "D. PETA tidak dibekali senjata, Heiho bersenjata lengkap",
+                "E. PETA dibentuk oleh Belanda, Heiho dibentuk oleh Jepang"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 12,
+            question: "Pemberontakan PETA di Blitar pada tanggal 14 Februari 1945 merupakan perlawanan terbesar terhadap Jepang yang dipimpin oleh...",
+            options: [
+                "A. K.H. Zaenal Mustafa",
+                "B. Teuku Hamid",
+                "C. Supriyadi",
+                "D. Jenderal Sudirman",
+                "E. Slamet Riyadi"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 13,
+            question: "Tokoh pergerakan nasional yang menolak bekerja sama dengan Jepang dan memilih strategi perjuangan \"Gerakan Bawah Tanah\" adalah...",
+            options: [
+                "A. Ir. Soekarno",
+                "B. Moh. Hatta",
+                "C. K.H. Mas Mansyur",
+                "D. Sutan Sjahrir",
+                "E. Ki Hajar Dewantara"
+            ],
+            correct: 3 // D
+        },
+        {
+            id: 14,
+            question: "Kewajiban melakukan penghormatan dengan membungkukkan badan ke arah matahari terbit (Tokyo) setiap pagi pada masa pendudukan Jepang disebut...",
+            options: [
+                "A. Harakiri",
+                "B. Seikerei",
+                "C. Bushido",
+                "D. Hakko Ichiu",
+                "E. Kimigayo"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 15,
+            question: "Dampak positif pendudukan Jepang di bidang bahasa bagi bangsa Indonesia adalah...",
+            options: [
+                "A. Bahasa Jepang menjadi bahasa utama di sekolah",
+                "B. Bahasa Belanda wajib dipelajari oleh semua kalangan",
+                "C. Bahasa Indonesia dilarang digunakan dalam percakapan sehari-hari",
+                "D. Bahasa Indonesia dijadikan bahasa pengantar resmi dan bahasa administrasi",
+                "E. Bahasa Inggris mulai diajarkan di sekolah-sekolah"
+            ],
+            correct: 3 // D
+        },
+        {
+            id: 16,
+            question: "Badan yang dibentuk Jepang pada akhir masa pendudukannya untuk menyelidiki usaha-usaha persiapan kemerdekaan Indonesia adalah...",
+            options: [
+                "A. PPKI",
+                "B. BPUPKI",
+                "C. KNIP",
+                "D. PETA",
+                "E. Cuo Sangi In"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 17,
+            question: "Siapakah tokoh yang menjabat sebagai Ketua BPUPKI (Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan Indonesia)?",
+            options: [
+                "A. Ir. Soekarno",
+                "B. Moh. Hatta",
+                "C. Dr. K.R.T. Radjiman Wedyodiningrat",
+                "D. Mr. Muhammad Yamin",
+                "E. Prof. Dr. Mr. Soepomo"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 18,
+            question: "Perdana Menteri Jepang yang memberikan janji kemerdekaan kepada Indonesia di \"kelak kemudian hari\" pada sidang parlemen Jepang adalah...",
+            options: [
+                "A. Kuniaki Koiso",
+                "B. Hideki Tojo",
+                "C. Tanaka",
+                "D. Laksamana Maeda",
+                "E. Isoroku Yamamoto"
+            ],
+            correct: 0 // A
+        },
+        {
+            id: 19,
+            question: "Peristiwa eksternal yang menjadi faktor utama menyerahnya Jepang kepada Sekutu dan menandai berakhirnya kekuasaan Jepang di Indonesia adalah...",
+            options: [
+                "A. Serangan Umum 1 Maret",
+                "B. Jatuhnya bom atom di kota Hiroshima dan Nagasaki",
+                "C. Kekalahan Jepang dalam Pertempuran Laut Jawa",
+                "D. Ditandatanganinya Perjanjian Linggarjati",
+                "E. Terjadinya Pemberontakan PETA di berbagai daerah"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 20,
+            question: "Nilai luhur yang dapat diambil dari perbedaan strategi antara tokoh kooperatif (Soekarno-Hatta) dan non-kooperatif (Sjahrir) pada masa Jepang adalah...",
+            options: [
+                "A. Pentingnya persaingan antar golongan untuk merebut kekuasaan",
+                "B. Sinergi dan kerja sama meski berbeda cara demi satu tujuan: Kemerdekaan",
+                "C. Sikap menyerah pada nasib dan menunggu pemberian penjajah",
+                "D. Mementingkan keselamatan kelompok sendiri di atas kepentingan bangsa",
+                "E. Tidak peduli pada penderitaan rakyat asalkan tujuan tercapai"
+            ],
+            correct: 1 // B
         }
     ];
 
-    const [currentQ, setCurrentQ] = useState(0);
+    const [appState, setAppState] = useState<'login' | 'quiz' | 'result'>('login');
+    const [userData, setUserData] = useState({ name: '', userClass: '' });
+    const [answers, setAnswers] = useState<{[key: number]: number}>({});
     const [score, setScore] = useState(0);
-    const [showResult, setShowResult] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<number | null>(null);
-    const [isAnswered, setIsAnswered] = useState(false);
-    const [feedback, setFeedback] = useState("");
+    const [grade, setGrade] = useState('');
+    const [showFeedbackModal, setShowFeedbackModal] = useState(false);
 
-    const handleAnswer = (idx: number) => {
-        if (isAnswered) return;
+    // Handle Login Input
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setUserData(prev => ({ ...prev, [name]: value }));
+    };
+
+    // Start Quiz
+    const startQuiz = () => {
+        if (userData.name && userData.userClass) {
+            setAppState('quiz');
+            window.scrollTo(0, 0);
+        } else {
+            alert("Mohon isi Nama Lengkap dan Kelas terlebih dahulu.");
+        }
+    };
+
+    // Handle Answer Selection
+    const handleOptionSelect = (qId: number, optionIndex: number) => {
+        setAnswers({ ...answers, [qId]: optionIndex });
+    };
+
+    // Submit Answers
+    const submitAnswers = () => {
+        if (Object.keys(answers).length < questions.length) {
+            if (!window.confirm("Masih ada soal yang belum diisi. Yakin ingin mengirim jawaban?")) return;
+        }
+
+        let calculatedScore = 0;
+        questions.forEach(q => {
+            if (answers[q.id] === q.correct) {
+                calculatedScore += 5; // 5 pts x 20 questions = 100
+            }
+        });
+
+        setScore(calculatedScore);
         
-        setSelectedOption(idx);
-        setIsAnswered(true);
+        let calculatedGrade = '';
+        if (calculatedScore <= 69) calculatedGrade = 'Kurang';
+        else if (calculatedScore <= 80) calculatedGrade = 'Cukup Baik';
+        else if (calculatedScore <= 90) calculatedGrade = 'Baik';
+        else calculatedGrade = 'Sangat Baik';
+        
+        setGrade(calculatedGrade);
+        setShowFeedbackModal(true);
+    };
 
-        if (idx === questions[currentQ].answerIndex) {
-            setScore(score + 25);
-            setFeedback("Benar");
-        } else {
-            setFeedback(`Salah. Jawaban: ${questions[currentQ].options[questions[currentQ].answerIndex]}`);
+    // Generate Report View (Open in new window for printing)
+    const handleDownloadPDF = () => {
+        const printContent = `
+            <html>
+            <head>
+                <title>Laporan Evaluasi - ${userData.name}</title>
+                <style>
+                    body { font-family: 'Times New Roman', serif; padding: 40px; color: #000; background: #fff; }
+                    .header { text-align: center; border-bottom: 3px solid #000; padding-bottom: 20px; margin-bottom: 30px; }
+                    .header h1 { font-size: 24px; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+                    .header h2 { font-size: 18px; margin: 5px 0 0; font-weight: normal; }
+                    .info-table { width: 100%; margin-bottom: 30px; border: 1px solid #000; }
+                    .info-table td { padding: 10px; border: 1px solid #000; }
+                    .score-box { text-align: center; margin: 20px 0; padding: 20px; border: 2px solid #000; background: #f0f0f0; }
+                    .score-num { font-size: 48px; font-weight: bold; display: block; }
+                    .score-grade { font-size: 18px; font-weight: bold; text-transform: uppercase; }
+                    .question-item { margin-bottom: 15px; page-break-inside: avoid; border-bottom: 1px dashed #ccc; padding-bottom: 10px; }
+                    .question-text { font-weight: bold; margin-bottom: 5px; }
+                    .options { margin-left: 20px; font-size: 14px; }
+                    .option { padding: 2px 0; }
+                    .selected { font-weight: bold; color: blue; }
+                    .correct { font-weight: bold; color: green; }
+                    .incorrect { color: red; text-decoration: line-through; }
+                    .key-badge { background: #eee; padding: 2px 5px; font-size: 10px; border-radius: 3px; margin-left: 5px; border: 1px solid #999; }
+                    .footer { margin-top: 50px; text-align: right; }
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <h1>Laporan Hasil Evaluasi</h1>
+                    <h2>Sejarah Indonesia: Pendudukan Jepang</h2>
+                </div>
+
+                <table class="info-table" cellspacing="0">
+                    <tr>
+                        <td width="30%"><strong>Nama Siswa</strong></td>
+                        <td>${userData.name}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kelas</strong></td>
+                        <td>${userData.userClass}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tanggal</strong></td>
+                        <td>${new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</td>
+                    </tr>
+                </table>
+
+                <div class="score-box">
+                    <span class="score-grade">Nilai Akhir</span>
+                    <span class="score-num">${score}</span>
+                    <span class="score-grade">${grade}</span>
+                </div>
+
+                <h3>Rincian Jawaban:</h3>
+                ${questions.map((q, idx) => {
+                    const userAns = answers[q.id];
+                    const isCorrect = userAns === q.correct;
+                    
+                    return `
+                        <div class="question-item">
+                            <div class="question-text">${idx + 1}. ${q.question}</div>
+                            <div class="options">
+                                ${q.options.map((opt, oIdx) => {
+                                    let style = "option";
+                                    let badge = "";
+                                    
+                                    if (oIdx === q.correct) {
+                                        style += " correct";
+                                        badge = `<span class="key-badge">KUNCI</span>`;
+                                    } 
+                                    
+                                    if (userAns === oIdx) {
+                                        if (userAns !== q.correct) {
+                                            style += " incorrect";
+                                            badge = `<span class="key-badge" style="color:red; border-color:red;">JAWABAN ANDA</span>`;
+                                        } else {
+                                            badge = `<span class="key-badge" style="background:green; color:white; border-color:green;">BENAR</span>`;
+                                        }
+                                    }
+
+                                    return `<div class="${style}">${opt} ${badge}</div>`;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+
+                <div class="footer">
+                    <p>Guru Mata Pelajaran</p>
+                    <br/><br/><br/>
+                    <p><strong>Findi Lestari, S.Pd.</strong></p>
+                </div>
+                
+                <script>window.print();</script>
+            </body>
+            </html>
+        `;
+        
+        const printWindow = window.open('', '_blank');
+        if (printWindow) {
+            printWindow.document.write(printContent);
+            printWindow.document.close();
         }
     };
 
-    const nextQuestion = () => {
-        if (currentQ < questions.length - 1) {
-            setCurrentQ(currentQ + 1);
-            setIsAnswered(false);
-            setSelectedOption(null);
-            setFeedback("");
-        } else {
-            setShowResult(true);
-        }
-    };
-
-    const restartQuiz = () => {
-        setCurrentQ(0);
+    const resetEvaluasi = () => {
+        setAppState('login');
+        setUserData({ name: '', userClass: '' });
+        setAnswers({});
         setScore(0);
-        setShowResult(false);
-        setIsAnswered(false);
-        setSelectedOption(null);
-        setFeedback("");
+        setGrade('');
+        setShowFeedbackModal(false);
+        window.scrollTo(0, 0);
     };
-
-    if (showResult) {
-        return (
-            <div className="glass-card p-10 rounded-2xl border border-history-gold/30 text-center">
-                <div className="text-6xl mb-4 text-history-gold opacity-80">🏆</div>
-                <h3 className="text-2xl font-sans font-bold mb-3 text-history-brown uppercase tracking-widest">Kuis Selesai</h3>
-                <p className="text-lg mb-8 text-history-muted font-light">Skor Anda: <span className="font-bold text-history-gold text-2xl ml-2">{score}</span> / 100</p>
-                <button onClick={restartQuiz} className="px-8 py-3 bg-history-gold text-[#0a0a0a] rounded hover:bg-[#c5a028] transition font-bold uppercase tracking-widest text-sm">Ulangi Kuis</button>
-            </div>
-        );
-    }
 
     return (
-        <div className="glass-card p-10 rounded-2xl border border-history-gold/10">
-            {/* Progress Bar */}
-            <div className="w-full bg-[#171717] h-1 mb-8">
-                <div className="bg-history-gold h-1 transition-all duration-500" style={{ width: `${((currentQ) / questions.length) * 100}%` }}></div>
-            </div>
+        <div className="relative min-h-[600px]">
+            {appState === 'login' && (
+                <div className="bg-[#171717] p-8 md:p-12 rounded-2xl shadow-2xl max-w-xl mx-auto border border-history-gold/20 text-center animate-fade-in">
+                    <div className="flex justify-center mb-6">
+                        <div className="bg-[#0a0a0a] p-5 rounded-full border border-history-gold shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+                            <i className="fas fa-school text-4xl text-history-gold"></i>
+                        </div>
+                    </div>
+                    <h2 className="text-2xl font-bold text-history-brown mb-2 uppercase tracking-widest">Identitas Peserta</h2>
+                    <p className="text-history-muted text-sm mb-8">Evaluasi: Pendudukan Jepang di Indonesia (20 Soal)</p>
+                    
+                    <form className="space-y-6 text-left" onSubmit={(e) => e.preventDefault()}>
+                        <div>
+                            <label htmlFor="input-name" className="block text-xs font-bold text-history-gold mb-2 uppercase tracking-wide">Nama Siswa</label>
+                            <input 
+                                id="input-name"
+                                type="text" 
+                                name="name"
+                                value={userData.name}
+                                onChange={handleInputChange}
+                                className="w-full p-4 bg-[#0a0a0a] border border-history-muted/20 rounded-lg focus:border-history-gold outline-none transition text-history-brown placeholder-history-muted/30"
+                                placeholder="Isi nama lengkap..."
+                                autoComplete="name"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="input-class" className="block text-xs font-bold text-history-gold mb-2 uppercase tracking-wide">Kelas</label>
+                            <input 
+                                id="input-class"
+                                type="text" 
+                                name="userClass" 
+                                value={userData.userClass}
+                                onChange={handleInputChange}
+                                className="w-full p-4 bg-[#0a0a0a] border border-history-muted/20 rounded-lg focus:border-history-gold outline-none transition text-history-brown placeholder-history-muted/30"
+                                placeholder="Isi kelas..."
+                                autoComplete="off"
+                            />
+                        </div>
+                        <button 
+                            type="button"
+                            onClick={startQuiz}
+                            className="w-full bg-history-gold hover:bg-[#c5a028] text-[#0a0a0a] font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-105 mt-6 flex items-center justify-center gap-2 uppercase tracking-widest text-sm"
+                        >
+                            Mulai Mengerjakan <i className="fas fa-chevron-right ml-1"></i>
+                        </button>
+                    </form>
+                </div>
+            )}
 
-            <h3 className="text-xl font-sans font-bold mb-8 text-history-brown leading-relaxed">
-                <span className="text-history-gold mr-3">{currentQ + 1}.</span> {questions[currentQ].question}
-            </h3>
+            {appState === 'quiz' && (
+                <div className="flex flex-col min-h-screen">
+                    <div className="bg-[#171717] shadow-lg border-b border-history-gold/20 sticky top-0 z-20 print:hidden">
+                        <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center text-sm">
+                            <div className="flex items-center gap-3 font-bold text-history-brown">
+                                <i className="fas fa-user text-history-gold"></i> {userData.name} <span className="text-history-muted mx-1">|</span> {userData.userClass}
+                            </div>
+                            <div className="flex items-center gap-2 text-history-muted">
+                                <i className="fas fa-clock text-history-gold"></i> 20 Soal
+                            </div>
+                        </div>
+                    </div>
 
-            <div className="space-y-3">
-                {questions[currentQ].options.map((opt, idx) => (
-                    <button
-                        key={idx}
-                        onClick={() => handleAnswer(idx)}
-                        disabled={isAnswered}
-                        className={`w-full text-left p-4 border rounded transition flex justify-between items-center group
-                            ${selectedOption === idx 
-                                ? (idx === questions[currentQ].answerIndex ? 'bg-emerald-900/30 border-emerald-500 text-emerald-100' : 'bg-rose-900/30 border-rose-500 text-rose-100')
-                                : 'bg-[#171717] border-history-gold/10 hover:border-history-gold/40 text-history-muted hover:text-history-brown'
-                            }
-                        `}
-                    >
-                        <span className="font-light tracking-wide">{opt}</span>
-                        {isAnswered && idx === questions[currentQ].answerIndex && <i className="fas fa-check text-emerald-500"></i>}
-                        {selectedOption === idx && idx !== questions[currentQ].answerIndex && <i className="fas fa-times text-rose-500"></i>}
-                    </button>
-                ))}
-            </div>
+                    <div className="flex-1 max-w-4xl mx-auto w-full p-6 space-y-8 pb-24 animate-fade-in">
+                        <div className="text-center mb-8">
+                            <h2 className="text-2xl font-bold text-history-gold uppercase tracking-widest">Soal Evaluasi</h2>
+                            <p className="text-history-muted text-sm mt-2">Topik Materi: Pendudukan Jepang di Indonesia</p>
+                        </div>
 
-            {isAnswered && (
-                <div className="mt-8 pt-6 border-t border-history-gold/10 flex justify-between items-center animate-fade-in">
-                    <span className={`font-bold text-sm uppercase tracking-widest ${feedback.includes("Benar") ? "text-emerald-500" : "text-rose-500"}`}>{feedback}</span>
-                    <button onClick={nextQuestion} className="bg-history-gold text-[#0a0a0a] px-8 py-3 rounded hover:bg-[#c5a028] transition font-bold uppercase tracking-widest text-xs">
-                        {currentQ === questions.length - 1 ? "Lihat Hasil" : "Lanjut"}
-                    </button>
+                        {questions.map((q, index) => (
+                            <div key={q.id} className="bg-[#171717] p-6 md:p-8 rounded-xl shadow-lg border border-history-gold/10 hover:border-history-gold/30 transition duration-300">
+                                <div className="flex gap-5">
+                                    <div className="bg-[#0a0a0a] text-history-gold w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg font-bold text-lg border border-history-gold/20 shadow-inner">
+                                        {index + 1}
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="text-lg font-medium text-history-brown mb-6 leading-relaxed font-serif">{q.question}</h3>
+                                        <div className="space-y-3">
+                                            {q.options.map((opt, optIdx) => (
+                                                <label 
+                                                    key={optIdx} 
+                                                    className={`flex items-start gap-4 p-4 rounded-lg border cursor-pointer transition-all group ${
+                                                        answers[q.id] === optIdx 
+                                                        ? 'bg-history-gold/10 border-history-gold ring-1 ring-history-gold/50' 
+                                                        : 'bg-[#0a0a0a] border-history-muted/10 hover:bg-[#262626] hover:border-history-muted/30'
+                                                    }`}
+                                                >
+                                                    <div className="mt-1 relative flex items-center justify-center">
+                                                        <input 
+                                                            type="radio" 
+                                                            name={`q-${q.id}`} 
+                                                            className="appearance-none w-5 h-5 rounded-full border-2 border-history-muted/50 checked:border-history-gold checked:bg-history-gold transition-all"
+                                                            checked={answers[q.id] === optIdx}
+                                                            onChange={() => handleOptionSelect(q.id, optIdx)}
+                                                        />
+                                                    </div>
+                                                    <span className={`text-sm md:text-base ${answers[q.id] === optIdx ? 'text-history-gold font-bold' : 'text-history-muted group-hover:text-history-brown'}`}>
+                                                        {opt}
+                                                    </span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+
+                        <div className="flex justify-end pt-6">
+                            <button 
+                                onClick={submitAnswers}
+                                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-10 rounded-full shadow-xl flex items-center gap-3 transition transform hover:scale-105 uppercase tracking-widest text-sm"
+                            >
+                                <i className="fas fa-paper-plane"></i> Kirim Jawaban
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {showFeedbackModal && (
+                <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+                    <div className="bg-[#171717] rounded-2xl max-w-md w-full p-8 text-center shadow-[0_0_50px_rgba(212,175,55,0.2)] border-2 border-history-gold scale-100 transform transition-all relative">
+                        <div className="w-24 h-24 bg-[#0a0a0a] rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-history-gold shadow-lg">
+                            <i className="fas fa-trophy text-history-gold text-4xl animate-bounce"></i>
+                        </div>
+                        <h2 className="text-3xl font-sans font-bold text-history-brown mb-2 uppercase tracking-wide">Hasil Evaluasi</h2>
+                        <p className="text-history-muted mb-4">Terima kasih telah mengerjakan, <span className="text-history-gold font-bold">{userData.name}</span>!</p>
+                        
+                        <div className="bg-[#0a0a0a] p-6 rounded-xl border border-history-gold/20 mb-6">
+                            <div className="text-xs text-history-muted uppercase tracking-[0.2em] mb-2 font-bold">Nilai Akhir Kamu</div>
+                            <div className={`text-7xl font-black ${score >= 75 ? 'text-emerald-500' : 'text-history-gold'}`}>{score}</div>
+                            <div className="mt-2 text-sm font-bold uppercase tracking-widest text-history-brown border-t border-history-gold/10 pt-2 inline-block px-4">
+                                {grade}
+                            </div>
+                        </div>
+
+                        <p className="text-history-brown/80 text-sm mb-8 bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 leading-relaxed">
+                            “Silakan Unduh dan Simpan Hasil Evaluasi kalian, sebagai bahan belajar kalian di rumah”
+                        </p>
+
+                        <div className="flex flex-col gap-3">
+                            {/* Tombol Simpan ke PDF sesuai permintaan */}
+                            <button 
+                                onClick={handleDownloadPDF}
+                                className="bg-history-brown text-[#0a0a0a] px-4 py-3 rounded hover:bg-white transition text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg"
+                            >
+                                <i className="fas fa-print mr-2"></i> Simpan ke PDF
+                            </button>
+                            
+                            <button 
+                                onClick={resetEvaluasi}
+                                className="w-full bg-[#262626] text-history-muted font-bold py-3.5 rounded-lg hover:bg-[#404040] hover:text-white transition flex items-center justify-center gap-2 shadow-lg uppercase tracking-widest text-xs border border-white/5"
+                            >
+                                <i className="fas fa-redo"></i> Ulangi Evaluasi
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

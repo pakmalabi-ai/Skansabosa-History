@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MindfulnessProklamasi, ProklamasiSimulation, QuizProklamasi, LKPDTopic4 } from '../components/Topic4Components';
 
 const Topic4: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'kuis'>('materi');
+    const [activeTab, setActiveTab] = useState<'materi' | 'simulasi' | 'lkpd' | 'evaluasi'>('materi');
     const [subMateri, setSubMateri] = useState<'rengasdengklok' | 'perumusan' | 'proklamasi'>('rengasdengklok');
 
     return (
@@ -28,7 +28,7 @@ const Topic4: React.FC = () => {
                     { id: 'materi', icon: 'book-open', label: 'Materi' },
                     { id: 'simulasi', icon: 'vr-cardboard', label: 'Simulasi RPG' },
                     { id: 'lkpd', icon: 'file-alt', label: 'LKPD' },
-                    { id: 'kuis', icon: 'clipboard-list', label: 'Evaluasi' }
+                    { id: 'evaluasi', icon: 'clipboard-list', label: 'Evaluasi' }
                 ].map((tab) => (
                     <button 
                         key={tab.id}
@@ -227,7 +227,7 @@ const Topic4: React.FC = () => {
                     </div>
                 )}
 
-                {activeTab === 'kuis' && (
+                {activeTab === 'evaluasi' && (
                     <div className="animate-fade-in max-w-4xl mx-auto">
                         <div className="text-center mb-10">
                             <h3 className="font-sans text-3xl font-bold text-history-brown uppercase tracking-widest">Evaluasi Pemahaman</h3>
