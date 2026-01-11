@@ -77,10 +77,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                      {PAGES.filter(p => p.id > 1).map((page) => (
                        <button
                          key={page.id}
-                         onClick={() => handleNavigate(page.path)}
-                         className={`w-full text-left px-6 py-3 text-sm hover:bg-white/5 hover:text-history-gold transition font-sans border-b border-white/5 last:border-0 ${location.pathname === page.path ? 'text-history-gold font-bold bg-history-gold/5' : ''}`}
+                         onClick={() => page.isAvailable && handleNavigate(page.path)}
+                         className={`w-full text-left px-6 py-3 text-sm transition font-sans border-b border-white/5 last:border-0 flex items-center justify-between
+                            ${location.pathname === page.path ? 'text-history-gold font-bold bg-history-gold/5' : ''}
+                            ${page.isAvailable 
+                                ? 'hover:bg-white/5 hover:text-history-gold text-history-brown cursor-pointer' 
+                                : 'text-history-muted opacity-50 cursor-not-allowed'}
+                         `}
                        >
-                         <span className="opacity-50 mr-2">{page.id - 1}.</span> {page.title}
+                         <span><span className="opacity-50 mr-2">{page.id - 1}.</span> {page.title}</span>
+                         {!page.isAvailable && <i className="fas fa-lock text-xs ml-2"></i>}
                        </button>
                      ))}
                    </div>
@@ -112,10 +118,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               {PAGES.filter(p => p.id > 1).map((page) => (
                  <button
                    key={page.id}
-                   onClick={() => handleNavigate(page.path)}
-                   className={`text-left text-history-brown hover:text-history-gold py-3 text-sm pl-2 font-sans border-b border-white/5 ${location.pathname === page.path ? 'text-history-gold font-bold' : ''}`}
+                   onClick={() => page.isAvailable && handleNavigate(page.path)}
+                   className={`text-left py-3 text-sm pl-2 font-sans border-b border-white/5 flex items-center justify-between
+                        ${location.pathname === page.path ? 'text-history-gold font-bold' : ''}
+                        ${page.isAvailable 
+                            ? 'text-history-brown hover:text-history-gold' 
+                            : 'text-history-muted opacity-50'}
+                   `}
                  >
-                   <span className="inline-block w-6 opacity-50">{page.id - 1}.</span> {page.title}
+                   <span><span className="inline-block w-6 opacity-50">{page.id - 1}.</span> {page.title}</span>
+                   {!page.isAvailable && <i className="fas fa-lock text-xs ml-2"></i>}
                  </button>
                ))}
             </div>
