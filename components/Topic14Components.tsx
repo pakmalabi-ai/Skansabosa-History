@@ -381,106 +381,577 @@ export const LKPDTopic14: React.FC = () => {
     );
 };
 
-// --- QUIZ COMPONENT ---
+// --- QUIZ COMPONENT (FULL EVALUATION SYSTEM) ---
 export const QuizJejakOrba: React.FC = () => {
-    const questions: QuizQuestion[] = [
+    // 20 Questions from PDF "Menelusuri Jejak Orde Baru (1966–1998)"
+    const questions = [
         {
-            question: "Salah satu keberhasilan ekonomi Orde Baru yang diakui dunia internasional adalah...",
-            options: ["Swasembada Beras (1984)", "Industri Pesawat Terbang", "Pembangunan Sirkuit Sentul", "Ekspor Mobil Nasional"],
-            answerIndex: 0
+            id: 1,
+            question: "Lahirnya pemerintahan Orde Baru ditandai oleh sebuah peristiwa penting yang menjadi tonggak peralihan kekuasaan dari Presiden Soekarno kepada Letjen Soeharto. Dokumen atau peristiwa tersebut adalah...",
+            options: [
+                "A. Dekrit Presiden 5 Juli 1959",
+                "B. Trikora (Tri Komando Rakyat)",
+                "C. Supersemar (Surat Perintah Sebelas Maret)",
+                "D. Proklamasi Kemerdekaan",
+                "E. Konferensi Meja Bundar"
+            ],
+            correct: 2 // C
         },
         {
-            question: "Program Keluarga Berencana (KB) pada masa Orde Baru bertujuan untuk...",
-            options: ["Meningkatkan jumlah tentara", "Mengendalikan laju pertumbuhan penduduk", "Membatasi hak asasi manusia", "Menambah tenaga kerja murah"],
-            answerIndex: 1
+            id: 2,
+            question: "Pada masa transisi tahun 1966, kesatuan aksi mahasiswa dan pemuda mengajukan tuntutan yang dikenal dengan Tritura (Tri Tuntutan Rakyat). Berikut ini yang bukan merupakan isi dari Tritura adalah...",
+            options: [
+                "A. Bubarkan PKI",
+                "B. Bersihkan Kabinet Dwikora dari unsur PKI",
+                "C. Turunkan harga sembako",
+                "D. Bubarkan Konstituante",
+                "E. Perbaikan sandang dan pangan"
+            ],
+            correct: 3 // D (Bubarkan Konstituante is from 1959 Decree)
         },
         {
-            question: "Dampak negatif kebijakan politik 'Massa Mengambang' (Floating Mass) adalah...",
-            options: ["Rakyat di desa menjadi buta politik dan mudah dimobilisasi", "Partai politik semakin banyak", "Demokrasi semakin maju", "Rakyat bebas berpendapat"],
-            answerIndex: 0
+            id: 3,
+            question: "Pemerintahan Orde Baru memiliki slogan atau visi utama untuk menjalankan kehidupan berbangsa dan bernegara, yaitu...",
+            options: [
+                "A. Melaksanakan politik luar negeri bebas aktif",
+                "B. Melaksanakan Pancasila dan UUD 1945 secara murni dan konsekuen",
+                "C. Membangun masyarakat sosialis Indonesia",
+                "D. Menjadikan Indonesia sebagai macan Asia",
+                "E. Mengembalikan kejayaan Nusantara seperti masa Majapahit"
+            ],
+            correct: 1 // B
         },
         {
-            question: "Apa yang dimaksud dengan Dwifungsi ABRI yang diterapkan pada masa Orde Baru?",
-            options: ["TNI hanya bertugas menjaga perbatasan", "TNI memiliki peran ganda: Pertahanan dan Sosial-Politik", "TNI dilarang berbisnis", "Polisi dan Tentara dipisah"],
-            answerIndex: 1
+            id: 4,
+            question: "Salah satu kebijakan politik dalam negeri yang diterapkan pemerintah Orde Baru untuk menciptakan stabilitas politik adalah penyederhanaan (fusi) partai politik pada tahun 1973. Partai Persatuan Pembangunan (PPP) merupakan gabungan dari partai-partai beraliran...",
+            options: [
+                "A. Nasionalis",
+                "B. Islam",
+                "C. Komunis",
+                "D. Kristen dan Katolik",
+                "E. Sosialis"
+            ],
+            correct: 1 // B
         },
         {
-            question: "Penyebab utama runtuhnya ekonomi Orde Baru pada tahun 1997/1998 adalah...",
-            options: ["Serangan negara asing", "Pondasi ekonomi rapuh akibat KKN dan hutang luar negeri", "Kegagalan panen raya", "Bencana alam tsunami"],
-            answerIndex: 1
+            id: 5,
+            question: "Pada masa Orde Baru, militer memiliki peran ganda, yaitu sebagai kekuatan pertahanan keamanan dan sebagai kekuatan sosial politik yang memungkinkan anggota militer menduduki jabatan sipil (Gubernur, Bupati, DPR). Konsep ini dikenal dengan nama...",
+            options: [
+                "A. Sapta Marga",
+                "B. Komando Teritorial",
+                "C. Dwifungsi ABRI",
+                "D. Pagar Betis",
+                "E. Operasi Militer Selain Perang"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 6,
+            question: "Strategi pembangunan ekonomi pemerintah Orde Baru tertuang dalam Trilogi Pembangunan. Tiga aspek utama dalam Trilogi Pembangunan tersebut adalah...",
+            options: [
+                "A. Stabilitas Nasional, Pertumbuhan Ekonomi, dan Pemerataan Pembangunan",
+                "B. Kebebasan Pers, Demokrasi Terpimpin, dan Ekonomi Kerakyatan",
+                "C. Swasembada Pangan, Industrialisasi, dan Globalisasi",
+                "D. Pendidikan, Kesehatan, dan Perumahan Rakyat",
+                "E. Pertanian, Perkebunan, dan Kelautan"
+            ],
+            correct: 0 // A
+        },
+        {
+            id: 7,
+            question: "Program pembangunan jangka panjang yang dilaksanakan secara bertahap setiap lima tahun pada masa Orde Baru disebut...",
+            options: [
+                "A. Rapim (Rapat Pimpinan)",
+                "B. Repelita (Rencana Pembangunan Lima Tahun)",
+                "C. Propenas (Program Pembangunan Nasional)",
+                "D. MP3EI",
+                "E. Nawacita"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 8,
+            question: "Prestasi gemilang pemerintah Orde Baru di sektor pertanian yang mendapatkan penghargaan dari FAO (Organisasi Pangan dan Pertanian PBB) pada tahun 1984 adalah keberhasilan Indonesia mencapai...",
+            options: [
+                "A. Ekspor rempah-rempah terbesar",
+                "B. Swasembada Beras",
+                "C. Ketahanan pangan laut",
+                "D. Swasembada Kedelai",
+                "E. Perkebunan kelapa sawit terluas"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 9,
+            question: "Untuk mengatasi ledakan jumlah penduduk yang dapat menghambat pembangunan ekonomi, pemerintah Orde Baru menggalakkan program kependudukan dengan slogan \"Dua Anak Cukup\". Program tersebut adalah...",
+            options: [
+                "A. Transmigrasi",
+                "B. Urbanisasi",
+                "C. Keluarga Berencana (KB)",
+                "D. Posyandu",
+                "E. Wajib Belajar"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 10,
+            question: "Salah satu dampak positif kebijakan pendidikan pada masa Orde Baru melalui Instruksi Presiden (Inpres) adalah...",
+            options: [
+                "A. Pembangunan ribuan gedung Sekolah Dasar (SD) di pelosok desa",
+                "B. Penggratisan biaya kuliah di seluruh universitas negeri",
+                "C. Pengiriman ribuan guru ke luar negeri",
+                "D. Penghapusan ujian nasional",
+                "E. Penerapan kurikulum berbasis teknologi digital"
+            ],
+            correct: 0 // A
+        },
+        {
+            id: 11,
+            question: "Di balik keberhasilan pembangunan fisik, pemerintahan Orde Baru sering dikritik karena membatasi kebebasan berpendapat. Salah satu bentuk pembatasan tersebut terhadap media massa adalah...",
+            options: [
+                "A. Subsidi kertas koran",
+                "B. Pembredelan (pencabutan izin terbit) surat kabar yang kritis",
+                "C. Pelatihan jurnalistik bagi wartawan",
+                "D. Pewajiban kolom opini pemerintah",
+                "E. Larangan iklan asing"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 12,
+            question: "Peristiwa kerusuhan sosial yang terjadi pada Januari 1974 sebagai bentuk protes mahasiswa terhadap dominasi modal asing (Jepang) di Indonesia dikenal dengan nama peristiwa...",
+            options: [
+                "A. G30S/PKI",
+                "B. Malari (Malapetaka Lima Belas Januari)",
+                "C. Tanjung Priok",
+                "D. Semanggi",
+                "E. Trisakti"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 13,
+            question: "Istilah \"Petrus\" yang marak pada era 1980-an merujuk pada operasi keamanan untuk menanggulangi kejahatan premanisme. Kepanjangan dari Petrus adalah...",
+            options: [
+                "A. Pengamanan Terus Menerus",
+                "B. Penembak Misterius",
+                "C. Pembersihan Tunas",
+                "D. Penjaga Strategis",
+                "E. Pasukan Khusus"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 14,
+            question: "Golongan Karya (Golkar) selalu memenangkan Pemilihan Umum (Pemilu) pada masa Orde Baru. Salah satu faktor utama kemenangan dominan tersebut adalah...",
+            options: [
+                "A. Program kampanye yang paling modern",
+                "B. Dukungan penuh dari media asing",
+                "C. Mobilisasi dukungan dari Pegawai Negeri Sipil (PNS) dan ABRI",
+                "D. Koalisi dengan partai-partai Islam",
+                "E. Popularitas artis-artis pendukungnya"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 15,
+            question: "Praktik penyalahgunaan kekuasaan yang memperkaya diri sendiri, keluarga, dan kroni-kroni penguasa yang sangat marak di akhir masa Orde Baru dikenal dengan akronim...",
+            options: [
+                "A. SARA",
+                "B. HAM",
+                "C. KKN (Korupsi, Kolusi, Nepotisme)",
+                "D. DOM (Daerah Operasi Militer)",
+                "E. P4 (Pedoman Penghayatan dan Pengamalan Pancasila)"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 16,
+            question: "Salah satu pemicu utama runtuhnya pemerintahan Orde Baru pada tahun 1998 adalah krisis ekonomi yang ditandai dengan...",
+            options: [
+                "A. Turunnya harga minyak dunia secara drastis",
+                "B. Anjloknya nilai tukar Rupiah terhadap Dollar AS",
+                "C. Gagal panen raya di seluruh Indonesia",
+                "D. Embargo ekonomi dari PBB",
+                "E. Penutupan seluruh bank swasta"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 17,
+            question: "Gerakan mahasiswa pada bulan Mei 1998 yang menduduki Gedung DPR/MPR menuntut Presiden Soeharto untuk...",
+            options: [
+                "A. Mengangkat wakil presiden baru",
+                "B. Menurunkan harga BBM saja",
+                "C. Melakukan reshuffle kabinet",
+                "D. Mengundurkan diri dari jabatan presiden (Reformasi)",
+                "E. Membubarkan ABRI"
+            ],
+            correct: 3 // D
+        },
+        {
+            id: 18,
+            question: "Jika dibandingkan dengan Orde Lama, kelebihan utama Orde Baru dalam bidang ekonomi pada periode awal hingga pertengahan kekuasaannya adalah...",
+            options: [
+                "A. Mampu menekan inflasi dan menciptakan stabilitas harga",
+                "B. Mampu menghapus utang luar negeri sepenuhnya",
+                "C. Mampu menasionalisasi seluruh perusahaan asing",
+                "D. Mampu menjadikan Rupiah mata uang terkuat di Asia",
+                "E. Mampu menghilangkan pengangguran 100%"
+            ],
+            correct: 0 // A
+        },
+        {
+            id: 19,
+            question: "Dampak negatif dari sentralisasi kekuasaan (pemusatan kekuasaan di Jakarta) pada masa Orde Baru bagi daerah adalah...",
+            options: [
+                "A. Daerah menjadi lebih mandiri",
+                "B. Ketimpangan pembangunan antara pusat (Jawa) dan daerah luar Jawa",
+                "C. Meningkatnya pendapatan asli daerah (PAD)",
+                "D. Munculnya raja-raja kecil di daerah",
+                "E. Hilangnya budaya lokal"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 20,
+            question: "Pelajaran berharga yang dapat diambil dari berakhirnya masa pemerintahan Orde Baru bagi generasi masa kini adalah...",
+            options: [
+                "A. Pembangunan ekonomi tidak perlu memperhatikan demokrasi",
+                "B. Kebebasan berpendapat harus dilarang demi keamanan",
+                "C. Jabatan presiden sebaiknya diemban seumur hidup",
+                "D. Pembangunan fisik harus sejalan dengan penegakan hukum dan demokrasi",
+                "E. Militer harus memegang kendali penuh atas pemerintahan sipil"
+            ],
+            correct: 3 // D
         }
     ];
 
-    const [currentQ, setCurrentQ] = useState(0);
+    const [appState, setAppState] = useState<'login' | 'quiz' | 'result'>('login');
+    const [userData, setUserData] = useState({ name: '', userClass: '' });
+    const [answers, setAnswers] = useState<{[key: number]: number}>({});
     const [score, setScore] = useState(0);
-    const [showResult, setShowResult] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<number | null>(null);
-    const [isAnswered, setIsAnswered] = useState(false);
+    const [grade, setGrade] = useState('');
+    const [showFeedbackModal, setShowFeedbackModal] = useState(false);
 
-    const handleAnswer = (idx: number) => {
-        if (isAnswered) return;
-        setSelectedOption(idx);
-        setIsAnswered(true);
-        if (idx === questions[currentQ].answerIndex) setScore(score + 20);
+    // Handle Login Input
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setUserData(prev => ({ ...prev, [name]: value }));
     };
 
-    const nextQuestion = () => {
-        if (currentQ < questions.length - 1) {
-            setCurrentQ(currentQ + 1);
-            setIsAnswered(false);
-            setSelectedOption(null);
+    // Start Quiz
+    const startQuiz = () => {
+        if (userData.name && userData.userClass) {
+            setAppState('quiz');
+            window.scrollTo(0, 0);
         } else {
-            setShowResult(true);
+            alert("Mohon isi Nama Lengkap dan Kelas terlebih dahulu.");
         }
     };
 
-    const restart = () => {
-        setCurrentQ(0);
-        setScore(0);
-        setShowResult(false);
-        setIsAnswered(false);
-        setSelectedOption(null);
+    // Handle Answer Selection
+    const handleOptionSelect = (qId: number, optionIndex: number) => {
+        setAnswers({ ...answers, [qId]: optionIndex });
     };
 
-    if (showResult) {
-        return (
-            <div className="bg-[#171717] p-8 rounded text-center border border-history-gold/30">
-                <h3 className="text-xl font-bold text-history-gold mb-4 uppercase tracking-widest">Hasil Evaluasi</h3>
-                <div className="text-6xl font-black text-white mb-4">{score}</div>
-                <p className="text-history-muted mb-6">{score >= 80 ? "Sangat Baik! Anda mampu melihat dua sisi Orde Baru." : "Pelajari lagi materi tentang dampak positif dan negatif."}</p>
-                <button onClick={restart} className="bg-history-gold text-[#0a0a0a] px-6 py-2 rounded text-xs font-bold uppercase hover:bg-yellow-600 transition">Ulangi Kuis</button>
-            </div>
-        );
-    }
+    // Submit Answers
+    const submitAnswers = () => {
+        if (Object.keys(answers).length < questions.length) {
+            if (!window.confirm("Masih ada soal yang belum diisi. Yakin ingin mengirim jawaban?")) return;
+        }
+
+        let calculatedScore = 0;
+        questions.forEach(q => {
+            if (answers[q.id] === q.correct) {
+                calculatedScore += 5; // 5 pts x 20 questions = 100
+            }
+        });
+
+        setScore(calculatedScore);
+        
+        let calculatedGrade = '';
+        if (calculatedScore <= 69) calculatedGrade = 'Kurang';
+        else if (calculatedScore <= 80) calculatedGrade = 'Cukup Baik';
+        else if (calculatedScore <= 90) calculatedGrade = 'Baik';
+        else calculatedGrade = 'Sangat Baik';
+        
+        setGrade(calculatedGrade);
+        setShowFeedbackModal(true);
+    };
+
+    // Generate Report View (Open in new window for printing)
+    const handleDownloadPDF = () => {
+        const printContent = `
+            <html>
+            <head>
+                <title>Laporan Evaluasi - ${userData.name}</title>
+                <style>
+                    body { font-family: 'Times New Roman', serif; padding: 40px; color: #000; background: #fff; }
+                    .header { text-align: center; border-bottom: 3px solid #000; padding-bottom: 20px; margin-bottom: 30px; }
+                    .header h1 { font-size: 24px; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+                    .header h2 { font-size: 18px; margin: 5px 0 0; font-weight: normal; }
+                    .info-table { width: 100%; margin-bottom: 30px; border: 1px solid #000; }
+                    .info-table td { padding: 10px; border: 1px solid #000; }
+                    .score-box { text-align: center; margin: 20px 0; padding: 20px; border: 2px solid #000; background: #f0f0f0; }
+                    .score-num { font-size: 48px; font-weight: bold; display: block; }
+                    .score-grade { font-size: 18px; font-weight: bold; text-transform: uppercase; }
+                    .question-item { margin-bottom: 15px; page-break-inside: avoid; border-bottom: 1px dashed #ccc; padding-bottom: 10px; }
+                    .question-text { font-weight: bold; margin-bottom: 5px; }
+                    .options { margin-left: 20px; font-size: 14px; }
+                    .option { padding: 2px 0; }
+                    .selected { font-weight: bold; color: blue; }
+                    .correct { font-weight: bold; color: green; }
+                    .incorrect { color: red; text-decoration: line-through; }
+                    .key-badge { background: #eee; padding: 2px 5px; font-size: 10px; border-radius: 3px; margin-left: 5px; border: 1px solid #999; }
+                    .footer { margin-top: 50px; text-align: right; }
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <h1>Laporan Hasil Evaluasi</h1>
+                    <h2>Topik: Menelusuri Jejak Orde Baru (1966–1998)</h2>
+                </div>
+
+                <table class="info-table" cellspacing="0">
+                    <tr>
+                        <td width="30%"><strong>Nama Siswa</strong></td>
+                        <td>${userData.name}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kelas</strong></td>
+                        <td>${userData.userClass}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tanggal</strong></td>
+                        <td>${new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</td>
+                    </tr>
+                </table>
+
+                <div class="score-box">
+                    <span class="score-grade">Nilai Akhir</span>
+                    <span class="score-num">${score}</span>
+                    <span class="score-grade">${grade}</span>
+                </div>
+
+                <h3>Rincian Jawaban:</h3>
+                ${questions.map((q, idx) => {
+                    const userAns = answers[q.id];
+                    
+                    return `
+                        <div class="question-item">
+                            <div class="question-text">${idx + 1}. ${q.question}</div>
+                            <div class="options">
+                                ${q.options.map((opt, oIdx) => {
+                                    let style = "option";
+                                    let badge = "";
+                                    
+                                    if (oIdx === q.correct) {
+                                        style += " correct";
+                                        badge = `<span class="key-badge">KUNCI</span>`;
+                                    } 
+                                    
+                                    if (userAns === oIdx) {
+                                        if (userAns !== q.correct) {
+                                            style += " incorrect";
+                                            badge = `<span class="key-badge" style="color:red; border-color:red;">JAWABAN ANDA</span>`;
+                                        } else {
+                                            badge = `<span class="key-badge" style="background:green; color:white; border-color:green;">BENAR</span>`;
+                                        }
+                                    }
+
+                                    return `<div class="${style}">${opt} ${badge}</div>`;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+
+                <div class="footer">
+                    <p>Guru Mata Pelajaran</p>
+                    <br/><br/><br/>
+                    <p><strong>Findi Lestari, S.Pd.</strong></p>
+                </div>
+                
+                <script>window.print();</script>
+            </body>
+            </html>
+        `;
+        
+        const printWindow = window.open('', '_blank');
+        if (printWindow) {
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+        }
+    };
+
+    const resetEvaluasi = () => {
+        setAppState('login');
+        setUserData({ name: '', userClass: '' });
+        setAnswers({});
+        setScore(0);
+        setGrade('');
+        setShowFeedbackModal(false);
+        window.scrollTo(0, 0);
+    };
 
     return (
-        <div className="bg-[#171717] p-8 rounded border border-history-gold/10">
-            <div className="mb-6 text-xs font-bold text-history-muted flex justify-between uppercase tracking-widest">
-                <span>Soal {currentQ + 1}/{questions.length}</span>
-                <span className="text-history-gold">Skor: {score}</span>
-            </div>
-            <h3 className="font-bold text-lg text-white mb-6 font-sans">{questions[currentQ].question}</h3>
-            <div className="space-y-3">
-                {questions[currentQ].options.map((opt, idx) => (
-                    <button
-                        key={idx}
-                        onClick={() => handleAnswer(idx)}
-                        disabled={isAnswered}
-                        className={`w-full text-left p-4 rounded border transition group ${selectedOption === idx ? (idx === questions[currentQ].answerIndex ? 'bg-green-900/20 border-green-500 text-green-400' : 'bg-red-900/20 border-red-500 text-red-400') : 'bg-[#0a0a0a] border-history-gold/10 hover:border-history-gold hover:bg-[#1c1c1c] text-history-brown'}`}
-                    >
-                        <div className="flex items-center justify-between">
-                            <span>{opt}</span>
-                            {isAnswered && idx === questions[currentQ].answerIndex && <i className="fas fa-check text-green-500"></i>}
-                            {isAnswered && selectedOption === idx && idx !== questions[currentQ].answerIndex && <i className="fas fa-times text-red-500"></i>}
+        <div className="relative min-h-[600px]">
+            {appState === 'login' && (
+                <div className="bg-[#171717] p-8 md:p-12 rounded-2xl shadow-2xl max-w-xl mx-auto border border-history-gold/20 text-center animate-fade-in">
+                    <div className="flex justify-center mb-6">
+                        <div className="bg-[#0a0a0a] p-5 rounded-full border border-history-gold shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+                            <i className="fas fa-school text-4xl text-history-gold"></i>
                         </div>
-                    </button>
-                ))}
-            </div>
-            {isAnswered && (
-                <div className="mt-6 text-right">
-                    <button onClick={nextQuestion} className="bg-history-gold text-[#0a0a0a] px-6 py-2 rounded font-bold text-xs uppercase hover:bg-yellow-600 transition">
-                        {currentQ < questions.length - 1 ? "Lanjut" : "Lihat Hasil"}
-                    </button>
+                    </div>
+                    <h2 className="text-2xl font-bold text-history-brown mb-2 uppercase tracking-widest">Identitas Peserta</h2>
+                    <p className="text-history-muted text-sm mb-8">Evaluasi: Jejak Orde Baru (20 Soal)</p>
+                    
+                    <form className="space-y-6 text-left" onSubmit={(e) => e.preventDefault()}>
+                        <div>
+                            <label htmlFor="input-name" className="block text-xs font-bold text-history-gold mb-2 uppercase tracking-wide">Nama Siswa</label>
+                            <input 
+                                id="input-name"
+                                type="text" 
+                                name="name"
+                                value={userData.name}
+                                onChange={handleInputChange}
+                                className="w-full p-4 bg-[#0a0a0a] border border-history-muted/20 rounded-lg focus:border-history-gold outline-none transition text-history-brown placeholder-history-muted/30"
+                                placeholder="Isi nama lengkap..."
+                                autoComplete="name"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="input-class" className="block text-xs font-bold text-history-gold mb-2 uppercase tracking-wide">Kelas</label>
+                            <input 
+                                id="input-class"
+                                type="text" 
+                                name="userClass" 
+                                value={userData.userClass}
+                                onChange={handleInputChange}
+                                className="w-full p-4 bg-[#0a0a0a] border border-history-muted/20 rounded-lg focus:border-history-gold outline-none transition text-history-brown placeholder-history-muted/30"
+                                placeholder="Isi kelas..."
+                                autoComplete="off"
+                            />
+                        </div>
+                        <button 
+                            type="button"
+                            onClick={startQuiz}
+                            className="w-full bg-history-gold hover:bg-[#c5a028] text-[#0a0a0a] font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-105 mt-6 flex items-center justify-center gap-2 uppercase tracking-widest text-sm"
+                        >
+                            Mulai Mengerjakan <i className="fas fa-chevron-right ml-1"></i>
+                        </button>
+                    </form>
+                </div>
+            )}
+
+            {appState === 'quiz' && (
+                <div className="flex flex-col min-h-screen">
+                    <div className="bg-[#171717] shadow-lg border-b border-history-gold/20 sticky top-0 z-20 print:hidden">
+                        <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center text-sm">
+                            <div className="flex items-center gap-3 font-bold text-history-brown">
+                                <i className="fas fa-user text-history-gold"></i> {userData.name} <span className="text-history-muted mx-1">|</span> {userData.userClass}
+                            </div>
+                            <div className="flex items-center gap-2 text-history-muted">
+                                <i className="fas fa-clock text-history-gold"></i> 20 Soal
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex-1 max-w-4xl mx-auto w-full p-6 space-y-8 pb-24 animate-fade-in">
+                        <div className="text-center mb-8">
+                            <h2 className="text-2xl font-bold text-history-gold uppercase tracking-widest">Soal Evaluasi</h2>
+                            <p className="text-history-muted text-sm mt-2">Topik Materi: Menelusuri Jejak Orde Baru</p>
+                        </div>
+
+                        {questions.map((q, index) => (
+                            <div key={q.id} className="bg-[#171717] p-6 md:p-8 rounded-xl shadow-lg border border-history-gold/10 hover:border-history-gold/30 transition duration-300">
+                                <div className="flex gap-5">
+                                    <div className="bg-[#0a0a0a] text-history-gold w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg font-bold text-lg border border-history-gold/20 shadow-inner">
+                                        {index + 1}
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="text-lg font-medium text-history-brown mb-6 leading-relaxed font-serif">{q.question}</h3>
+                                        <div className="space-y-3">
+                                            {q.options.map((opt, optIdx) => (
+                                                <label 
+                                                    key={optIdx} 
+                                                    className={`flex items-start gap-4 p-4 rounded-lg border cursor-pointer transition-all group ${
+                                                        answers[q.id] === optIdx 
+                                                        ? 'bg-history-gold/10 border-history-gold ring-1 ring-history-gold/50' 
+                                                        : 'bg-[#0a0a0a] border-history-muted/10 hover:bg-[#262626] hover:border-history-muted/30'
+                                                    }`}
+                                                >
+                                                    <div className="mt-1 relative flex items-center justify-center">
+                                                        <input 
+                                                            type="radio" 
+                                                            name={`q-${q.id}`} 
+                                                            className="appearance-none w-5 h-5 rounded-full border-2 border-history-muted/50 checked:border-history-gold checked:bg-history-gold transition-all"
+                                                            checked={answers[q.id] === optIdx}
+                                                            onChange={() => handleOptionSelect(q.id, optIdx)}
+                                                        />
+                                                    </div>
+                                                    <span className={`text-sm md:text-base ${answers[q.id] === optIdx ? 'text-history-gold font-bold' : 'text-history-muted group-hover:text-history-brown'}`}>
+                                                        {opt}
+                                                    </span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+
+                        <div className="flex justify-end pt-6">
+                            <button 
+                                onClick={submitAnswers}
+                                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-10 rounded-full shadow-xl flex items-center gap-3 transition transform hover:scale-105 uppercase tracking-widest text-sm"
+                            >
+                                <i className="fas fa-paper-plane"></i> Kirim Jawaban
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {showFeedbackModal && (
+                <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+                    <div className="bg-[#171717] rounded-2xl max-w-md w-full p-8 text-center shadow-[0_0_50px_rgba(212,175,55,0.2)] border-2 border-history-gold scale-100 transform transition-all relative">
+                        <div className="w-24 h-24 bg-[#0a0a0a] rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-history-gold shadow-lg">
+                            <i className="fas fa-trophy text-history-gold text-4xl animate-bounce"></i>
+                        </div>
+                        <h2 className="text-3xl font-sans font-bold text-history-brown mb-2 uppercase tracking-wide">Hasil Evaluasi</h2>
+                        <p className="text-history-muted mb-4">Terima kasih telah mengerjakan, <span className="text-history-gold font-bold">{userData.name}</span>!</p>
+                        
+                        <div className="bg-[#0a0a0a] p-6 rounded-xl border border-history-gold/20 mb-6">
+                            <div className="text-xs text-history-muted uppercase tracking-[0.2em] mb-2 font-bold">Nilai Akhir Kamu</div>
+                            <div className={`text-7xl font-black ${score >= 75 ? 'text-emerald-500' : 'text-history-gold'}`}>{score}</div>
+                            <div className="mt-2 text-sm font-bold uppercase tracking-widest text-history-brown border-t border-history-gold/10 pt-2 inline-block px-4">
+                                {grade}
+                            </div>
+                        </div>
+
+                        <p className="text-history-brown/80 text-sm mb-8 bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 leading-relaxed">
+                            “Silakan Unduh dan Simpan Hasil Evaluasi kalian, sebagai bahan belajar kalian di rumah”
+                        </p>
+
+                        <div className="flex flex-col gap-3">
+                            {/* Tombol Simpan ke PDF sesuai permintaan */}
+                            <button 
+                                onClick={handleDownloadPDF}
+                                className="bg-history-brown text-[#0a0a0a] px-4 py-3 rounded hover:bg-white transition text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg"
+                            >
+                                <i className="fas fa-print mr-2"></i> Simpan ke PDF
+                            </button>
+                            
+                            <button 
+                                onClick={resetEvaluasi}
+                                className="w-full bg-[#262626] text-history-muted font-bold py-3.5 rounded-lg hover:bg-[#404040] hover:text-white transition flex items-center justify-center gap-2 shadow-lg uppercase tracking-widest text-xs border border-white/5"
+                            >
+                                <i className="fas fa-redo"></i> Ulangi Evaluasi
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

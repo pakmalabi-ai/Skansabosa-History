@@ -346,106 +346,577 @@ export const LKPDTopic16: React.FC = () => {
     );
 };
 
-// --- QUIZ COMPONENT ---
+// --- QUIZ COMPONENT (FULL EVALUATION SYSTEM) ---
 export const QuizDemokrasiBaru: React.FC = () => {
-    const questions: QuizQuestion[] = [
+    // 20 Questions from PDF "Dinamika Politik dan Ekonomi Indonesia Masa Reformasi"
+    const questions = [
         {
-            question: "Lembaga negara yang dibentuk pada masa pemerintahan Megawati Soekarnoputri untuk memberantas korupsi adalah...",
-            options: ["Kejaksaan Agung", "KPK (Komisi Pemberantasan Korupsi)", "Polri", "ICW"],
-            answerIndex: 1
+            id: 1,
+            question: "Reformasi di Indonesia secara resmi dimulai pada tanggal 21 Mei 1998. Peristiwa monumental yang menandai awal masa ini adalah...",
+            options: [
+                "A. Terjadinya Tragedi Trisakti",
+                "B. Mundurnya Soeharto dari jabatan Presiden",
+                "C. Didudukinya gedung DPR/MPR oleh mahasiswa",
+                "D. Naiknya nilai tukar Rupiah terhadap Dollar",
+                "E. Pelaksanaan Sidang Istimewa MPR"
+            ],
+            correct: 1 // B
         },
         {
-            question: "Kebijakan Gus Dur yang paling mencerminkan nilai toleransi dan pluralisme adalah...",
-            options: ["Pembubaran Departemen Sosial", "Pencabutan larangan perayaan Imlek", "Mengganti nama Irian Jaya", "Semua benar"],
-            answerIndex: 3
+            id: 2,
+            question: "Pada masa pemerintahan B.J. Habibie, salah satu kebijakan fundamental yang mengubah wajah demokrasi Indonesia secara drastis adalah...",
+            options: [
+                "A. Pembatasan jumlah partai politik peserta pemilu",
+                "B. Penerapan Dwi Fungsi ABRI yang lebih ketat",
+                "C. Kebebasan pers melalui UU No. 40 Tahun 1999",
+                "D. Pembubaran Departemen Penerangan dan Departemen Sosial",
+                "E. Pembangunan infrastruktur jalan tol secara masif"
+            ],
+            correct: 2 // C
         },
         {
-            question: "Presiden pertama Indonesia yang dipilih secara langsung oleh rakyat melalui Pemilu 2004 adalah...",
-            options: ["B.J. Habibie", "Abdurrahman Wahid", "Megawati Soekarnoputri", "Susilo Bambang Yudhoyono"],
-            answerIndex: 3
+            id: 3,
+            question: "Pemerintahan B.J. Habibie sering disebut sebagai masa transisi. Salah satu keputusan paling kontroversial namun dianggap demokratis yang diambil pada masa ini adalah...",
+            options: [
+                "A. Menjual aset BUMN strategis",
+                "B. Membubarkan departemen sosial",
+                "C. Memberikan otonomi khusus pada Aceh",
+                "D. Melaksanakan referendum untuk Timor Timur",
+                "E. Mengembalikan mandat kepada MPR"
+            ],
+            correct: 3 // D
         },
         {
-            question: "Perjanjian damai yang mengakhiri konflik berkepanjangan di Aceh pada masa pemerintahan SBY dikenal dengan...",
-            options: ["Perjanjian Linggarjati", "Perjanjian Renville", "Perjanjian Helsinki", "Perjanjian KMB"],
-            answerIndex: 2
+            id: 4,
+            question: "Dalam bidang ekonomi, keberhasilan utama pemerintahan B.J. Habibie di tengah krisis moneter adalah...",
+            options: [
+                "A. Melunasi seluruh utang luar negeri Indonesia",
+                "B. Mencetak uang baru dalam jumlah besar",
+                "C. Menurunkan harga BBM ke level terendah",
+                "D. Menguatkan nilai tukar Rupiah dari Rp16.000 menjadi kisaran Rp6.500 per USD",
+                "E. Memutus hubungan kerja sama dengan IMF"
+            ],
+            correct: 3 // D
         },
         {
-            question: "Salah satu fokus utama pembangunan pada masa pemerintahan Joko Widodo (2014-2024) adalah...",
-            options: ["Pembangunan Militer", "Infrastruktur (Jalan Tol, Bendungan)", "Sentralisasi Kekuasaan", "Pembatasan Media"],
-            answerIndex: 1
+            id: 5,
+            question: "Presiden Abdurrahman Wahid (Gus Dur) dikenal sebagai Bapak Pluralisme. Salah satu kebijakan beliau yang sangat membekas bagi masyarakat minoritas adalah...",
+            options: [
+                "A. Menetapkan agama Konghucu sebagai agama resmi dan mencabut larangan perayaan Imlek",
+                "B. Membangun tempat ibadah di setiap sekolah negeri",
+                "C. Mewajibkan pendidikan agama bagi seluruh siswa",
+                "D. Membubarkan organisasi keagamaan radikal",
+                "E. Menjadikan hari raya semua agama sebagai hari libur internasional"
+            ],
+            correct: 0 // A
+        },
+        {
+            id: 6,
+            question: "Gaya kepemimpinan Gus Dur cenderung informal dan sering menabrak tatanan protokoler. Langkah politik beliau yang memicu konflik dengan parlemen hingga berujung pada pemakzulan adalah...",
+            options: [
+                "A. Mengeluarkan Dekrit Presiden yang salah satunya berisi pembubaran DPR/MPR",
+                "B. Mengangkat menteri dari kalangan non-partai",
+                "C. Melakukan kunjungan luar negeri yang terlalu sering",
+                "D. Mengganti nama Irian Jaya menjadi Papua",
+                "E. Meminta maaf kepada korban peristiwa 1965"
+            ],
+            correct: 0 // A
+        },
+        {
+            id: 7,
+            question: "Pada masa pemerintahan Presiden Megawati Soekarnoputri, upaya serius pemberantasan korupsi ditandai dengan didirikannya sebuah lembaga independen, yaitu...",
+            options: [
+                "A. Kejaksaan Agung",
+                "B. Badan Pemeriksa Keuangan (BPK)",
+                "C. Indonesia Corruption Watch (ICW)",
+                "D. Komisi Pemberantasan Korupsi (KPK)",
+                "E. Ombudsman Republik Indonesia"
+            ],
+            correct: 3 // D
+        },
+        {
+            id: 8,
+            question: "Salah satu kebijakan ekonomi pada masa pemerintahan Megawati yang menuai kritik tajam dan masih diperdebatkan hingga kini adalah...",
+            options: [
+                "A. Pemberian Bantuan Langsung Tunai (BLT)",
+                "B. Penjualan saham BUMN Indosat",
+                "C. Pembangunan bandara internasional",
+                "D. Pembubaran Bulog",
+                "E. Kenaikan gaji pegawai negeri sipil secara signifikan"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 9,
+            question: "Pemilu tahun 2004 merupakan tonggak sejarah baru dalam demokrasi Indonesia yang terjadi pada akhir masa jabatan Megawati. Keistimewaan Pemilu 2004 adalah...",
+            options: [
+                "A. Diikuti oleh lebih dari 100 partai politik",
+                "B. Menggunakan sistem e-voting untuk pertama kalinya",
+                "C. Rakyat memilih Presiden dan Wakil Presiden secara langsung (one man one vote)",
+                "D. Presiden dipilih kembali oleh MPR melalui voting tertutup",
+                "E. Tidak adanya kampanye terbuka"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 10,
+            question: "Susilo Bambang Yudhoyono (SBY) mencatatkan sejarah sebagai presiden pertama yang...",
+            options: [
+                "A. Berasal dari kalangan militer",
+                "B. Dipilih langsung oleh rakyat dan menjabat selama dua periode penuh",
+                "C. Mengundurkan diri sebelum masa jabatannya habis",
+                "D. Membubarkan parlemen melalui dekrit",
+                "E. Tidak memiliki wakil presiden di tengah masa jabatan"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 11,
+            question: "Prestasi terbesar pemerintahan SBY dalam bidang keamanan dan kesatuan bangsa adalah keberhasilannya menyelesaikan konflik berkepanjangan di Aceh melalui...",
+            options: [
+                "A. Operasi Militer Terpadu",
+                "B. Perjanjian Linggarjati",
+                "C. Perjanjian Helsinki (MoU Helsinki)",
+                "D. Referendum kemerdekaan",
+                "E. Pemberian status Daerah Istimewa Yogyakarta"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 12,
+            question: "Dalam bidang sosial-ekonomi, pemerintahan SBY meluncurkan program bantuan bersyarat untuk keluarga miskin guna menjaga daya beli masyarakat di tengah kenaikan harga BBM, yang dikenal dengan nama...",
+            options: [
+                "A. Kredit Usaha Rakyat (KUR)",
+                "B. Bantuan Operasional Sekolah (BOS)",
+                "C. Bantuan Langsung Tunai (BLT)",
+                "D. Kartu Indonesia Sehat (KIS)",
+                "E. Program Keluarga Harapan (PKH)"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 13,
+            question: "Presiden Joko Widodo (Jokowi) memiliki fokus pembangunan yang berbeda dari pendahulunya. Istilah \"Indonesia Sentris\" pada masa Jokowi bermakna...",
+            options: [
+                "A. Pembangunan dipusatkan kembali di pulau Jawa",
+                "B. Pembangunan infrastruktur dilakukan merata hingga ke luar Jawa (Papua, Kalimantan, Sulawesi)",
+                "C. Pembangunan hanya berfokus pada kota-kota besar",
+                "D. Pemusatan kekuasaan politik di tangan presiden",
+                "E. Sentralisasi anggaran daerah ke pemerintah pusat"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 14,
+            question: "Salah satu proyek strategis nasional terbesar pada masa pemerintahan Joko Widodo yang bertujuan memindahkan pusat pemerintahan adalah...",
+            options: [
+                "A. Pembangunan Jembatan Suramadu",
+                "B. Proyek Kereta Cepat Jakarta-Bandung",
+                "C. Pembangunan Ibu Kota Nusantara (IKN)",
+                "D. Reklamasi Teluk Jakarta",
+                "E. Pembangunan Tol Trans Jawa"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 15,
+            question: "Di bawah pemerintahan Joko Widodo, pemerintah gencar melakukan hilirisasi industri. Tujuan utama dari kebijakan pelarangan ekspor bijih nikel mentah adalah...",
+            options: [
+                "A. Mengurangi pencemaran lingkungan akibat tambang",
+                "B. Meningkatkan nilai tambah komoditas di dalam negeri",
+                "C. Memenuhi permintaan pasar nikel di Eropa",
+                "D. Menutup perusahaan tambang asing",
+                "E. Menghemat cadangan nikel untuk masa depan"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 16,
+            question: "Perhatikan ciri-ciri berikut: 1. Kebebasan pers sangat dibatasi, 2. Sentralisasi kekuasaan di pusat, 3. Stabilitas keamanan menjadi prioritas utama, 4. Peran militer sangat dominan (Dwi Fungsi ABRI). Ciri-ciri di atas menggambarkan kondisi politik Indonesia pada masa...",
+            options: [
+                "A. Orde Lama",
+                "B. Orde Baru",
+                "C. Reformasi Awal",
+                "D. Demokrasi Liberal",
+                "E. Demokrasi Terpimpin"
+            ],
+            correct: 1 // B
+        },
+        {
+            id: 17,
+            question: "Perbedaan mendasar sistem pemerintahan masa Orde Baru dengan masa Reformasi terletak pada...",
+            options: [
+                "A. Masa jabatan presiden; Orde Baru tidak dibatasi, Reformasi dibatasi maksimal 2 periode",
+                "B. Lambang negara; Orde Baru menggunakan Garuda, Reformasi menggunakan Bendera",
+                "C. Ideologi negara; Orde Baru Pancasila, Reformasi Liberalisme",
+                "D. Bentuk negara; Orde Baru Serikat, Reformasi Kesatuan",
+                "E. Sistem ekonomi; Orde Baru Kapitalis, Reformasi Sosialis"
+            ],
+            correct: 0 // A
+        },
+        {
+            id: 18,
+            question: "Gerakan Reformasi 1998 dimotori oleh mahasiswa yang menuntut \"6 Agenda Reformasi\". Berikut ini yang bukan termasuk agenda tersebut adalah...",
+            options: [
+                "A. Adili Soeharto dan kroni-kroninya",
+                "B. Amandemen UUD 1945",
+                "C. Penghapusan Dwi Fungsi ABRI",
+                "D. Otonomi Daerah seluas-luasnya",
+                "E. Kembali ke UUD 1945 yang asli (tanpa amandemen)"
+            ],
+            correct: 4 // E
+        },
+        {
+            id: 19,
+            question: "Dampak negatif yang muncul akibat euforia kebebasan di era Reformasi, khususnya terkait media sosial saat ini adalah...",
+            options: [
+                "A. Meningkatnya partisipasi politik pemula",
+                "B. Munculnya jurnalisme warga",
+                "C. Maraknya penyebaran berita bohong (hoax) dan ujaran kebencian",
+                "D. Kemudahan akses informasi pemerintahan",
+                "E. Transparansi anggaran negara"
+            ],
+            correct: 2 // C
+        },
+        {
+            id: 20,
+            question: "Tujuan utama dilakukannya Amandemen UUD 1945 pada masa awal Reformasi adalah...",
+            options: [
+                "A. Mengganti ideologi Pancasila",
+                "B. Memperpanjang masa jabatan presiden seumur hidup",
+                "C. Menyempurnakan aturan dasar agar lebih demokratis dan mencegah penyalahgunaan kekuasaan",
+                "D. Memberikan kekuasaan mutlak kepada MPR",
+                "E. Menghapus peran partai politik dalam pemerintahan"
+            ],
+            correct: 2 // C
         }
     ];
 
-    const [currentQ, setCurrentQ] = useState(0);
+    const [appState, setAppState] = useState<'login' | 'quiz' | 'result'>('login');
+    const [userData, setUserData] = useState({ name: '', userClass: '' });
+    const [answers, setAnswers] = useState<{[key: number]: number}>({});
     const [score, setScore] = useState(0);
-    const [showResult, setShowResult] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<number | null>(null);
-    const [isAnswered, setIsAnswered] = useState(false);
+    const [grade, setGrade] = useState('');
+    const [showFeedbackModal, setShowFeedbackModal] = useState(false);
 
-    const handleAnswer = (idx: number) => {
-        if (isAnswered) return;
-        setSelectedOption(idx);
-        setIsAnswered(true);
-        if (idx === questions[currentQ].answerIndex) setScore(score + 20);
+    // Handle Login Input
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setUserData(prev => ({ ...prev, [name]: value }));
     };
 
-    const nextQuestion = () => {
-        if (currentQ < questions.length - 1) {
-            setCurrentQ(currentQ + 1);
-            setIsAnswered(false);
-            setSelectedOption(null);
+    // Start Quiz
+    const startQuiz = () => {
+        if (userData.name && userData.userClass) {
+            setAppState('quiz');
+            window.scrollTo(0, 0);
         } else {
-            setShowResult(true);
+            alert("Mohon isi Nama Lengkap dan Kelas terlebih dahulu.");
         }
     };
 
-    const restart = () => {
-        setCurrentQ(0);
-        setScore(0);
-        setShowResult(false);
-        setIsAnswered(false);
-        setSelectedOption(null);
+    // Handle Answer Selection
+    const handleOptionSelect = (qId: number, optionIndex: number) => {
+        setAnswers({ ...answers, [qId]: optionIndex });
     };
 
-    if (showResult) {
-        return (
-            <div className="bg-[#171717] p-8 rounded text-center border border-history-gold/30">
-                <h3 className="text-xl font-bold text-history-gold mb-4 uppercase tracking-widest">Hasil Evaluasi</h3>
-                <div className="text-6xl font-black text-white mb-4">{score}</div>
-                <p className="text-history-muted mb-6">{score >= 80 ? "Hebat! Wawasan demokrasimu luas." : "Baca lagi profil presidennya ya."}</p>
-                <button onClick={restart} className="bg-history-gold text-[#0a0a0a] px-6 py-2 rounded text-xs font-bold uppercase hover:bg-yellow-600 transition">Ulangi Kuis</button>
-            </div>
-        );
-    }
+    // Submit Answers
+    const submitAnswers = () => {
+        if (Object.keys(answers).length < questions.length) {
+            if (!window.confirm("Masih ada soal yang belum diisi. Yakin ingin mengirim jawaban?")) return;
+        }
+
+        let calculatedScore = 0;
+        questions.forEach(q => {
+            if (answers[q.id] === q.correct) {
+                calculatedScore += 5; // 5 pts x 20 questions = 100
+            }
+        });
+
+        setScore(calculatedScore);
+        
+        let calculatedGrade = '';
+        if (calculatedScore <= 69) calculatedGrade = 'Kurang';
+        else if (calculatedScore <= 80) calculatedGrade = 'Cukup Baik';
+        else if (calculatedScore <= 90) calculatedGrade = 'Baik';
+        else calculatedGrade = 'Sangat Baik';
+        
+        setGrade(calculatedGrade);
+        setShowFeedbackModal(true);
+    };
+
+    // Generate Report View (Open in new window for printing)
+    const handleDownloadPDF = () => {
+        const printContent = `
+            <html>
+            <head>
+                <title>Laporan Evaluasi - ${userData.name}</title>
+                <style>
+                    body { font-family: 'Times New Roman', serif; padding: 40px; color: #000; background: #fff; }
+                    .header { text-align: center; border-bottom: 3px solid #000; padding-bottom: 20px; margin-bottom: 30px; }
+                    .header h1 { font-size: 24px; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+                    .header h2 { font-size: 18px; margin: 5px 0 0; font-weight: normal; }
+                    .info-table { width: 100%; margin-bottom: 30px; border: 1px solid #000; }
+                    .info-table td { padding: 10px; border: 1px solid #000; }
+                    .score-box { text-align: center; margin: 20px 0; padding: 20px; border: 2px solid #000; background: #f0f0f0; }
+                    .score-num { font-size: 48px; font-weight: bold; display: block; }
+                    .score-grade { font-size: 18px; font-weight: bold; text-transform: uppercase; }
+                    .question-item { margin-bottom: 15px; page-break-inside: avoid; border-bottom: 1px dashed #ccc; padding-bottom: 10px; }
+                    .question-text { font-weight: bold; margin-bottom: 5px; }
+                    .options { margin-left: 20px; font-size: 14px; }
+                    .option { padding: 2px 0; }
+                    .selected { font-weight: bold; color: blue; }
+                    .correct { font-weight: bold; color: green; }
+                    .incorrect { color: red; text-decoration: line-through; }
+                    .key-badge { background: #eee; padding: 2px 5px; font-size: 10px; border-radius: 3px; margin-left: 5px; border: 1px solid #999; }
+                    .footer { margin-top: 50px; text-align: right; }
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <h1>Laporan Hasil Evaluasi</h1>
+                    <h2>Topik: Dinamika Politik dan Ekonomi Indonesia Masa Reformasi</h2>
+                </div>
+
+                <table class="info-table" cellspacing="0">
+                    <tr>
+                        <td width="30%"><strong>Nama Siswa</strong></td>
+                        <td>${userData.name}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kelas</strong></td>
+                        <td>${userData.userClass}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tanggal</strong></td>
+                        <td>${new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</td>
+                    </tr>
+                </table>
+
+                <div class="score-box">
+                    <span class="score-grade">Nilai Akhir</span>
+                    <span class="score-num">${score}</span>
+                    <span class="score-grade">${grade}</span>
+                </div>
+
+                <h3>Rincian Jawaban:</h3>
+                ${questions.map((q, idx) => {
+                    const userAns = answers[q.id];
+                    
+                    return `
+                        <div class="question-item">
+                            <div class="question-text">${idx + 1}. ${q.question}</div>
+                            <div class="options">
+                                ${q.options.map((opt, oIdx) => {
+                                    let style = "option";
+                                    let badge = "";
+                                    
+                                    if (oIdx === q.correct) {
+                                        style += " correct";
+                                        badge = `<span class="key-badge">KUNCI</span>`;
+                                    } 
+                                    
+                                    if (userAns === oIdx) {
+                                        if (userAns !== q.correct) {
+                                            style += " incorrect";
+                                            badge = `<span class="key-badge" style="color:red; border-color:red;">JAWABAN ANDA</span>`;
+                                        } else {
+                                            badge = `<span class="key-badge" style="background:green; color:white; border-color:green;">BENAR</span>`;
+                                        }
+                                    }
+
+                                    return `<div class="${style}">${opt} ${badge}</div>`;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+
+                <div class="footer">
+                    <p>Guru Mata Pelajaran</p>
+                    <br/><br/><br/>
+                    <p><strong>Findi Lestari, S.Pd.</strong></p>
+                </div>
+                
+                <script>window.print();</script>
+            </body>
+            </html>
+        `;
+        
+        const printWindow = window.open('', '_blank');
+        if (printWindow) {
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+        }
+    };
+
+    const resetEvaluasi = () => {
+        setAppState('login');
+        setUserData({ name: '', userClass: '' });
+        setAnswers({});
+        setScore(0);
+        setGrade('');
+        setShowFeedbackModal(false);
+        window.scrollTo(0, 0);
+    };
 
     return (
-        <div className="bg-[#171717] p-8 rounded border border-history-gold/10">
-            <div className="mb-6 text-xs font-bold text-history-muted flex justify-between uppercase tracking-widest">
-                <span>Soal {currentQ + 1}/{questions.length}</span>
-                <span className="text-history-gold">Skor: {score}</span>
-            </div>
-            <h3 className="font-bold text-lg text-white mb-6 font-sans">{questions[currentQ].question}</h3>
-            <div className="space-y-3">
-                {questions[currentQ].options.map((opt, idx) => (
-                    <button
-                        key={idx}
-                        onClick={() => handleAnswer(idx)}
-                        disabled={isAnswered}
-                        className={`w-full text-left p-4 rounded border transition group ${selectedOption === idx ? (idx === questions[currentQ].answerIndex ? 'bg-green-900/20 border-green-500 text-green-400' : 'bg-red-900/20 border-red-500 text-red-400') : 'bg-[#0a0a0a] border-history-gold/10 hover:border-history-gold hover:bg-[#1c1c1c] text-history-brown'}`}
-                    >
-                        <div className="flex items-center justify-between">
-                            <span>{opt}</span>
-                            {isAnswered && idx === questions[currentQ].answerIndex && <i className="fas fa-check text-green-500"></i>}
-                            {isAnswered && selectedOption === idx && idx !== questions[currentQ].answerIndex && <i className="fas fa-times text-red-500"></i>}
+        <div className="relative min-h-[600px]">
+            {appState === 'login' && (
+                <div className="bg-[#171717] p-8 md:p-12 rounded-2xl shadow-2xl max-w-xl mx-auto border border-history-gold/20 text-center animate-fade-in">
+                    <div className="flex justify-center mb-6">
+                        <div className="bg-[#0a0a0a] p-5 rounded-full border border-history-gold shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+                            <i className="fas fa-school text-4xl text-history-gold"></i>
                         </div>
-                    </button>
-                ))}
-            </div>
-            {isAnswered && (
-                <div className="mt-6 text-right">
-                    <button onClick={nextQuestion} className="bg-history-gold text-[#0a0a0a] px-6 py-2 rounded font-bold text-xs uppercase hover:bg-yellow-600 transition">
-                        {currentQ < questions.length - 1 ? "Lanjut" : "Lihat Hasil"}
-                    </button>
+                    </div>
+                    <h2 className="text-2xl font-bold text-history-brown mb-2 uppercase tracking-widest">Identitas Peserta</h2>
+                    <p className="text-history-muted text-sm mb-8">Evaluasi: Dinamika Reformasi (20 Soal)</p>
+                    
+                    <form className="space-y-6 text-left" onSubmit={(e) => e.preventDefault()}>
+                        <div>
+                            <label htmlFor="input-name" className="block text-xs font-bold text-history-gold mb-2 uppercase tracking-wide">Nama Siswa</label>
+                            <input 
+                                id="input-name"
+                                type="text" 
+                                name="name"
+                                value={userData.name}
+                                onChange={handleInputChange}
+                                className="w-full p-4 bg-[#0a0a0a] border border-history-muted/20 rounded-lg focus:border-history-gold outline-none transition text-history-brown placeholder-history-muted/30"
+                                placeholder="Isi nama lengkap..."
+                                autoComplete="name"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="input-class" className="block text-xs font-bold text-history-gold mb-2 uppercase tracking-wide">Kelas</label>
+                            <input 
+                                id="input-class"
+                                type="text" 
+                                name="userClass" 
+                                value={userData.userClass}
+                                onChange={handleInputChange}
+                                className="w-full p-4 bg-[#0a0a0a] border border-history-muted/20 rounded-lg focus:border-history-gold outline-none transition text-history-brown placeholder-history-muted/30"
+                                placeholder="Isi kelas..."
+                                autoComplete="off"
+                            />
+                        </div>
+                        <button 
+                            type="button"
+                            onClick={startQuiz}
+                            className="w-full bg-history-gold hover:bg-[#c5a028] text-[#0a0a0a] font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-105 mt-6 flex items-center justify-center gap-2 uppercase tracking-widest text-sm"
+                        >
+                            Mulai Mengerjakan <i className="fas fa-chevron-right ml-1"></i>
+                        </button>
+                    </form>
+                </div>
+            )}
+
+            {appState === 'quiz' && (
+                <div className="flex flex-col min-h-screen">
+                    <div className="bg-[#171717] shadow-lg border-b border-history-gold/20 sticky top-0 z-20 print:hidden">
+                        <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center text-sm">
+                            <div className="flex items-center gap-3 font-bold text-history-brown">
+                                <i className="fas fa-user text-history-gold"></i> {userData.name} <span className="text-history-muted mx-1">|</span> {userData.userClass}
+                            </div>
+                            <div className="flex items-center gap-2 text-history-muted">
+                                <i className="fas fa-clock text-history-gold"></i> 20 Soal
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex-1 max-w-4xl mx-auto w-full p-6 space-y-8 pb-24 animate-fade-in">
+                        <div className="text-center mb-8">
+                            <h2 className="text-2xl font-bold text-history-gold uppercase tracking-widest">Soal Evaluasi</h2>
+                            <p className="text-history-muted text-sm mt-2">Topik Materi: Dinamika Politik dan Ekonomi Reformasi</p>
+                        </div>
+
+                        {questions.map((q, index) => (
+                            <div key={q.id} className="bg-[#171717] p-6 md:p-8 rounded-xl shadow-lg border border-history-gold/10 hover:border-history-gold/30 transition duration-300">
+                                <div className="flex gap-5">
+                                    <div className="bg-[#0a0a0a] text-history-gold w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg font-bold text-lg border border-history-gold/20 shadow-inner">
+                                        {index + 1}
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="text-lg font-medium text-history-brown mb-6 leading-relaxed font-serif">{q.question}</h3>
+                                        <div className="space-y-3">
+                                            {q.options.map((opt, optIdx) => (
+                                                <label 
+                                                    key={optIdx} 
+                                                    className={`flex items-start gap-4 p-4 rounded-lg border cursor-pointer transition-all group ${
+                                                        answers[q.id] === optIdx 
+                                                        ? 'bg-history-gold/10 border-history-gold ring-1 ring-history-gold/50' 
+                                                        : 'bg-[#0a0a0a] border-history-muted/10 hover:bg-[#262626] hover:border-history-muted/30'
+                                                    }`}
+                                                >
+                                                    <div className="mt-1 relative flex items-center justify-center">
+                                                        <input 
+                                                            type="radio" 
+                                                            name={`q-${q.id}`} 
+                                                            className="appearance-none w-5 h-5 rounded-full border-2 border-history-muted/50 checked:border-history-gold checked:bg-history-gold transition-all"
+                                                            checked={answers[q.id] === optIdx}
+                                                            onChange={() => handleOptionSelect(q.id, optIdx)}
+                                                        />
+                                                    </div>
+                                                    <span className={`text-sm md:text-base ${answers[q.id] === optIdx ? 'text-history-gold font-bold' : 'text-history-muted group-hover:text-history-brown'}`}>
+                                                        {opt}
+                                                    </span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+
+                        <div className="flex justify-end pt-6">
+                            <button 
+                                onClick={submitAnswers}
+                                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-10 rounded-full shadow-xl flex items-center gap-3 transition transform hover:scale-105 uppercase tracking-widest text-sm"
+                            >
+                                <i className="fas fa-paper-plane"></i> Kirim Jawaban
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {showFeedbackModal && (
+                <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+                    <div className="bg-[#171717] rounded-2xl max-w-md w-full p-8 text-center shadow-[0_0_50px_rgba(212,175,55,0.2)] border-2 border-history-gold scale-100 transform transition-all relative">
+                        <div className="w-24 h-24 bg-[#0a0a0a] rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-history-gold shadow-lg">
+                            <i className="fas fa-trophy text-history-gold text-4xl animate-bounce"></i>
+                        </div>
+                        <h2 className="text-3xl font-sans font-bold text-history-brown mb-2 uppercase tracking-wide">Hasil Evaluasi</h2>
+                        <p className="text-history-muted mb-4">Terima kasih telah mengerjakan, <span className="text-history-gold font-bold">{userData.name}</span>!</p>
+                        
+                        <div className="bg-[#0a0a0a] p-6 rounded-xl border border-history-gold/20 mb-6">
+                            <div className="text-xs text-history-muted uppercase tracking-[0.2em] mb-2 font-bold">Nilai Akhir Kamu</div>
+                            <div className={`text-7xl font-black ${score >= 75 ? 'text-emerald-500' : 'text-history-gold'}`}>{score}</div>
+                            <div className="mt-2 text-sm font-bold uppercase tracking-widest text-history-brown border-t border-history-gold/10 pt-2 inline-block px-4">
+                                {grade}
+                            </div>
+                        </div>
+
+                        <p className="text-history-brown/80 text-sm mb-8 bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 leading-relaxed">
+                            “Silakan Unduh dan Simpan Hasil Evaluasi kalian, sebagai bahan belajar kalian di rumah”
+                        </p>
+
+                        <div className="flex flex-col gap-3">
+                            {/* Tombol Simpan ke PDF sesuai permintaan */}
+                            <button 
+                                onClick={handleDownloadPDF}
+                                className="bg-history-brown text-[#0a0a0a] px-4 py-3 rounded hover:bg-white transition text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg"
+                            >
+                                <i className="fas fa-print mr-2"></i> Simpan ke PDF
+                            </button>
+                            
+                            <button 
+                                onClick={resetEvaluasi}
+                                className="w-full bg-[#262626] text-history-muted font-bold py-3.5 rounded-lg hover:bg-[#404040] hover:text-white transition flex items-center justify-center gap-2 shadow-lg uppercase tracking-widest text-xs border border-white/5"
+                            >
+                                <i className="fas fa-redo"></i> Ulangi Evaluasi
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

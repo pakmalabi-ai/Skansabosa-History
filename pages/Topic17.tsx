@@ -51,7 +51,7 @@ const Topic17: React.FC = () => {
                                 <p className="text-history-muted text-xs">Unduh materi lengkap Dampak Reformasi.</p>
                             </div>
                             <button 
-                                onClick={() => window.open('https://drive.google.com/file/d/1vJzKywXoQe5Z7lX7qP1yR2wK8o9tL0/view?usp=drive_link', '_blank')}
+                                onClick={() => window.open('https://drive.google.com/file/d/1F6-iq9iS0SXOLb4uP7P1AbDY_rd5k8hq/view?usp=sharing', '_blank')}
                                 className="px-6 py-3 bg-history-gold text-[#0a0a0a] rounded hover:bg-[#c5a028] transition font-bold uppercase tracking-widest text-xs flex items-center shadow-md whitespace-nowrap"
                             >
                                 <i className="fas fa-download mr-2"></i> Download PDF
